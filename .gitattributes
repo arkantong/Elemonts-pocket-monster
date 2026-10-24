@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.bat text eol=crlf whitespace=cr-at-eol
+*.png binary
+*.apk binary
+*.jar binary
+*.xlsx binary
+*.wav binary

@@ -1,0 +1,11 @@
+# Elemonts visual direction
+
+Android portrait creature collecting game for casual players. The supplied v1–v4 game concept is the content source; generated concept is a working art direction, not user approval of final models. ENERGY 2 / RHYTHM 2 / MOTION 2.
+
+Forest green chrome (#213f2d), pale sage canvas (#f3f5ee), orange feeding/action accent (#b84b1d), off-white surfaces. Tropical cottage and Nusaraya artwork tie the UI to the game's home and exploration loop. Fredoka headings convey friendly creature proportions; Nunito Sans labels remain legible on small Android screens. Both fonts bundled offline. 48px targets; five destinations in bottom navigation, sidebar only on wide screens. Leaf wordmark expresses the elemental nature theme; lucide house/compass/swords/bag icons communicate actual actions. Lightning refers only to energy or the electric element.
+
+Main screen: header and wallet; large cottage scene; partner panel below; team and Nusaraya at right on desktop, stacked on mobile; daily mailbox below. Code-native labels and controls. Collection uses a grid because players compare creatures; battle has two health panels and three prominent moves, not dashboard cards. Modals use native dialog with keyboard focus and Escape handling. Motion communicates feedback (pet reaction, attack, modal arrival), respecting reduced motion.
+
+Intentional production boundary: generated environment art plus original procedural Three.js character meshes provide real-time 3D now. These first-pass meshes and element-family portrait reuse need authored final models/rigs for 37 distinct forms before commercial release. Runtime3D requires mesh geometry; this is an explicit departure from using only generated sprite art. No gameplay depends on image text. Generated concept's diamond icon, fake four starters and seven-day gift strip are replaced by real capsules, player's actual team and three-capsule mailbox to follow the user's rules.
+
+Sources: nextlevelbuilder/ui-ux-pro-max-skill (mobile accessibility, Three.js guidance), miqdadbadjuber/anti-slop (purpose/function checks), frontend-app-builder, react-best-practices. UI Pro Max's generic marketing layout and purple gaming palette were rejected because they conflict with this game brief. No additional Rive/Lottie runtime until a matching authored animation exists.

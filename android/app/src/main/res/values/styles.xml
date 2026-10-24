@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#213f2d</item>
+        <item name="colorPrimaryDark">#213f2d</item>
+        <item name="colorAccent">#b94c1d</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#f3f5ee</item>
+        <item name="android:navigationBarColor">#f3f5ee</item>
+    </style>
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:background">@null</item>
+    </style>
+    <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#213f2d</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/elemonts_icon</item>
+        <item name="postSplashScreenTheme">@style/AppTheme.NoActionBar</item>
+    </style>
+</resources>
