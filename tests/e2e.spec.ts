@@ -5,12 +5,20 @@ import {
   makeMonster,
   SAVE_KEY,
 } from "../src/game/state";
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() =>
+    localStorage.setItem("elemonts.language.v1", "id"),
+  );
+});
 const seed = () => {
   let s = transition(emptySave(), { type: "starter", species: "pyroo" });
   s.tutorial = true;
   return s;
 };
 async function init(page: Page, s = seed()) {
+  await page.addInitScript(() =>
+    localStorage.setItem("elemonts.language.v1", "id"),
+  );
   await page.addInitScript(
     ({ key, save }) => {
       if (!localStorage.getItem(key))
@@ -224,6 +232,9 @@ test("production single player reloads with the network offline", async ({
     viewport: { width: 390, height: 844 },
   });
   const page = await context.newPage();
+  await context.addInitScript(() =>
+    localStorage.setItem("elemonts.language.v1", "id"),
+  );
   await page.goto("http://localhost:3001");
   await page.getByRole("button", { name: "Pilih Pyroo", exact: true }).click();
   await page.getByRole("button", { name: "Temui partnerku" }).click();

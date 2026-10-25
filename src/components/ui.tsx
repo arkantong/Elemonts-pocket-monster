@@ -1,3 +1,4 @@
+import { t } from "../i18n";
 import { useEffect, useRef, type ReactNode } from "react";
 import {
   Flame,
@@ -48,9 +49,9 @@ export function Portrait({
           backgroundPosition: `${Math.max(0, index) * 25}% 50%`,
         }}
         role="img"
-        aria-label={s.name}
+        aria-label={t(s.name)}
       />
-      {s.stage > 1 && <small>{s.stage === 2 ? "II" : "III"}</small>}
+      {t(s.stage > 1 && <small>{t(s.stage === 2 ? "II" : "III")}</small>)}
     </div>
   );
 }
@@ -69,7 +70,7 @@ export function Meter({
     <div
       className="meter"
       role="progressbar"
-      aria-label={label}
+      aria-label={t(label)}
       aria-valuenow={value}
       aria-valuemin={0}
       aria-valuemax={max}
@@ -117,12 +118,16 @@ export function Modal({
       }}
     >
       <header>
-        <h2>{title}</h2>
-        <button className="icon-button" aria-label="Tutup" onClick={onClose}>
+        <h2>{t(title)}</h2>
+        <button
+          className="icon-button"
+          aria-label={t("Tutup")}
+          onClick={onClose}
+        >
           <X size={22} />
         </button>
       </header>
-      {children}
+      {t(children)}
     </dialog>
   );
 }
@@ -135,8 +140,8 @@ export function Empty({
 }) {
   return (
     <div className="empty">
-      <h3>{title}</h3>
-      <p>{children}</p>
+      <h3>{t(title)}</h3>
+      <p>{t(children)}</p>
     </div>
   );
 }

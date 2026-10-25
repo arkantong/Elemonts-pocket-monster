@@ -1,3 +1,4 @@
+import { t } from "../i18n";
 import { useEffect, useRef, useState } from "react";
 import { Wifi, Copy, Users } from "lucide-react";
 import { Capacitor } from "@capacitor/core";
@@ -154,120 +155,139 @@ export function Duel() {
       <div className="duel-symbol">
         <Wifi size={45} />
       </div>
-      <h2>Teman dekat. Duel seru.</h2>
+      <h2>{t("Teman dekat. Duel seru.")}</h2>
       <p>
-        Dua perangkat, satu jaringan Wi-Fi. Gunakan koleksi masing-masing tanpa
-        menghabiskan energi.
+        {t(
+          "Dua perangkat, satu jaringan Wi-Fi. Gunakan koleksi masing-masing tanpa menghabiskan energi.",
+        )}
       </p>
-      {room ? (
-        <div className="room-wait">
-          <small>Kode room</small>
-          <strong>{room}</strong>
-          <button
-            className="button soft"
-            onClick={() => {
-              if (!navigator.clipboard) {
-                notify(`Kode room: ${room}`);
-                return;
-              }
-              navigator.clipboard
-                ?.writeText(room)
-                .then(() => notify("Kode room disalin."))
-                .catch(() => notify(`Kode room: ${room}`));
-            }}
-          >
-            <Copy size={17} /> Salin kode
-          </button>
-          <p role="status">{status}</p>
-          <button className="button soft" onClick={leave}>
-            Keluar dari room
-          </button>
-        </div>
-      ) : (
-        <>
-          <label className="field">
-            Alamat server LAN
-            <input
-              placeholder={
-                Capacitor.isNativePlatform()
-                  ? "http://192.168.1.10:3001"
-                  : "Kosongkan untuk server game ini"
-              }
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-            />
-          </label>
-          <p className="small-help">
-            Di Android, isi alamat komputer yang menjalankan server Elemonts.
-            Kedua perangkat memakai alamat yang sama.
-          </p>
-          <h3>Tim Duel · {picked.length}/4</h3>
-          <div className="duel-team">
-            {save.monsters.map((m) => (
-              <button
-                key={m.uid}
-                className={picked.includes(m.uid) ? "selected" : ""}
-                aria-pressed={picked.includes(m.uid)}
-                onClick={() =>
-                  setPicked((p) =>
-                    p.includes(m.uid)
-                      ? p.filter((id) => id !== m.uid)
-                      : p.length < 4
-                        ? [...p, m.uid]
-                        : p,
-                  )
-                }
-              >
-                <Portrait species={m.species} />
-                <span>{SPECIES[m.species].name}</span>
-                <small>Lv. {m.level}</small>
-              </button>
-            ))}
-          </div>
-          <label className="checkbox">
-            <input
-              type="checkbox"
-              checked={normalize}
-              onChange={(e) => setNormalize(e.target.checked)}
-            />{" "}
-            Setarakan level ke 25 di room yang dibuat
-          </label>
-          <p className="small-help">
-            Poin stat dan personality tetap. Bonus makanan dan dekorasi tidak
-            berlaku. Room teman mengikuti pengaturan pembuatnya.
-          </p>
-          <button
-            className="button primary full"
-            disabled={busy}
-            onClick={() => connect("create")}
-          >
-            <Users size={19} /> Buat room
-          </button>
-          <div className="join-row">
-            <label className="field">
-              Kode room teman
-              <input
-                inputMode="numeric"
-                maxLength={6}
-                placeholder="6 angka"
-                value={code}
-                onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))}
-              />
-            </label>
+      {t(
+        room ? (
+          <div className="room-wait">
+            <small>{t("Kode room")}</small>
+            <strong>{t(room)}</strong>
             <button
               className="button soft"
-              disabled={busy}
-              onClick={() => connect("join")}
+              onClick={() => {
+                if (!navigator.clipboard) {
+                  notify(`Kode room: ${room}`);
+                  return;
+                }
+                navigator.clipboard
+                  ?.writeText(room)
+                  .then(() => notify("Kode room disalin."))
+                  .catch(() => notify(`Kode room: ${room}`));
+              }}
             >
-              Gabung
+              <Copy size={17} />
+              {t(" Salin kode")}
+            </button>
+            <p role="status">{t(status)}</p>
+            <button className="button soft" onClick={leave}>
+              {t("Keluar dari room")}
             </button>
           </div>
-          {status && (
-            <p className="notice" role="status">
-              {status}
+        ) : (
+          <>
+            <label className="field">
+              {t("Alamat server LAN")}
+              <input
+                placeholder={t(
+                  Capacitor.isNativePlatform()
+                    ? "http://192.168.1.10:3001"
+                    : "Kosongkan untuk server game ini",
+                )}
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+              />
+            </label>
+            <p className="small-help">
+              {t(
+                "Di Android, isi alamat komputer yang menjalankan server Elemonts. Kedua perangkat memakai alamat yang sama.",
+              )}
             </p>
-          )}
-        </>
+            <h3>
+              {t("Tim Duel · ")}
+              {t(picked.length)}
+              {t("/4")}
+            </h3>
+            <div className="duel-team">
+              {t(
+                save.monsters.map((m) => (
+                  <button
+                    key={m.uid}
+                    className={picked.includes(m.uid) ? "selected" : ""}
+                    aria-pressed={picked.includes(m.uid)}
+                    onClick={() =>
+                      setPicked((p) =>
+                        p.includes(m.uid)
+                          ? p.filter((id) => id !== m.uid)
+                          : p.length < 4
+                            ? [...p, m.uid]
+                            : p,
+                      )
+                    }
+                  >
+                    <Portrait species={m.species} />
+                    <span>{t(SPECIES[m.species].name)}</span>
+                    <small>
+                      {t("Lv. ")}
+                      {t(m.level)}
+                    </small>
+                  </button>
+                )),
+              )}
+            </div>
+            <label className="checkbox">
+              <input
+                type="checkbox"
+                checked={normalize}
+                onChange={(e) => setNormalize(e.target.checked)}
+              />
+              {t(" ")}
+              {t("Setarakan level ke 25 di room yang dibuat")}
+            </label>
+            <p className="small-help">
+              {t(
+                "Poin stat dan personality tetap. Bonus makanan dan dekorasi tidak berlaku. Room teman mengikuti pengaturan pembuatnya.",
+              )}
+            </p>
+            <button
+              className="button primary full"
+              disabled={busy}
+              onClick={() => connect("create")}
+            >
+              <Users size={19} />
+              {t(" Buat room")}
+            </button>
+            <div className="join-row">
+              <label className="field">
+                {t("Kode room teman")}
+                <input
+                  inputMode="numeric"
+                  maxLength={6}
+                  placeholder={t("6 angka")}
+                  value={code}
+                  onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))}
+                />
+              </label>
+              <button
+                className="button soft"
+                disabled={busy}
+                onClick={() => connect("join")}
+              >
+                {t("Gabung")}
+              </button>
+            </div>
+            {t(
+              status && (
+                <p className="notice" role="status">
+                  {t(status)}
+                </p>
+              ),
+            )}
+          </>
+        ),
       )}
     </section>
   );

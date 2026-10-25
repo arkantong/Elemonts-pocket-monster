@@ -1,3 +1,4 @@
+import { t } from "../i18n";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { COLORS, SPECIES } from "../game/data";
@@ -287,13 +288,17 @@ export default function CreatureScene({
       className={`creature-canvas ${room ? "at-home" : ""}`}
       ref={host}
       role="img"
-      aria-label={`${SPECIES[species].name}${enemy ? ` melawan ${SPECIES[enemy].name}` : ""}, karakter 3D`}
+      aria-label={t(
+        `${SPECIES[species].name}${enemy ? ` melawan ${SPECIES[enemy].name}` : ""}, karakter 3D`,
+      )}
     >
-      {failed && (
-        <div className="fallback-creatures">
-          <Portrait species={species} />
-          {enemy && <Portrait species={enemy} />}
-        </div>
+      {t(
+        failed && (
+          <div className="fallback-creatures">
+            <Portrait species={species} />
+            {t(enemy && <Portrait species={enemy} />)}
+          </div>
+        ),
       )}
     </div>
   );

@@ -2380,3 +2380,16 @@ input[type="checkbox"] {
  .battle-page .battle-tools{margin-top:9px;gap:6px}
  .battle-page .battle-tools>span{display:none}
 }
+
+.language-screen { min-height: 100dvh; display: grid; place-items: center; padding: 28px 20px; background: #edf2e7; }
+.language-card { width: min(100%, 440px); padding: 32px; background: #fffdf7; border: 1px solid #d5dfcc; border-radius: 24px; box-shadow: 0 14px 50px #29422a12; }
+.language-brand { display: flex; align-items: center; gap: 10px; font: 600 28px Fredoka, sans-serif; color: #31583d; }
+.language-globe { margin-top: 34px; color: #6a853f; }
+.language-card h1 { font-size: 30px; margin: 16px 0 8px; }
+.language-card > p { color: #65705d; }
+.language-options { display: grid; gap: 10px; margin: 20px 0; }
+.language-option { display: flex; align-items: center; justify-content: space-between; gap: 16px; text-align: left; padding: 16px; min-height: 72px; border: 2px solid #dce3d5; border-radius: 14px; background: #fffdf7; color: #31583d; }
+.language-option.selected { border-color: #54773d; background: #edf3e5; }
+.language-option span { display: grid; gap: 4px; }
+.language-option small { color: #65705d; }
+@media (max-width: 420px) { .language-card { padding: 24px; } }

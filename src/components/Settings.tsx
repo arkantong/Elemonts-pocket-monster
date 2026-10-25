@@ -1,3 +1,4 @@
+import { t } from "../i18n";
 import { useState } from "react";
 import { Download, Upload, Volume2, VolumeX, Trash2 } from "lucide-react";
 import { useGame } from "../game/context";
@@ -6,7 +7,10 @@ import { Modal } from "./ui";
 import { Capacitor } from "@capacitor/core";
 import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
 import { Share } from "@capacitor/share";
+import { useLanguage } from "../i18n/LanguageProvider";
+import { LanguageOptions } from "../i18n/LanguagePicker";
 export function Settings({ close }: { close: () => void }) {
+  const { language, chooseLanguage } = useLanguage();
   const { save, act, notify, replace, storageError } = useGame(),
     [reset, setReset] = useState(false);
   const exportSave = async () => {
@@ -23,9 +27,9 @@ export function Settings({ close }: { close: () => void }) {
           encoding: Encoding.UTF8,
         });
         await Share.share({
-          title: "Cadangan Elemonts",
+          title: t("Cadangan Elemonts"),
           url: file.uri,
-          dialogTitle: "Simpan cadangan petualangan",
+          dialogTitle: t("Simpan cadangan petualangan"),
         });
         return;
       }
@@ -41,29 +45,34 @@ export function Settings({ close }: { close: () => void }) {
     }
   };
   return (
-    <Modal title="Pengaturan" onClose={close}>
+    <Modal title={t("Pengaturan")} onClose={close}>
+      <h3>{language === "en" ? "Language" : "Bahasa"}</h3>
+      <LanguageOptions value={language} onChange={chooseLanguage} />
       <p className="muted">
-        Progres tersimpan otomatis di perangkat ini. Simpan cadangan sebelum
-        menghapus data aplikasi.
+        {t(
+          "Progres tersimpan otomatis di perangkat ini. Simpan cadangan sebelum menghapus data aplikasi.",
+        )}
       </p>
-      {storageError && <p className="notice">{storageError}</p>}
+      {t(storageError && <p className="notice">{t(storageError)}</p>)}
       <button className="item-row" onClick={() => act({ type: "sound" })}>
-        {save.sound ? <Volume2 /> : <VolumeX />}
+        {t(save.sound ? <Volume2 /> : <VolumeX />)}
         <span>
-          <strong>Efek suara</strong>
-          <small>{save.sound ? "Aktif" : "Nonaktif"}</small>
+          <strong>{t("Efek suara")}</strong>
+          <small>{t(save.sound ? "Aktif" : "Nonaktif")}</small>
         </span>
       </button>
       <div className="button-row section-space">
         <button className="button soft" onClick={exportSave}>
-          <Download size={18} /> Ekspor cadangan
+          <Download size={18} />
+          {t(" Ekspor cadangan")}
         </button>
         <label className="button soft file-input">
-          <Upload size={18} /> Impor cadangan
+          <Upload size={18} />
+          {t(" Impor cadangan")}
           <input
             type="file"
             accept="application/json,.json"
-            aria-label="Impor cadangan"
+            aria-label={t("Impor cadangan")}
             onChange={async (e) => {
               const file = e.target.files?.[0];
               if (!file) return;
@@ -73,7 +82,9 @@ export function Settings({ close }: { close: () => void }) {
                 delete imported.battle;
                 if (
                   !window.confirm(
-                    "Ganti progres perangkat ini dengan cadangan yang dipilih?",
+                    t(
+                      "Ganti progres perangkat ini dengan cadangan yang dipilih?",
+                    ),
                   )
                 )
                   return;
@@ -88,41 +99,46 @@ export function Settings({ close }: { close: () => void }) {
         </label>
       </div>
       <p className="small-help">
-        Impor mengganti progres saat ini. Battle yang sedang berlangsung tidak
-        diimpor.
+        {t(
+          "Impor mengganti progres saat ini. Battle yang sedang berlangsung tidak diimpor.",
+        )}
       </p>
       <button
         className="text-button danger section-space"
         onClick={() => setReset(true)}
       >
-        <Trash2 size={16} /> Mulai petualangan baru
+        <Trash2 size={16} />
+        {t(" Mulai petualangan baru")}
       </button>
-      {reset && (
-        <div className="confirm-box">
-          <p>
-            Seluruh progres lokal akan diganti. Ekspor cadangan dahulu bila
-            ingin menyimpannya.
-          </p>
-          <div className="button-row">
-            <button
-              className="button danger"
-              onClick={() => {
-                replace(emptySave());
-                close();
-              }}
-            >
-              Hapus dan mulai baru
-            </button>
-            <button className="button soft" onClick={() => setReset(false)}>
-              Batal
-            </button>
+      {t(
+        reset && (
+          <div className="confirm-box">
+            <p>
+              {t(
+                "Seluruh progres lokal akan diganti. Ekspor cadangan dahulu bila ingin menyimpannya.",
+              )}
+            </p>
+            <div className="button-row">
+              <button
+                className="button danger"
+                onClick={() => {
+                  replace(emptySave());
+                  close();
+                }}
+              >
+                {t("Hapus dan mulai baru")}
+              </button>
+              <button className="button soft" onClick={() => setReset(false)}>
+                {t("Batal")}
+              </button>
+            </div>
           </div>
-        </div>
+        ),
       )}
       <p className="small-help section-space">
-        Elemonts 0.1 · Prototipe internal
+        {t("Elemonts 0.1.1 · Prototipe internal")}
         <br />
-        Model 3D dan balancing masih dalam tahap penyempurnaan.
+        {t("Model 3D dan balancing masih dalam tahap penyempurnaan.")}
       </p>
     </Modal>
   );

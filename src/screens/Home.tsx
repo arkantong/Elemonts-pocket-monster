@@ -1,3 +1,4 @@
+import { t, formatLocale } from "../i18n";
 import { lazy, Suspense, useState } from "react";
 import {
   ArrowRight,
@@ -26,11 +27,12 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
     <>
       <div className="page-heading">
         <div>
-          <h1>Selamat datang di rumah.</h1>
-          <p>Petualangan besar dimulai dari teman kecil.</p>
+          <h1>{t("Selamat datang di rumah.")}</h1>
+          <p>{t("Petualangan besar dimulai dari teman kecil.")}</p>
         </div>
         <span className="home-time">
-          <Leaf size={16} /> Rumah Nusaraya
+          <Leaf size={16} />
+          {t(" Rumah Nusaraya")}
         </span>
       </div>
       <div className="home-layout">
@@ -39,76 +41,92 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
             <img
               className="scene-background"
               src="/art/home.png"
-              alt="Rumah kayu tropis yang hangat di Nusaraya"
+              alt={t("Rumah kayu tropis yang hangat di Nusaraya")}
             />
             <Suspense
-              fallback={<div className="scene-loading">Menyiapkan rumah…</div>}
+              fallback={
+                <div className="scene-loading">{t("Menyiapkan rumah…")}</div>
+              }
             >
               <CreatureScene species={m.species} react={reaction} />
             </Suspense>
             <button
               className="scene-interact"
-              aria-label={`Sapa ${s.name}`}
+              aria-label={t(`Sapa ${s.name}`)}
               onClick={() => {
                 setReaction((r) => r + 1);
                 notify(`${s.name} senang kamu datang!`);
               }}
             />
-            <div className="scene-note">Rumah kecil, cerita besar.</div>
-            {save.decor && (
-              <div className="decor-status">
-                <Leaf size={16} /> Kebun embun aktif
-              </div>
+            <div className="scene-note">{t("Rumah kecil, cerita besar.")}</div>
+            {t(
+              save.decor && (
+                <div className="decor-status">
+                  <Leaf size={16} />
+                  {t(" Kebun embun aktif")}
+                </div>
+              ),
             )}
           </div>
           <section className="partner-panel">
             <div className="partner-intro">
               <Portrait species={m.species} />
               <div>
-                <h2>{s.name}</h2>
+                <h2>{t(s.name)}</h2>
                 <div className="level-line">
                   <ElementIcon element={s.element} />
-                  <strong>Lv. {m.level}</strong>
+                  <strong>
+                    {t("Lv. ")}
+                    {t(m.level)}
+                  </strong>
                   <Meter
                     value={m.exp}
                     max={neededExp(m.level)}
                     color="#d8773e"
-                    label="EXP"
+                    label={t("EXP")}
                   />
                   <small>
-                    {m.exp} / {neededExp(m.level)}
+                    {t(m.exp)}
+                    {t(" / ")}
+                    {t(neededExp(m.level))}
                   </small>
                 </div>
-                <p>{s.description}</p>
+                <p>{t(s.description)}</p>
               </div>
             </div>
             <div className="partner-care">
               <div className="stat-line">
                 <Zap size={17} />
-                <span>Energi</span>
+                <span>{t("Energi")}</span>
                 <Meter
                   value={m.energy}
                   max={energyCap(save, m)}
-                  label="Energi"
+                  label={t("Energi")}
                 />
                 <small>
-                  {m.energy} / {energyCap(save, m)}
+                  {t(m.energy)}
+                  {t(" / ")}
+                  {t(energyCap(save, m))}
                 </small>
               </div>
               <div className="stat-line">
                 <Heart size={17} />
-                <span>Intimasi</span>
+                <span>{t("Intimasi")}</span>
                 <Meter
                   value={m.intimacy}
                   max={100}
                   color="#d87b85"
-                  label="Intimasi"
+                  label={t("Intimasi")}
                 />
-                <small>{m.intimacy} / 100</small>
+                <small>
+                  {t(m.intimacy)}
+                  {t(" / 100")}
+                </small>
               </div>
               <div className="button-row">
                 <button className="button orange" onClick={() => setFood(true)}>
-                  <Utensils size={18} /> Beri makan
+                  <Utensils size={18} />
+                  {t(" Beri makan")}
                 </button>
                 <button
                   className="button soft"
@@ -117,7 +135,8 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
                     notify(`${s.name} melompat menyambutmu.`);
                   }}
                 >
-                  <Hand size={18} /> Ajak bermain
+                  <Hand size={18} />
+                  {t(" Ajak bermain")}
                 </button>
               </div>
             </div>
@@ -126,62 +145,69 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
         <aside className="home-aside">
           <section className="team-panel">
             <div className="section-heading">
-              <h2>Tim petualang</h2>
+              <h2>{t("Tim petualang")}</h2>
               <button
                 className="text-button"
                 onClick={() => navigate("koleksi")}
               >
-                Kelola tim <ArrowRight size={15} />
+                {t("Kelola tim ")}
+                <ArrowRight size={15} />
               </button>
             </div>
             <div className="team-slots">
-              {Array.from({ length: 4 }, (_, i) => {
-                const member = save.monsters.find(
-                  (m) => m.uid === save.team[i],
-                );
-                return member ? (
-                  <button
-                    key={member.uid}
-                    className={`team-slot ${i === 0 ? "selected" : ""}`}
-                    onClick={() => act({ type: "lead", uid: member.uid })}
-                    aria-label={`Jadikan ${SPECIES[member.species].name} partner`}
-                  >
-                    <Portrait species={member.species} />
-                    <span>
-                      <ElementIcon
-                        element={SPECIES[member.species].element}
-                        size={14}
-                      />{" "}
-                      Lv. {member.level}
-                    </span>
-                  </button>
-                ) : (
-                  <button
-                    className="empty-slot"
-                    key={i}
-                    onClick={() => navigate("jelajah")}
-                    aria-label="Cari teman baru"
-                  >
-                    <Plus size={23} />
-                    <small>Teman baru</small>
-                  </button>
-                );
-              })}
+              {t(
+                Array.from({ length: 4 }, (_, i) => {
+                  const member = save.monsters.find(
+                    (m) => m.uid === save.team[i],
+                  );
+                  return member ? (
+                    <button
+                      key={member.uid}
+                      className={`team-slot ${i === 0 ? "selected" : ""}`}
+                      onClick={() => act({ type: "lead", uid: member.uid })}
+                      aria-label={t(
+                        `Jadikan ${SPECIES[member.species].name} partner`,
+                      )}
+                    >
+                      <Portrait species={member.species} />
+                      <span>
+                        <ElementIcon
+                          element={SPECIES[member.species].element}
+                          size={14}
+                        />
+                        {t(" ")}
+                        {t("Lv. ")}
+                        {t(member.level)}
+                      </span>
+                    </button>
+                  ) : (
+                    <button
+                      className="empty-slot"
+                      key={i}
+                      onClick={() => navigate("jelajah")}
+                      aria-label={t("Cari teman baru")}
+                    >
+                      <Plus size={23} />
+                      <small>{t("Teman baru")}</small>
+                    </button>
+                  );
+                }),
+              )}
             </div>
           </section>
           <section className="map-preview">
             <img
               src="/art/nusaraya.png"
-              alt="Sungai dan pegunungan tropis Nusaraya"
+              alt={t("Sungai dan pegunungan tropis Nusaraya")}
             />
             <div className="map-title">
               <Compass size={33} />
               <div>
-                <h2>Nusaraya</h2>
+                <h2>{t("Nusaraya")}</h2>
                 <p>
-                  Tanah luas, elemen yang hidup,
+                  {t("Tanah luas, elemen yang hidup,")}
                   <br />
-                  dan cerita yang menantimu.
+                  {t("dan cerita yang menantimu.")}
                 </p>
               </div>
             </div>
@@ -189,7 +215,8 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
               className="button primary"
               onClick={() => navigate("jelajah")}
             >
-              Jelajahi Wild <ArrowRight size={18} />
+              {t("Jelajahi Wild ")}
+              <ArrowRight size={18} />
             </button>
           </section>
         </aside>
@@ -199,8 +226,10 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
           <Gift size={29} />
         </div>
         <div>
-          <h3>Kiriman untuk petualang</h3>
-          <p>Tiga Mococapsule gratis setiap hari. Reset pukul 05.00 WIB.</p>
+          <h3>{t("Kiriman untuk petualang")}</h3>
+          <p>
+            {t("Tiga Mococapsule gratis setiap hari. Reset pukul 05.00 WIB.")}
+          </p>
         </div>
         <button
           className={`button ${claimed ? "soft" : "primary"}`}
@@ -210,51 +239,69 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
               notify("Tiga Mococapsule masuk ke tasmu.");
           }}
         >
-          {claimed ? "Sudah diambil" : "Ambil hadiah"}
+          {t(claimed ? "Sudah diambil" : "Ambil hadiah")}
         </button>
       </section>
-      {save.buff && (
-        <p className="buff-note">
-          <Leaf size={16} />{" "}
-          {save.buff.type === "rare" ? "Buah pelangi" : "Daun penuntun"} aktif
-          sampai{" "}
-          {new Date(save.buff.until).toLocaleTimeString("id-ID", {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}
-          .
-        </p>
-      )}
-      {food && (
-        <Modal title={`Makanan untuk ${s.name}`} onClose={() => setFood(false)}>
-          <p className="muted">
-            Pilih makanan dari tasmu. Kamu bisa membeli lagi di toko.
+      {t(
+        save.buff && (
+          <p className="buff-note">
+            <Leaf size={16} />
+            {t(" ")}
+            {t(save.buff.type === "rare" ? "Buah pelangi" : "Daun penuntun")}
+            {t(" aktif sampai")}
+            {t(" ")}
+            {t(
+              new Date(save.buff.until).toLocaleTimeString(formatLocale(), {
+                hour: "2-digit",
+                minute: "2-digit",
+              }),
+            )}
+            {t(".")}
           </p>
-          <div className="item-list">
-            {Object.entries(ITEMS)
-              .filter(([, v]) => v.type === "food")
-              .map(([id, item]) => (
-                <button
-                  key={id}
-                  className="item-row"
-                  disabled={!save.inventory[id as ItemId]}
-                  onClick={() => {
-                    if (act({ type: "feed", uid: m.uid, item: id as ItemId })) {
-                      setReaction((r) => r + 1);
-                      notify(`${s.name} menikmati ${item.name}.`);
-                    }
-                  }}
-                >
-                  <Utensils size={23} />
-                  <span>
-                    <strong>{item.name}</strong>
-                    <small>{item.description}</small>
-                  </span>
-                  <b>×{save.inventory[id as ItemId]}</b>
-                </button>
-              ))}
-          </div>
-        </Modal>
+        ),
+      )}
+      {t(
+        food && (
+          <Modal
+            title={t(`Makanan untuk ${s.name}`)}
+            onClose={() => setFood(false)}
+          >
+            <p className="muted">
+              {t("Pilih makanan dari tasmu. Kamu bisa membeli lagi di toko.")}
+            </p>
+            <div className="item-list">
+              {t(
+                Object.entries(ITEMS)
+                  .filter(([, v]) => v.type === "food")
+                  .map(([id, item]) => (
+                    <button
+                      key={id}
+                      className="item-row"
+                      disabled={!save.inventory[id as ItemId]}
+                      onClick={() => {
+                        if (
+                          act({ type: "feed", uid: m.uid, item: id as ItemId })
+                        ) {
+                          setReaction((r) => r + 1);
+                          notify(`${s.name} menikmati ${item.name}.`);
+                        }
+                      }}
+                    >
+                      <Utensils size={23} />
+                      <span>
+                        <strong>{t(item.name)}</strong>
+                        <small>{t(item.description)}</small>
+                      </span>
+                      <b>
+                        {t("×")}
+                        {t(save.inventory[id as ItemId])}
+                      </b>
+                    </button>
+                  )),
+              )}
+            </div>
+          </Modal>
+        ),
       )}
     </>
   );

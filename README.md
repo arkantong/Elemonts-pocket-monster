@@ -2,7 +2,7 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.0 (debug)](downloads/elemonts-0.1.0-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.1 (debug)](downloads/elemonts-0.1.1-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
 
 ## Menjalankan game
 
@@ -13,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-Preview: `http://localhost:5173`. Pilih salah satu dari lima starter. Progres disimpan otomatis di perangkat/browser. Ekspor dan impor cadangan tersedia di Pengaturan. Jangan menghapus data aplikasi tanpa cadangan.
+Preview: `http://localhost:5173`. Saat pertama dibuka, pilih English (pilihan awal) atau Bahasa Indonesia, lalu pilih salah satu dari lima starter. Bahasa bisa diganti langsung melalui Settings/Pengaturan → Language/Bahasa tanpa mereset progres. Pilihan bahasa disimpan terpisah di perangkat ini; impor cadangan game tidak menggantinya. Progres disimpan otomatis di perangkat/browser. Ekspor dan impor cadangan tersedia di Pengaturan. Jangan menghapus data aplikasi tanpa cadangan.
 
 Untuk menjalankan hasil build, termasuk server Duel:
 
@@ -35,6 +35,8 @@ cd android
 ```
 
 Hasil: `android/app/build/outputs/apk/debug/app-debug.apk`. Atau `npm run android:open` untuk Android Studio. APK debug untuk uji internal; belum merupakan paket Play Store yang ditandatangani untuk rilis. Workflow GitHub Actions juga menyiapkan artifact APK setelah pengujian lulus.
+
+Unduh APK di atas ke HP, buka berkasnya, lalu ikuti permintaan izin instalasi dari sumber tersebut bila Android menampilkannya. Android 7 atau lebih baru diperlukan.
 
 Orientasi dikunci portrait. Aset, font dan suara disertakan dalam aplikasi. Tombol kembali Android menutup dialog terlebih dahulu. Ekspor cadangan Android menggunakan file cache dan share sheet native.
 
@@ -80,6 +82,8 @@ Belum ada pembelian uang sungguhan, iklan, cloud save, atau event mythical aktif
 - `tests`: aturan domain dan alur Playwright.
 
 React + Vite + TypeScript, Three.js, Capacitor, Motion, Howler, Zod, WebSocket, Playwright, Vitest. UI memakai arahan [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) dan [anti-slop](https://github.com/miqdadbadjuber/anti-slop); alasan desain dan penyimpangan referensi tercatat di [DESIGN.md](DESIGN.md). Rive, dotLottie, dan Kenney tidak ditambahkan karena belum ada aset yang dibutuhkan dari ketiganya.
+
+Lihat [catatan QA bahasa dan screenshot](docs/qa/LANGUAGE.md).
 
 ## Pemeriksaan
 
