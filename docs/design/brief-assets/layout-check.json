@@ -1,0 +1,434 @@
+[
+  {
+    "id": "1.1",
+    "page": 6,
+    "content_bottom": 262.21,
+    "answer_top": 265.21
+  },
+  {
+    "id": "1.2",
+    "page": 6,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "1.3",
+    "page": 7,
+    "content_bottom": 237.36999999999998,
+    "answer_top": 240.36999999999998
+  },
+  {
+    "id": "1.4",
+    "page": 7,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "1.5",
+    "page": 8,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "2.1",
+    "page": 9,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "2.2",
+    "page": 9,
+    "content_bottom": 590.21,
+    "answer_top": 593.21
+  },
+  {
+    "id": "2.3",
+    "page": 10,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "2.4",
+    "page": 10,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "3.1",
+    "page": 11,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "3.2",
+    "page": 11,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "3.3",
+    "page": 12,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "3.4",
+    "page": 12,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "3.5",
+    "page": 13,
+    "content_bottom": 262.21,
+    "answer_top": 265.21
+  },
+  {
+    "id": "3.6",
+    "page": 13,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "3.7",
+    "page": 14,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "4.1",
+    "page": 15,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "4.2",
+    "page": 15,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "4.3",
+    "page": 16,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "4.4",
+    "page": 16,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "4.5",
+    "page": 17,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "4.6",
+    "page": 17,
+    "content_bottom": 565.3699999999999,
+    "answer_top": 568.3699999999999
+  },
+  {
+    "id": "4.7",
+    "page": 18,
+    "content_bottom": 262.21,
+    "answer_top": 265.21
+  },
+  {
+    "id": "5.1",
+    "page": 19,
+    "content_bottom": 237.36999999999998,
+    "answer_top": 240.36999999999998
+  },
+  {
+    "id": "5.2",
+    "page": 19,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "5.3",
+    "page": 20,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "5.4",
+    "page": 20,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "5.5",
+    "page": 21,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "5.6",
+    "page": 21,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "5.7",
+    "page": 22,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "5.8",
+    "page": 22,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "6.1",
+    "page": 23,
+    "content_bottom": 237.36999999999998,
+    "answer_top": 240.36999999999998
+  },
+  {
+    "id": "6.2",
+    "page": 23,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "6.3",
+    "page": 24,
+    "content_bottom": 237.36999999999998,
+    "answer_top": 240.36999999999998
+  },
+  {
+    "id": "6.4",
+    "page": 24,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "6.5",
+    "page": 25,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "6.6",
+    "page": 25,
+    "content_bottom": 577.7900000000001,
+    "answer_top": 580.7900000000001
+  },
+  {
+    "id": "6.7",
+    "page": 26,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "6.8",
+    "page": 26,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "7.1",
+    "page": 27,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "7.2",
+    "page": 27,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "7.3",
+    "page": 28,
+    "content_bottom": 224.94999999999996,
+    "answer_top": 227.94999999999996
+  },
+  {
+    "id": "7.4",
+    "page": 28,
+    "content_bottom": 577.7900000000001,
+    "answer_top": 580.7900000000001
+  },
+  {
+    "id": "7.5",
+    "page": 29,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "7.6",
+    "page": 29,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "8.1",
+    "page": 30,
+    "content_bottom": 237.36999999999998,
+    "answer_top": 240.36999999999998
+  },
+  {
+    "id": "8.2",
+    "page": 30,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "8.3",
+    "page": 31,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "8.4",
+    "page": 31,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "8.5",
+    "page": 32,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "8.6",
+    "page": 32,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "9.1",
+    "page": 33,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "9.2",
+    "page": 33,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "9.3",
+    "page": 34,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "9.4",
+    "page": 34,
+    "content_bottom": 565.3699999999999,
+    "answer_top": 568.3699999999999
+  },
+  {
+    "id": "9.5",
+    "page": 35,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "10.1",
+    "page": 36,
+    "content_bottom": 237.36999999999998,
+    "answer_top": 240.36999999999998
+  },
+  {
+    "id": "10.2",
+    "page": 36,
+    "content_bottom": 552.9499999999999,
+    "answer_top": 555.9499999999999
+  },
+  {
+    "id": "10.3",
+    "page": 37,
+    "content_bottom": 237.36999999999998,
+    "answer_top": 240.36999999999998
+  },
+  {
+    "id": "10.4",
+    "page": 37,
+    "content_bottom": 590.21,
+    "answer_top": 593.21
+  },
+  {
+    "id": "10.5",
+    "page": 38,
+    "content_bottom": 237.36999999999998,
+    "answer_top": 240.36999999999998
+  },
+  {
+    "id": "10.6",
+    "page": 38,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "10.7",
+    "page": 39,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "11.1",
+    "page": 40,
+    "content_bottom": 237.36999999999998,
+    "answer_top": 240.36999999999998
+  },
+  {
+    "id": "11.2",
+    "page": 40,
+    "content_bottom": 565.3699999999999,
+    "answer_top": 568.3699999999999
+  },
+  {
+    "id": "11.3",
+    "page": 41,
+    "content_bottom": 237.36999999999998,
+    "answer_top": 240.36999999999998
+  },
+  {
+    "id": "11.4",
+    "page": 41,
+    "content_bottom": 565.37,
+    "answer_top": 568.37
+  },
+  {
+    "id": "11.5",
+    "page": 42,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "12.1",
+    "page": 43,
+    "content_bottom": 249.79,
+    "answer_top": 252.79
+  },
+  {
+    "id": "12.2",
+    "page": 43,
+    "content_bottom": 577.79,
+    "answer_top": 580.79
+  },
+  {
+    "id": "12.3",
+    "page": 44,
+    "content_bottom": 237.36999999999998,
+    "answer_top": 240.36999999999998
+  },
+  {
+    "id": "12.4",
+    "page": 44,
+    "content_bottom": 605.0600000000001,
+    "answer_top": 608.0600000000001
+  }
+]
