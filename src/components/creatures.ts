@@ -1,9 +1,12 @@
 import * as THREE from "three";
+import { livingCreature } from "./livingCreatures";
 import { APPEARANCE } from "../game/appearance";
 export { APPEARANCE } from "../game/appearance";
 
 /** Per-species visual concepts. These do not read or modify battle elements. */
 export function creature(id: string) {
+  const refined = livingCreature(id);
+  if (refined) return refined;
   const a = APPEARANCE[id];
   if (!a) throw new Error(`Unknown appearance: ${id}`);
   const g = new THREE.Group();

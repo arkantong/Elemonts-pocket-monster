@@ -1,3 +1,4 @@
+import { animateLivingCreature } from "./livingCreatures";
 import type { PlayingEvent } from "../game/useBattlePlayback";
 import { creature, APPEARANCE } from "./creatures";
 import { t } from "../i18n";
@@ -190,6 +191,9 @@ export default function CreatureScene({
         }
         camera.lookAt(focus);
       }
+      animateLivingCreature(ours, t, reduced, !!faint.current?.[0]);
+      if (theirs)
+        animateLivingCreature(theirs, t, reduced, !!faint.current?.[1]);
       renderer.render(scene, camera);
     };
     frame = requestAnimationFrame(tick);

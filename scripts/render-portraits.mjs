@@ -13,7 +13,7 @@ await page.evaluate(async()=>{
  scene.add(new THREE.HemisphereLight('#fff4e7','#738075',2.5));const light=new THREE.DirectionalLight('#ffffff',3);light.position.set(-3,5,4);scene.add(light);
  window.drawCreature=(id)=>{const old=scene.getObjectByName('portrait');if(old){scene.remove(old);old.traverse(o=>{if(o.isMesh){o.geometry.dispose();(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>m.dispose())}})}const g=creature(id);g.name='portrait';g.rotation.y=-.14;scene.add(g);renderer.render(scene,camera);return renderer.domElement.toDataURL("image/png");};
 });
-for(const d of designs){const png=await page.evaluate(id=>window.drawCreature(id),d.id);writeFileSync(`public/art/monsters/${d.id}.png`,Buffer.from(png.split(',')[1],'base64'));}
+for(const d of designs.filter(d=>process.argv.length<3 || process.argv.slice(2).includes(d.id))){const png=await page.evaluate(id=>window.drawCreature(id),d.id);writeFileSync(`public/art/monsters/${d.id}.png`,Buffer.from(png.split(',')[1],'base64'));}
 await page.setViewportSize({width:1120,height:1400});
 await page.setContent(`<style>body{margin:0;background:#eff2e9;font:14px sans-serif;color:#304738}main{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;padding:12px}article{background:#fffdf6;border-radius:12px;text-align:center;padding:5px}img{width:140px;height:140px;object-fit:contain}small{display:block;font-size:11px;min-height:26px}</style><main>${designs.map(d=>`<article><img src="http://localhost:5173/art/monsters/${d.id}.png"><b>${d.name}</b><small>${d.form}</small></article>`).join('')}</main>`);
 await page.locator('img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));
