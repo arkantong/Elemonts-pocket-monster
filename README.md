@@ -2,7 +2,7 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.1 (debug)](downloads/elemonts-0.1.1-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.2 (debug)](downloads/elemonts-0.1.2-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
 
 ## Menjalankan game
 
@@ -68,7 +68,7 @@ Versi ini membutuhkan server LAN pada komputer, belum host/discovery otomatis la
 
 Lihat [keputusan implementasi](docs/design/IMPLEMENTATION.md). Nilai yang belum ditetapkan pengguna merupakan usulan yang dapat diubah, bukan aturan final yang diklaim berasal dari dokumen.
 
-Model 3D saat ini dibuat dari mesh prosedural dengan beberapa bentuk tubuh, elemen, dan tahap evolusi. Portrait masih memakai lima ilustrasi keluarga elemen. Belum tersedia 37 model/rig/portrait final yang unik. Lingkungan memakai ilustrasi 3D prarender; monster di atasnya benar-benar dirender dengan Three.js. Tidak ada peta berjalan, sesuai konsep.
+Model 3D dan 37 portrait individual kini mengikuti bentuk, palet warna, dan ciri khas sheet “Daftar Monster” dari workbook desain pengguna. Lihat [lembar visual 37 monster](docs/qa/screenshots/monster-roster-37.png) dan [catatan pembaruan visual](docs/qa/MONSTER-APPEARANCE.md). Bentuk masih berupa mesh prosedural versi konsep; model artistik final, rig, dan animasi serangan spesifik tetap perlu dipoles. Kolom elemen pada workbook hanya referensi visual; elemen battle mengikuti konsep sebelumnya. Lingkungan memakai ilustrasi 3D prarender; monster di atasnya dirender real-time dengan Three.js. Tidak ada peta berjalan, sesuai konsep.
 
 Belum ada pembelian uang sungguhan, iklan, cloud save, atau event mythical aktif. Belum diuji pada perangkat Android fisik; performa GPU, lifecycle Android, share sheet, serta koneksi antardua HP perlu acceptance test perangkat sebelum rilis publik. Save offline memakai jam perangkat dan belum menangkal manipulasi waktu.
 

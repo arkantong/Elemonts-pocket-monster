@@ -1,3 +1,7 @@
+import appearances from "../game/appearance.json" with { type: "json" };
+const visualPalette = Object.fromEntries(
+  appearances.map((a) => [a.id, a.palette[0]]),
+);
 import { t } from "../i18n";
 import { useEffect, useRef, type ReactNode } from "react";
 import {
@@ -36,25 +40,27 @@ export function Portrait({
   species: string;
   className?: string;
 }) {
-  const s = SPECIES[species],
-    index = ["Api", "Air", "Listrik", "Tanah", "Netral"].indexOf(s.element);
+  const s = SPECIES[species];
   return (
     <div
       className={`portrait ${className} stage-${s.stage}`}
-      style={{ backgroundColor: `${COLORS[s.element]}18` }}
+      style={{ backgroundColor: `${visualPalette[species]}38` }}
     >
       <div
-        style={{
-          backgroundImage: "url(/art/starters.png)",
-          backgroundPosition: `${Math.max(0, index) * 25}% 50%`,
-        }}
         role="img"
-        aria-label={t(s.name)}
+        aria-label={s.name}
+        style={{
+          backgroundImage: `url(/art/monsters/${species}.png)`,
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       />
-      {t(s.stage > 1 && <small>{t(s.stage === 2 ? "II" : "III")}</small>)}
+      {s.stage > 1 && <small>{s.stage === 2 ? "II" : "III"}</small>}
     </div>
   );
 }
+
 export function Meter({
   value,
   max,

@@ -1,3 +1,4 @@
+import { APPEARANCE } from "../game/appearance";
 import { t } from "../i18n";
 import { useState } from "react";
 import {
@@ -190,7 +191,7 @@ export function Collection() {
                   {t(" · ")}
                   {t(s.rarity)}
                 </span>
-                <p>{t(s.description)}</p>
+                <p>{t(APPEARANCE[s.id].signature)}</p>
                 <p className="muted">
                   {t("Personality ")}
                   {t(NATURES[m.nature].name)}

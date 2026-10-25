@@ -1,3 +1,4 @@
+import { APPEARANCE } from "./game/appearance";
 import { t, formatLocale } from "./i18n";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, MotionConfig } from "motion/react";
@@ -210,7 +211,7 @@ export default function App() {
                   <div className="starter-confirm">
                     <div>
                       <h2>{t(SPECIES[starter].name)}</h2>
-                      <p>{t(SPECIES[starter].description)}</p>
+                      <p>{t(APPEARANCE[starter].signature)}</p>
                     </div>
                     <button
                       className="button primary"

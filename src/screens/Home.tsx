@@ -1,3 +1,4 @@
+import { APPEARANCE } from "../game/appearance";
 import { t, formatLocale } from "../i18n";
 import { lazy, Suspense, useState } from "react";
 import {
@@ -91,7 +92,7 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
                     {t(neededExp(m.level))}
                   </small>
                 </div>
-                <p>{t(s.description)}</p>
+                <p>{t(APPEARANCE[s.id].signature)}</p>
               </div>
             </div>
             <div className="partner-care">

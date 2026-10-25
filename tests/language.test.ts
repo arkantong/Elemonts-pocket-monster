@@ -1,3 +1,4 @@
+import { APPEARANCE } from "../src/game/appearance";
 import { afterEach, describe, expect, it } from "vitest";
 import { t, setTranslationLanguage } from "../src/i18n";
 import { ROSTER, ITEMS, SKILLS, ELEMENTS, NATURES } from "../src/game/data";
@@ -8,6 +9,7 @@ describe("language display boundary", () => {
     setTranslationLanguage("en");
     for (const value of [
       ...ROSTER.map((x) => x.description),
+        ...Object.values(APPEARANCE).map(x => x.signature),
       ...Object.values(ITEMS).flatMap((x) => [x.description]),
       ...Object.values(SKILLS).map((x) => x.name),
       ...ELEMENTS.filter((x) => !["Holy", "Dark"].includes(x)),
