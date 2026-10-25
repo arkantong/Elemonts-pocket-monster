@@ -72,5 +72,7 @@ export type Save = {
   sound: boolean;
   seen: string[];
   tutorial: boolean;
+  captureTutorial?:
+    "intro" | "explore" | "weaken" | "bag" | "capsule" | "caught" | "done";
   duelServer: string;
 };

@@ -1,3 +1,4 @@
+import { completeCapturePractice } from "./capture-helper";
 import { test, expect } from "@playwright/test";
 import { LANGUAGE_KEY } from "../src/i18n";
 
@@ -14,7 +15,7 @@ test("first launch defaults to English, persists, and switches language without 
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page.getByRole("button", { name: "Choose Pyroo", exact: true }).click();
-  await page.getByRole("button", { name: "Meet my partner" }).click();
+  await completeCapturePractice(page, "en");
   await expect(
     page.getByRole("heading", { name: "Welcome home." }),
   ).toBeVisible();

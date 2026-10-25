@@ -2417,3 +2417,23 @@ input[type="checkbox"] {
 @keyframes shield-rise{0%{opacity:0;scale:.3}30%,75%{opacity:.85;scale:1}100%{opacity:0;scale:1.1}}
 @keyframes damage-rise{0%{opacity:0;translate:0 8px}20%,65%{opacity:1;translate:0 0}100%{opacity:0;translate:0 -22px}}
 @media(prefers-reduced-motion:reduce){.battle-fx svg{filter:none}.fx-projectile,.fx-beam,.fx-charge,.fx-impact{display:none}.fx-shield,.skill-announcement,.fx-result{animation:none;opacity:1}.fx-result{top:55%}}
+.capture-guide {
+  padding: 18px;
+  margin: 12px 0 18px;
+  border: 2px solid #719753;
+  border-radius: 18px;
+  background: #f2f7e9;
+  color: #29432d;
+  scroll-margin-block: 24px;
+}
+.capture-guide-label { display: flex; align-items: center; gap: 8px; font-size: .8rem; }
+.capture-guide-label span { margin-left: auto; font-weight: 700; }
+.capture-guide h2 { font-size: 1.15rem; margin: 10px 0 6px; }
+.capture-guide p { line-height: 1.55; font-size: .9rem; margin: 0; }
+.capture-guide-progress { display: flex; gap: 5px; margin-top: 14px; }
+.capture-guide-progress i { height: 4px; flex: 1; background: #d9e3d0; border-radius: 4px; }
+.capture-guide-progress .filled { background: #587c3d; }
+.capture-target { outline: 3px solid #6e934d; outline-offset: 3px; }
+.capture-welcome-icon, .capture-new-friend { display: flex; align-items: center; gap: 14px; margin: 16px 0; color: #587c3d; }
+.capture-new-friend .portrait { width: 90px; height: 90px; }
+.capture-new-friend strong { font-size: 1.4rem; }

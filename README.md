@@ -2,7 +2,7 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.3 (debug)](downloads/elemonts-0.1.3-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.4 (debug)](downloads/elemonts-0.1.4-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
 
 ## Menjalankan game
 
@@ -14,6 +14,8 @@ npm run dev
 ```
 
 Preview: `http://localhost:5173`. Saat pertama dibuka, pilih English (pilihan awal) atau Bahasa Indonesia, lalu pilih salah satu dari lima starter. Bahasa bisa diganti langsung melalui Settings/Pengaturan → Language/Bahasa tanpa mereset progres. Pilihan bahasa disimpan terpisah di perangkat ini; impor cadangan game tidak menggantinya. Progres disimpan otomatis di perangkat/browser. Ekspor dan impor cadangan tersedia di Pengaturan. Jangan menghapus data aplikasi tanpa cadangan.
+
+Petualangan baru wajib menyelesaikan latihan menangkap: Masuk Wild → Terjang → Tas → Mococapsule → Koleksi. Pertemuan latihan aman dan penangkapan pertamanya pasti berhasil. Progres setiap langkah tersimpan; setelah selesai, aturan Wild biasa berlaku. Save lama tetap dapat digunakan tanpa mengulang tutorial. Lihat [catatan tutorial menangkap](docs/qa/CAPTURE-TUTORIAL.md).
 
 Untuk menjalankan hasil build, termasuk server Duel:
 

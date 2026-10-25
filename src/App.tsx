@@ -28,6 +28,7 @@ import { Settings } from "./components/Settings";
 import { Portrait, ElementIcon, Modal } from "./components/ui";
 import { useLanguage } from "./i18n/LanguageProvider";
 import { LanguagePicker } from "./i18n/LanguagePicker";
+import { CaptureLessonModal } from "./components/CaptureGuide";
 const nav = [
   { id: "rumah", name: "Rumah", icon: HomeIcon },
   { id: "koleksi", name: "Koleksi", icon: PawPrint },
@@ -74,6 +75,15 @@ export default function App() {
       listener.then((l) => l.remove());
     };
   }, [settings, tab]);
+  const lessonActive =
+    !!save.captureTutorial &&
+    save.captureTutorial !== "done" &&
+    !!save.monsters.length;
+  const activeTab = lessonActive
+    ? save.captureTutorial === "intro"
+      ? "rumah"
+      : "jelajah"
+    : tab;
   const screen = save.battle ? (
     <BattleScreen
       battle={save.battle}
@@ -81,13 +91,13 @@ export default function App() {
       onAction={(action) => act({ type: "turn", action })}
       onFinish={() => act({ type: "settle" })}
     />
-  ) : tab === "rumah" ? (
+  ) : activeTab === "rumah" ? (
     <Home navigate={navigate} />
-  ) : tab === "koleksi" ? (
+  ) : activeTab === "koleksi" ? (
     <Collection />
-  ) : tab === "jelajah" ? (
+  ) : activeTab === "jelajah" ? (
     <Explore />
-  ) : tab === "arena" ? (
+  ) : activeTab === "arena" ? (
     <Arena />
   ) : (
     <Shop />
@@ -106,9 +116,9 @@ export default function App() {
               nav.map((n) => (
                 <button
                   key={n.id}
-                  className={tab === n.id ? "active" : ""}
-                  disabled={!!save.battle}
-                  aria-current={tab === n.id ? "page" : undefined}
+                  className={activeTab === n.id ? "active" : ""}
+                  disabled={!!save.battle || lessonActive}
+                  aria-current={activeTab === n.id ? "page" : undefined}
                   onClick={() => navigate(n.id)}
                 >
                   <n.icon size={23} />
@@ -232,9 +242,9 @@ export default function App() {
             nav.map((n) => (
               <button
                 key={n.id}
-                className={tab === n.id ? "active" : ""}
-                disabled={!!save.battle}
-                aria-current={tab === n.id ? "page" : undefined}
+                className={activeTab === n.id ? "active" : ""}
+                disabled={!!save.battle || lessonActive}
+                aria-current={activeTab === n.id ? "page" : undefined}
                 onClick={() => navigate(n.id)}
               >
                 <n.icon size={22} />
@@ -261,40 +271,46 @@ export default function App() {
         )}
       </AnimatePresence>
       {t(settings && <Settings close={() => setSettings(false)} />)}
+      {!storageError && lessonActive && (
+        <CaptureLessonModal onComplete={() => navigate("koleksi")} />
+      )}
       {t(" ")}
       {t(
-        !!save.monsters.length && !save.tutorial && !storageError && (
-          <Modal
-            title={t("Halo, petualang.")}
-            onClose={() => act({ type: "tutorial" })}
-          >
-            <p>{t("Partner pertamamu sudah menunggu di rumah.")}</p>
-            <ol className="tutorial-list">
-              <li>
-                <strong>{t("Kenali temanmu.")}</strong>
-                {t(" Sapa monster di rumah dan berikan makanan dari tas.")}
-              </li>
-              <li>
-                <strong>{t("Jelajahi Nusaraya.")}</strong>
-                {t(
-                  " Lemahkan monster Wild lalu gunakan kapsul untuk menangkapnya.",
-                )}
-              </li>
-              <li>
-                <strong>{t("Bangun timmu.")}</strong>
-                {t(
-                  " Bawa maksimal empat monster. Peserta battle yang mendapat EXP memakai satu energi.",
-                )}
-              </li>
-            </ol>
-            <button
-              className="button primary full"
-              onClick={() => act({ type: "tutorial" })}
+        !!save.monsters.length &&
+          !save.tutorial &&
+          !save.captureTutorial &&
+          !storageError && (
+            <Modal
+              title={t("Halo, petualang.")}
+              onClose={() => act({ type: "tutorial" })}
             >
-              {t("Temui partnerku")}
-            </button>
-          </Modal>
-        ),
+              <p>{t("Partner pertamamu sudah menunggu di rumah.")}</p>
+              <ol className="tutorial-list">
+                <li>
+                  <strong>{t("Kenali temanmu.")}</strong>
+                  {t(" Sapa monster di rumah dan berikan makanan dari tas.")}
+                </li>
+                <li>
+                  <strong>{t("Jelajahi Nusaraya.")}</strong>
+                  {t(
+                    " Lemahkan monster Wild lalu gunakan kapsul untuk menangkapnya.",
+                  )}
+                </li>
+                <li>
+                  <strong>{t("Bangun timmu.")}</strong>
+                  {t(
+                    " Bawa maksimal empat monster. Peserta battle yang mendapat EXP memakai satu energi.",
+                  )}
+                </li>
+              </ol>
+              <button
+                className="button primary full"
+                onClick={() => act({ type: "tutorial" })}
+              >
+                {t("Temui partnerku")}
+              </button>
+            </Modal>
+          ),
       )}
     </MotionConfig>
   );

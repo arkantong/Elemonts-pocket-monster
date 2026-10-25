@@ -95,11 +95,13 @@ export function Modal({
   children,
   onClose,
   wide = false,
+  dismissible = true,
 }: {
   title: string;
   children: ReactNode;
   onClose: () => void;
   wide?: boolean;
+  dismissible?: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -115,23 +117,28 @@ export function Modal({
     <dialog
       ref={ref}
       className={wide ? "modal wide" : "modal"}
+      onKeyDown={(e) => {
+        if (!dismissible && e.key === "Escape") e.preventDefault();
+      }}
       onCancel={(e) => {
         e.preventDefault();
-        onClose();
+        if (dismissible) onClose();
       }}
       onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
+        if (dismissible && e.target === e.currentTarget) onClose();
       }}
     >
       <header>
         <h2>{t(title)}</h2>
-        <button
-          className="icon-button"
-          aria-label={t("Tutup")}
-          onClick={onClose}
-        >
-          <X size={22} />
-        </button>
+        {dismissible && (
+          <button
+            className="icon-button"
+            aria-label={t("Tutup")}
+            onClick={onClose}
+          >
+            <X size={22} />
+          </button>
+        )}
       </header>
       {t(children)}
     </dialog>

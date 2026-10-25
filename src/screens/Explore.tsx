@@ -3,6 +3,7 @@ import { Compass, ArrowRight, Lock, MapPin } from "lucide-react";
 import { useGame } from "../game/context";
 import { ROSTER } from "../game/data";
 import { Portrait, ElementIcon } from "../components/ui";
+import { CaptureGuide } from "../components/CaptureGuide";
 export function Explore() {
   const { save, act } = useGame();
   const empty = save.monsters.some(
@@ -21,6 +22,9 @@ export function Explore() {
         </div>
         <Compass size={32} />
       </div>
+      <CaptureGuide
+        step={save.captureTutorial === "explore" ? "explore" : undefined}
+      />
       <div className="explore-hero">
         <img
           src="/art/nusaraya.png"
@@ -40,7 +44,7 @@ export function Explore() {
             </p>
           </div>
           <button
-            className="button primary"
+            className={`button primary ${save.captureTutorial === "explore" ? "capture-target" : ""}`}
             disabled={empty}
             onClick={() => act({ type: "battle", mode: "wild" })}
           >

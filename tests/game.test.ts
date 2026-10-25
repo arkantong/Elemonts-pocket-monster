@@ -19,6 +19,7 @@ import { ROSTER, SPECIES } from "../src/game/data";
 function state() {
   let s = transition(emptySave(), { type: "starter", species: "pyroo" });
   s.tutorial = true;
+  s.captureTutorial = "done";
   return s;
 }
 describe("roster and progression", () => {

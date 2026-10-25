@@ -1,6 +1,7 @@
 import { useGame } from "../game/context";
 import { useBattlePlayback } from "../game/useBattlePlayback";
 import { BattleEffects } from "../components/BattleEffects";
+import { CaptureGuide } from "../components/CaptureGuide";
 import { t } from "../i18n";
 import { lazy, Suspense, useState } from "react";
 import { motion } from "motion/react";
@@ -32,11 +33,18 @@ export function BattleScreen({
   waiting?: boolean;
   onForfeit?: () => void;
 }) {
-  const { save } = useGame();
+  const { save, act } = useGame();
+  const lesson =
+    save.battle?.id === incoming.id &&
+    !!save.captureTutorial &&
+    save.captureTutorial !== "done";
   const { battle, event, playing } = useBattlePlayback(incoming, save.sound);
-  const animating = playing || incoming.turn !== battle.turn || incoming.id !== battle.id;
+  const animating =
+    playing || incoming.turn !== battle.turn || incoming.id !== battle.id;
   const waiting = remoteWaiting || animating;
-  const [menu, setMenu] = useState<"switch" | "bag" | null>(null);
+  const [menu, setMenu] = useState<"switch" | "bag" | null>(() =>
+    lesson && save.captureTutorial === "capsule" ? "bag" : null,
+  );
   const [captureFx, setCaptureFx] = useState<number>();
   const ours = battle.teams[0][battle.active[0]],
     enemy = battle.teams[1][battle.active[1]],
@@ -182,6 +190,9 @@ export function BattleScreen({
               .map((line, i) => <p key={`${battle.turn}-${i}`}>{t(line)}</p>),
           )}
         </div>
+        {lesson && !battle.result && (
+          <CaptureGuide step={save.captureTutorial} pending={animating} />
+        )}
         {t(
           battle.result ? (
             <div className="battle-result">
@@ -261,8 +272,14 @@ export function BattleScreen({
                     return (
                       <button
                         key={id}
-                        className="move-button"
-                        disabled={waiting || ours.hp <= 0 || ours.pp[i] === 0}
+                        className={`move-button ${lesson && save.captureTutorial === "weaken" && i === 0 ? "capture-target" : ""}`}
+                        disabled={
+                          waiting ||
+                          ours.hp <= 0 ||
+                          ours.pp[i] === 0 ||
+                          (lesson &&
+                            (save.captureTutorial !== "weaken" || i !== 0))
+                        }
                         onClick={() => send({ type: "skill", index: i })}
                       >
                         <ElementIcon element={skill.element} size={23} />
@@ -298,15 +315,34 @@ export function BattleScreen({
                 ),
               )}
               <div className="battle-tools">
-                <button disabled={waiting} onClick={() => setMenu("switch")}>
+                <button
+                  disabled={waiting || lesson}
+                  onClick={() => setMenu("switch")}
+                >
                   <ArrowLeftRight size={20} />
                   {t(" Ganti monster")}
                 </button>
                 {t(
                   battle.mode !== "duel" && (
                     <button
-                      disabled={waiting || ours.hp <= 0}
-                      onClick={() => setMenu("bag")}
+                      className={
+                        lesson && save.captureTutorial === "bag"
+                          ? "capture-target"
+                          : undefined
+                      }
+                      disabled={
+                        waiting ||
+                        ours.hp <= 0 ||
+                        (lesson && save.captureTutorial !== "bag")
+                      }
+                      onClick={() => {
+                        if (
+                          lesson &&
+                          !act({ type: "capture-guide", step: "capsule" })
+                        )
+                          return;
+                        setMenu("bag");
+                      }}
                     >
                       <Package size={20} />
                       {t(" Tas")}
@@ -316,7 +352,7 @@ export function BattleScreen({
                 {t(
                   battle.mode === "wild" && (
                     <button
-                      disabled={waiting || ours.hp <= 0}
+                      disabled={waiting || ours.hp <= 0 || lesson}
                       onClick={() => send({ type: "run" })}
                     >
                       <Footprints size={20} />
@@ -343,7 +379,11 @@ export function BattleScreen({
             title={t(
               menu === "switch" ? "Pilih teman bertarung" : "Tas petualang",
             )}
-            onClose={() => setMenu(null)}
+            onClose={() => {
+              if (lesson && menu === "bag")
+                act({ type: "capture-guide", step: "bag" });
+              setMenu(null);
+            }}
           >
             {t(
               menu === "switch" ? (
@@ -383,14 +423,19 @@ export function BattleScreen({
                 </div>
               ) : (
                 <div className="item-list">
+                  {lesson && <CaptureGuide step="capsule" />}
                   {t(
                     battle.mode === "wild" &&
                       (["moco", "prime", "element", "genesis"] as ItemId[]).map(
                         (id) => (
                           <button
                             key={id}
-                            className="item-row"
-                            disabled={!inventory?.[id]}
+                            className={`item-row ${lesson && id === "moco" ? "capture-target" : ""}`}
+                            disabled={
+                              waiting ||
+                              !inventory?.[id] ||
+                              (lesson && id !== "moco")
+                            }
                             onClick={() =>
                               send({ type: "capture", capsule: id })
                             }
@@ -410,7 +455,12 @@ export function BattleScreen({
                   )}
                   <button
                     className="item-row"
-                    disabled={!inventory?.potion || ours.hp === ours.maxHp}
+                    disabled={
+                      waiting ||
+                      lesson ||
+                      !inventory?.potion ||
+                      ours.hp === ours.maxHp
+                    }
                     onClick={() => send({ type: "potion" })}
                   >
                     <Heart size={24} />

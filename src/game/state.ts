@@ -72,6 +72,7 @@ export function emptySave(): Save {
     sound: false,
     seen: [],
     tutorial: false,
+    captureTutorial: "intro",
     duelServer: "",
   };
 }
@@ -173,11 +174,30 @@ export type Action =
   | { type: "settle" }
   | { type: "sound" }
   | { type: "tutorial" }
+  | { type: "capture-guide"; step: "bag" | "capsule" | "done" }
   | { type: "decor" }
   | { type: "server"; url: string };
 export function transition(input: Save, a: Action): Save {
   const s = refresh(input);
-  if (s.battle && !["turn", "settle", "sound", "refresh"].includes(a.type))
+  const lesson = !!s.captureTutorial && s.captureTutorial !== "done";
+  if (
+    lesson &&
+    s.monsters.length &&
+    ![
+      "tutorial",
+      "capture-guide",
+      "battle",
+      "turn",
+      "settle",
+      "sound",
+      "refresh",
+    ].includes(a.type)
+  )
+    throw Error("Selesaikan latihan menangkap terlebih dahulu.");
+  if (
+    s.battle &&
+    !["turn", "settle", "sound", "refresh", "capture-guide"].includes(a.type)
+  )
     throw Error("Selesaikan pertarungan terlebih dahulu.");
   const mon = (id: string) => {
     const m = s.monsters.find((x) => x.uid === id);
@@ -203,6 +223,7 @@ export function transition(input: Save, a: Action): Save {
       s.monsters = [m];
       s.team = [m.uid];
       s.seen = [a.species];
+      s.captureTutorial = "intro";
       break;
     }
     case "team": {
@@ -308,6 +329,8 @@ export function transition(input: Save, a: Action): Save {
       break;
     }
     case "battle": {
+      if (lesson && (s.captureTutorial !== "explore" || a.mode !== "wild"))
+        throw Error("Ikuti panduan menangkap monster Wild terlebih dahulu.");
       const team = s.team.map(mon);
       if (!team.length) throw Error("Pilih tim dahulu.");
       if (a.mode === "wild" && team.some((m) => m.energy < 1))
@@ -315,7 +338,8 @@ export function transition(input: Save, a: Action): Save {
           "Ada monster dengan energi nol. Ganti tim atau pulihkan energinya.",
         );
       let enemies: Monster[];
-      if (a.mode === "wild") enemies = [encounter(s)];
+      if (a.mode === "wild")
+        enemies = [lesson ? makeMonster("flicklet", 2, 5) : encounter(s)];
       else if (a.mode === "trainer") {
         if (s.trainerUsed >= BALANCE.trainerLimit + s.trainerBonus)
           throw Error("Kesempatan Trainer habis. Reset pukul 05.00 WIB.");
@@ -352,9 +376,25 @@ export function transition(input: Save, a: Action): Save {
         a.mode === "gym" ? { gym: a.gym ?? 0, round: 0 } : {},
       );
       s.seen = [...new Set([...s.seen, ...enemies.map((m) => m.species)])];
+      if (lesson) {
+        s.captureTutorial = "weaken";
+        s.inventory.moco = Math.max(1, s.inventory.moco);
+      }
       break;
     }
     case "turn": {
+      if (
+        lesson &&
+        !(
+          (s.captureTutorial === "weaken" &&
+            a.action.type === "skill" &&
+            a.action.index === 0) ||
+          (s.captureTutorial === "capsule" &&
+            a.action.type === "capture" &&
+            a.action.capsule === "moco")
+        )
+      )
+        throw Error("Gunakan aksi yang ditandai pada panduan.");
       if (!s.battle || !validAction(s.battle, 0, a.action))
         throw Error("Aksi ini belum bisa dilakukan.");
       if (a.action.type === "capture") {
@@ -365,7 +405,16 @@ export function transition(input: Save, a: Action): Save {
         consume(a.action.capsule);
       }
       if (a.action.type === "potion") consume("potion");
-      s.battle = resolveTurn(s.battle, a.action, aiAction(s.battle));
+      s.battle = lesson
+        ? resolveTurn(
+            s.battle,
+            a.action,
+            { type: "skill", index: 2 },
+            () => 0.5,
+            true,
+          )
+        : resolveTurn(s.battle, a.action, aiAction(s.battle));
+      if (lesson && s.captureTutorial === "weaken") s.captureTutorial = "bag";
       break;
     }
     case "settle": {
@@ -405,6 +454,7 @@ export function transition(input: Save, a: Action): Save {
         b.captured.uid = uid();
         s.monsters.push(b.captured);
         if (s.team.length < 4) s.team.push(b.captured.uid);
+        if (lesson) s.captureTutorial = "caught";
       }
       if (b.result === "win") {
         s.gold += b.mode === "trainer" ? 100 : b.mode === "gym" ? 300 : 35;
@@ -424,6 +474,26 @@ export function transition(input: Save, a: Action): Save {
       break;
     case "tutorial":
       s.tutorial = true;
+      if (s.captureTutorial === "intro") s.captureTutorial = "explore";
+      break;
+    case "capture-guide":
+      if (
+        a.step === "capsule" &&
+        s.captureTutorial === "bag" &&
+        s.battle &&
+        !s.battle.result
+      )
+        s.captureTutorial = "capsule";
+      else if (a.step === "bag" && s.captureTutorial === "capsule")
+        s.captureTutorial = "bag";
+      else if (
+        a.step === "done" &&
+        s.captureTutorial === "caught" &&
+        !s.battle &&
+        s.monsters.length >= 2
+      )
+        s.captureTutorial = "done";
+      else throw Error("Langkah tutorial belum selesai.");
       break;
     case "decor":
       if (!s.inventory.decor) throw Error("Kebun embun tersedia di toko.");
@@ -542,6 +612,9 @@ const saveSchema = z.object({
   sound: z.boolean(),
   seen: z.array(z.string()),
   tutorial: z.boolean(),
+  captureTutorial: z
+    .enum(["intro", "explore", "weaken", "bag", "capsule", "caught", "done"])
+    .optional(),
   duelServer: z.string(),
   buff: z.object({ type: z.enum(["rare", "counter"]), until: num }).optional(),
   battle: battleSchema.optional(),

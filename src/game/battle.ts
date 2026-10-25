@@ -83,6 +83,7 @@ export function resolveTurn(
   a: BattleAction,
   c: BattleAction,
   rng: () => number = Math.random,
+  capturePractice = false,
 ): Battle {
   const b = structuredClone(input);
   if (!validAction(b, 0, a) || !validAction(b, 1, c)) return b;
@@ -151,7 +152,7 @@ export function resolveTurn(
             (rarity === "Langka" ? 0.65 : rarity === "Tidak umum" ? 0.85 : 1) *
             mult,
         );
-        if (rng() < chance) {
+        if (capturePractice || rng() < chance) {
           b.result = "captured";
           b.captured = { ...target.monster, energy: 5, energyAt: Date.now() };
           add(`${SPECIES[target.monster.species].name} menjadi teman barumu!`);
@@ -186,7 +187,7 @@ export function resolveTurn(
           SPECIES[target.monster.species].element,
         ),
         crit = rng() < 0.07;
-      const damage = Math.max(
+      const rolledDamage = Math.max(
         1,
         Math.floor(
           ((((2 * f.monster.level) / 5 + 2) * move.power * af.attack) /
@@ -200,6 +201,9 @@ export function resolveTurn(
             (0.9 + rng() * 0.1),
         ),
       );
+      const damage = capturePractice
+        ? Math.min(rolledDamage, Math.max(0, target.hp - 1))
+        : rolledDamage;
       event.damage = Math.min(target.hp, damage);
       event.critical = crit;
       event.ko = target.hp <= damage;
