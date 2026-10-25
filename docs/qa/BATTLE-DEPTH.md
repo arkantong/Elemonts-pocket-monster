@@ -19,5 +19,7 @@ locking, and the mandatory capture tutorial. No physical Android verification.
 This is not a visual match to the full reference: current procedural models lack
 production skeletal animation, authored special-skill cinematics, and the
 reference's multi-character formations. The screenshot records the actual
-implemented result, not a promise of final asset quality. Existing APK 0.1.4 does
-not contain this change; a new Android build is needed to test it on device.
+implemented result, not a promise of final asset quality. APK 0.1.5 includes this change (versionCode 6, minimum API 24).
+Gradle assembleDebug, signature verification, and zip alignment pass. The signing
+certificate matches APK 0.1.4. All 12 browser integration tests passed. Physical
+Android installation and GPU performance remain unverified.
