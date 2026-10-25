@@ -77,6 +77,7 @@ test("choose starter, tutorial, food, mailbox, save reload and responsive naviga
 test("Wild capture, trainer victory, progress and reload of active battle", async ({
   page,
 }) => {
+  test.setTimeout(90000);
   await init(page);
   await page.evaluate(() => {
     Math.random = () => 0.1;
@@ -107,6 +108,7 @@ test("Wild capture, trainer victory, progress and reload of active battle", asyn
   await nav(page, "Arena").click();
   await page.getByRole("button", { name: "Temui Trainer" }).click();
   for (let i = 0; i < 30; i++) {
+    await expect(page.locator(".battle-stage")).toHaveAttribute("aria-busy", "false");
     if (
       await page.getByRole("button", { name: "Selesai", exact: true }).count()
     )
@@ -119,6 +121,7 @@ test("Wild capture, trainer victory, progress and reload of active battle", asyn
       await page.getByRole("button", { name: "Ganti monster" }).click();
       await page.locator("dialog .item-row:not([disabled])").first().click();
     } else await page.locator(".move-button:not([disabled])").first().click();
+    await expect(page.locator(".battle-stage")).toHaveAttribute("aria-busy", "true");
   }
   await expect(
     page.getByRole("button", { name: "Selesai", exact: true }),

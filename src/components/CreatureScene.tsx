@@ -1,3 +1,4 @@
+import type { PlayingEvent } from "../game/useBattlePlayback";
 import { creature, APPEARANCE } from "./creatures";
 import { t } from "../i18n";
 import { useEffect, useRef, useState } from "react";
@@ -9,15 +10,27 @@ export default function CreatureScene({
   enemy,
   react = 0,
   room = true,
+  event,
+  fainted,
 }: {
   species: string;
   enemy?: string;
   react?: number;
   room?: boolean;
+  event?: PlayingEvent;
+  fainted?: [boolean, boolean];
 }) {
   const host = useRef<HTMLDivElement>(null),
     reaction = useRef(react),
     [failed, setFailed] = useState(false);
+  const animation = useRef<{ event?: PlayingEvent; start: number }>({
+    start: 0,
+  });
+  const faint = useRef(fainted);
+  faint.current = fainted;
+  useEffect(() => {
+    animation.current = { event, start: performance.now() };
+  }, [event?.key]);
   useEffect(() => {
     reaction.current = react;
   }, [react]);
@@ -117,6 +130,53 @@ export default function CreatureScene({
         (enemy ? 0.45 : -0.13) + (reduced ? 0 : Math.sin(t * 0.001) * 0.08);
       if (theirs && !reduced)
         theirs.position.y = enemyY + Math.sin(t * 0.002 + 1) * 0.035;
+      if (theirs) {
+        const units = [ours, theirs],
+          bases = [baseY, enemyY];
+        units.forEach((unit, i) => {
+          unit.position.x = i === 0 ? -1.65 : 1.65;
+          unit.rotation.z = faint.current?.[i] ? (i === 0 ? -0.75 : 0.75) : 0;
+          unit.position.y = bases[i] + (faint.current?.[i] ? -0.18 : 0);
+        });
+        const { event: action, start } = animation.current;
+        camera.position.x = 0;
+        if (action && !reduced) {
+          const elapsed = t - start,
+            p = Math.max(0, Math.min(1, elapsed / action.duration)),
+            hit = action.impact / action.duration;
+          const caster = units[action.side],
+            target = units[1 - action.side],
+            direction = action.side === 0 ? 1 : -1;
+          const physical =
+            action.skill === "tackle" ||
+            action.skill === "struggle" ||
+            action.skill?.startsWith("Netral-");
+          const wind = Math.sin(Math.min(1, p / 0.3) * Math.PI);
+          caster.position.x -= direction * wind * 0.22;
+          caster.rotation.z = -direction * wind * 0.12;
+          if (physical && p > 0.25 && p < 0.8) {
+            const dash = Math.sin(((p - 0.25) / 0.55) * Math.PI);
+            caster.position.x += direction * dash * 1.55;
+            caster.position.y += dash * 0.15;
+          }
+          if (!physical && p < 0.5)
+            caster.position.y += Math.sin((p / 0.5) * Math.PI) * 0.16;
+          if (p >= hit && !action.missed && action.damage) {
+            const recoil = Math.max(0, 1 - (p - hit) / (1 - hit));
+            target.position.x += direction * Math.sin(recoil * Math.PI) * 0.35;
+            target.rotation.z = direction * Math.sin(recoil * Math.PI) * 0.22;
+            if (action.ko) {
+              target.rotation.z = direction * (1 - recoil) * 0.75;
+              target.position.y -= 0.18 * (1 - recoil);
+            }
+            camera.position.x =
+              Math.sin(elapsed * 0.06) *
+              recoil *
+              (action.critical ? 0.08 : 0.025);
+          }
+        }
+        camera.lookAt(0, 1, 0);
+      }
       renderer.render(scene, camera);
     };
     frame = requestAnimationFrame(tick);

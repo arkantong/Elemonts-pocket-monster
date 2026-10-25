@@ -26,7 +26,23 @@ export type BattleAction =
   | { type: "capture"; capsule: ItemId }
   | { type: "run" }
   | { type: "potion" };
+export type BattleEvent = {
+  side: number;
+  skill?: string;
+  kind: "skill" | "switch" | "potion" | "capture" | "run";
+  missed?: boolean;
+  damage?: number;
+  critical?: boolean;
+  ko?: boolean;
+};
+export type BattleFrame = {
+  event: BattleEvent;
+  teams: [Fighter[], Fighter[]];
+  active: [number, number];
+  log: string[];
+};
 export type Battle = {
+  frames?: BattleFrame[];
   id: string;
   mode: "wild" | "trainer" | "gym" | "duel";
   teams: [Fighter[], Fighter[]];

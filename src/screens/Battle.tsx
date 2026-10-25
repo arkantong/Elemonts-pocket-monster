@@ -1,3 +1,6 @@
+import { useGame } from "../game/context";
+import { useBattlePlayback } from "../game/useBattlePlayback";
+import { BattleEffects } from "../components/BattleEffects";
 import { t } from "../i18n";
 import { lazy, Suspense, useState } from "react";
 import { motion } from "motion/react";
@@ -15,11 +18,11 @@ import type { Battle as BattleState, BattleAction } from "../game/types";
 import { ElementIcon, Meter, Modal, Portrait } from "../components/ui";
 const CreatureScene = lazy(() => import("../components/CreatureScene"));
 export function BattleScreen({
-  battle,
+  battle: incoming,
   onAction,
   onFinish,
   inventory,
-  waiting = false,
+  waiting: remoteWaiting = false,
   onForfeit,
 }: {
   battle: BattleState;
@@ -29,12 +32,17 @@ export function BattleScreen({
   waiting?: boolean;
   onForfeit?: () => void;
 }) {
+  const { save } = useGame();
+  const { battle, event, playing } = useBattlePlayback(incoming, save.sound);
+  const animating = playing || incoming.turn !== battle.turn || incoming.id !== battle.id;
+  const waiting = remoteWaiting || animating;
   const [menu, setMenu] = useState<"switch" | "bag" | null>(null);
   const [captureFx, setCaptureFx] = useState<number>();
   const ours = battle.teams[0][battle.active[0]],
     enemy = battle.teams[1][battle.active[1]],
     noPP = ours.pp.every((p) => p <= 0);
   const send = (a: BattleAction) => {
+    if (waiting) return;
     if (a.type === "capture") setCaptureFx(Date.now());
     onAction(a);
     setMenu(null);
@@ -69,7 +77,8 @@ export function BattleScreen({
           {t(battle.turn)}
         </span>
       </div>
-      <section className="battle-stage">
+      <section className="battle-stage" aria-busy={animating}>
+        <BattleEffects event={event} />
         {t(
           captureFx && (
             <motion.div
@@ -158,7 +167,9 @@ export function BattleScreen({
           <CreatureScene
             species={ours.monster.species}
             enemy={enemy.monster.species}
-            react={battle.turn}
+            event={event}
+            fainted={[ours.hp <= 0, enemy.hp <= 0]}
+            react={0}
             room={false}
           />
         </Suspense>
@@ -226,11 +237,13 @@ export function BattleScreen({
               <div className="action-heading">
                 <h3>
                   {t(
-                    waiting
-                      ? "Menunggu pilihan lawan…"
-                      : ours.hp <= 0
-                        ? "Pilih monster berikutnya."
-                        : `Apa yang akan ${SPECIES[ours.monster.species].name} lakukan?`,
+                    animating
+                      ? "Serangan berlangsung…"
+                      : waiting
+                        ? "Menunggu pilihan lawan…"
+                        : ours.hp <= 0
+                          ? "Pilih monster berikutnya."
+                          : `Apa yang akan ${SPECIES[ours.monster.species].name} lakukan?`,
                   )}
                 </h3>
                 {t(

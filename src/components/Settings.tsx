@@ -136,7 +136,7 @@ export function Settings({ close }: { close: () => void }) {
         ),
       )}
       <p className="small-help section-space">
-        {t("Elemonts 0.1.2 · Prototipe internal")}
+        {t("Elemonts 0.1.3 · Prototipe internal")}
         <br />
         {t("Model 3D dan balancing masih dalam tahap penyempurnaan.")}
       </p>

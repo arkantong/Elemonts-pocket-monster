@@ -74,7 +74,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
             : a.type === "settle"
               ? "win"
               : "tap",
-        next.sound,
+        next.sound && a.type !== "turn",
       );
       return true;
     } catch (e) {

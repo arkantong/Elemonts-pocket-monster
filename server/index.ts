@@ -75,6 +75,12 @@ function view(b: Battle, i: number): Battle {
   if (i === 1) {
     v.teams = [v.teams[1], v.teams[0]];
     v.active = [v.active[1], v.active[0]];
+    v.frames = v.frames?.map((f) => ({
+      ...f,
+      teams: [f.teams[1], f.teams[0]],
+      active: [f.active[1], f.active[0]],
+      event: { ...f.event, side: 1 - f.event.side },
+    }));
     if (v.result === "win") v.result = "loss";
     else if (v.result === "loss") v.result = "win";
   }

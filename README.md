@@ -2,7 +2,7 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.2 (debug)](downloads/elemonts-0.1.2-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.3 (debug)](downloads/elemonts-0.1.3-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
 
 ## Menjalankan game
 
@@ -50,6 +50,8 @@ Orientasi dikunci portrait. Aset, font dan suara disertakan dalam aplikasi. Tomb
 Penyetaraan level 25 dapat dipilih pembuat room. Poin stat dan personality tetap berlaku; makanan/dekorasi tidak memengaruhi Duel. Duel tidak mengubah energi, HP permanen, EXP, atau gold. Putus koneksi mengakhiri Duel tanpa hadiah. Room kedaluwarsa setelah 30 menit tanpa aktivitas.
 
 Versi ini membutuhkan server LAN pada komputer, belum host/discovery otomatis langsung dari HP. HTTP/WebSocket lokal diizinkan oleh konfigurasi Android. Server memvalidasi tim, aksi, dan giliran; simpanan offline bukan otoritas anti-cheat. Jangan mengekspos server prototipe ini sebagai layanan publik tanpa autentikasi dan pengamanan tambahan.
+
+[Lihat contoh animasi battle 0.1.3](docs/qa/videos/battle-animation.mp4) · [Catatan animasi dan daftar skill](docs/qa/BATTLE-ANIMATION.md)
 
 ## Fitur yang dapat dimainkan
 

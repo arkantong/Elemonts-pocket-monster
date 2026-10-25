@@ -99,112 +99,134 @@ export function resolveTurn(
       speed(j) - speed(i) ||
       i - j,
   );
+  b.frames = [];
   const originallyActive = [...b.active];
   for (const side of order) {
     if (b.result) break;
     let f = b.teams[side][b.active[side]],
       target = b.teams[1 - side][b.active[1 - side]],
       act = actions[side];
-    if (act.type === "switch") {
-      b.active[side] = act.index;
-      if (side === 0 && !b.participants.includes(act.index))
-        b.participants.push(act.index);
+    const event: import("./types").BattleEvent = { side, kind: act.type };
+    let performed = false;
+    try {
+      if (act.type === "switch") {
+        performed = true;
+        b.active[side] = act.index;
+        if (side === 0 && !b.participants.includes(act.index))
+          b.participants.push(act.index);
+        add(
+          `${SPECIES[b.teams[side][act.index].monster.species].name} masuk arena.`,
+        );
+        continue;
+      }
+      if (f.hp <= 0 || b.active[side] !== originallyActive[side]) continue;
+      performed = true;
+      const name = SPECIES[f.monster.species].name;
+      if (act.type === "run") {
+        if (
+          rng() <
+          Math.min(0.95, 0.6 + 0.03 * (f.monster.level - target.monster.level))
+        ) {
+          b.result = "escaped";
+          add("Berhasil kembali ke rumah. Energi tetap.");
+        } else add("Belum berhasil kabur!");
+        continue;
+      }
+      if (act.type === "capture") {
+        const rarity = SPECIES[target.monster.species].rarity;
+        const mult =
+          act.capsule === "genesis"
+            ? 3
+            : act.capsule === "prime"
+              ? 1.5
+              : act.capsule === "element"
+                ? SPECIES[f.monster.species].element ===
+                  SPECIES[target.monster.species].element
+                  ? 2
+                  : 1
+                : 1;
+        const chance = Math.min(
+          0.95,
+          (BALANCE.captureBase + (1 - target.hp / target.maxHp) * 0.55) *
+            (rarity === "Langka" ? 0.65 : rarity === "Tidak umum" ? 0.85 : 1) *
+            mult,
+        );
+        if (rng() < chance) {
+          b.result = "captured";
+          b.captured = { ...target.monster, energy: 5, energyAt: Date.now() };
+          add(`${SPECIES[target.monster.species].name} menjadi teman barumu!`);
+        } else add("Kapsul terbuka. Coba lemahkan target lagi.");
+        continue;
+      }
+      if (act.type === "potion") {
+        f.hp = Math.min(f.maxHp, f.hp + 35);
+        add(`${name} memulihkan 35 HP.`);
+        continue;
+      }
+      const move =
+        act.index === -1
+          ? SKILLS.struggle
+          : SKILLS[f.monster.skills[act.index]];
+      event.skill = move.id;
+      if (act.index >= 0) f.pp[act.index]--;
+      if (move.effect === "guard") {
+        f.guard = true;
+        add(`${name} bersiap menahan serangan.`);
+        continue;
+      }
+      if (rng() * 100 >= move.accuracy) {
+        event.missed = true;
+        add(`${name}: ${move.name} meleset.`);
+        continue;
+      }
+      const af = stats(f.monster),
+        df = stats(target.monster),
+        eff = effectiveness(
+          move.element,
+          SPECIES[target.monster.species].element,
+        ),
+        crit = rng() < 0.07;
+      const damage = Math.max(
+        1,
+        Math.floor(
+          ((((2 * f.monster.level) / 5 + 2) * move.power * af.attack) /
+            df.defense /
+            30 +
+            2) *
+            eff *
+            (crit ? 1.5 : 1) *
+            (f.status === "burn" ? 0.8 : 1) *
+            (target.guard ? 0.5 : 1) *
+            (0.9 + rng() * 0.1),
+        ),
+      );
+      event.damage = Math.min(target.hp, damage);
+      event.critical = crit;
+      event.ko = target.hp <= damage;
+      target.guard = false;
+      target.hp = Math.max(0, target.hp - damage);
       add(
-        `${SPECIES[b.teams[side][act.index].monster.species].name} masuk arena.`,
+        `${name} memakai ${move.name}: ${damage} damage.${eff > 1 ? " Sangat efektif!" : ""}${crit ? " Critical!" : ""}`,
       );
-      continue;
-    }
-    if (f.hp <= 0 || b.active[side] !== originallyActive[side]) continue;
-    const name = SPECIES[f.monster.species].name;
-    if (act.type === "run") {
-      if (
-        rng() <
-        Math.min(0.95, 0.6 + 0.03 * (f.monster.level - target.monster.level))
-      ) {
-        b.result = "escaped";
-        add("Berhasil kembali ke rumah. Energi tetap.");
-      } else add("Belum berhasil kabur!");
-      continue;
-    }
-    if (act.type === "capture") {
-      const rarity = SPECIES[target.monster.species].rarity;
-      const mult =
-        act.capsule === "genesis"
-          ? 3
-          : act.capsule === "prime"
-            ? 1.5
-            : act.capsule === "element"
-              ? SPECIES[f.monster.species].element ===
-                SPECIES[target.monster.species].element
-                ? 2
-                : 1
-              : 1;
-      const chance = Math.min(
-        0.95,
-        (BALANCE.captureBase + (1 - target.hp / target.maxHp) * 0.55) *
-          (rarity === "Langka" ? 0.65 : rarity === "Tidak umum" ? 0.85 : 1) *
-          mult,
-      );
-      if (rng() < chance) {
-        b.result = "captured";
-        b.captured = { ...target.monster, energy: 5, energyAt: Date.now() };
-        add(`${SPECIES[target.monster.species].name} menjadi teman barumu!`);
-      } else add("Kapsul terbuka. Coba lemahkan target lagi.");
-      continue;
-    }
-    if (act.type === "potion") {
-      f.hp = Math.min(f.maxHp, f.hp + 35);
-      add(`${name} memulihkan 35 HP.`);
-      continue;
-    }
-    const move =
-      act.index === -1 ? SKILLS.struggle : SKILLS[f.monster.skills[act.index]];
-    if (act.index >= 0) f.pp[act.index]--;
-    if (move.effect === "guard") {
-      f.guard = true;
-      add(`${name} bersiap menahan serangan.`);
-      continue;
-    }
-    if (rng() * 100 >= move.accuracy) {
-      add(`${name}: ${move.name} meleset.`);
-      continue;
-    }
-    const af = stats(f.monster),
-      df = stats(target.monster),
-      eff = effectiveness(
-        move.element,
-        SPECIES[target.monster.species].element,
-      ),
-      crit = rng() < 0.07;
-    const damage = Math.max(
-      1,
-      Math.floor(
-        ((((2 * f.monster.level) / 5 + 2) * move.power * af.attack) /
-          df.defense /
-          30 +
-          2) *
-          eff *
-          (crit ? 1.5 : 1) *
-          (f.status === "burn" ? 0.8 : 1) *
-          (target.guard ? 0.5 : 1) *
-          (0.9 + rng() * 0.1),
-      ),
-    );
-    target.guard = false;
-    target.hp = Math.max(0, target.hp - damage);
-    add(
-      `${name} memakai ${move.name}: ${damage} damage.${eff > 1 ? " Sangat efektif!" : ""}${crit ? " Critical!" : ""}`,
-    );
-    if (move.effect && target.hp > 0 && rng() < 0.25) {
-      target.status = move.effect;
-      add(
-        `${SPECIES[target.monster.species].name} ${move.effect === "burn" ? "terbakar" : "melambat"}.`,
-      );
-    }
-    if (target.hp === 0) {
-      add(`${SPECIES[target.monster.species].name} KO.`);
-      if (b.teams[1 - side].every((m) => m.hp <= 0))
-        b.result = side === 0 ? "win" : "loss";
+      if (move.effect && target.hp > 0 && rng() < 0.25) {
+        target.status = move.effect;
+        add(
+          `${SPECIES[target.monster.species].name} ${move.effect === "burn" ? "terbakar" : "melambat"}.`,
+        );
+      }
+      if (target.hp === 0) {
+        add(`${SPECIES[target.monster.species].name} KO.`);
+        if (b.teams[1 - side].every((m) => m.hp <= 0))
+          b.result = side === 0 ? "win" : "loss";
+      }
+    } finally {
+      if (performed)
+        b.frames.push({
+          event,
+          teams: structuredClone(b.teams),
+          active: [...b.active],
+          log: [...b.log, ...logs].slice(-9),
+        });
     }
   }
   if (!b.result) {
