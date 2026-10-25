@@ -74,14 +74,14 @@ export default function CreatureScene({
     const calm = ["Tenang", "Santai", "Pemalu", "Bijak"].includes(
       APPEARANCE[species].character,
     );
-    ours.position.x = enemy ? -1.65 : 0;
-    ours.rotation.y = enemy ? 0.45 : -0.13;
+    ours.position.set(enemy ? -1.15 : 0, baseY, enemy ? 1.7 : 0);
+    ours.rotation.y = enemy ? 2.65 : -0.13;
     scene.add(ours);
     let theirs: THREE.Group | undefined;
     if (enemy) {
       theirs = creature(enemy);
-      theirs.position.set(1.65, theirs.position.y, -0.2);
-      theirs.rotation.y = -0.45;
+      theirs.position.set(1.1, theirs.position.y, -1.7);
+      theirs.rotation.y = -0.58;
       scene.add(theirs);
     }
     const floor = new THREE.Mesh(
@@ -127,19 +127,21 @@ export default function CreatureScene({
           : Math.sin(t * (calm ? 0.001 : 0.002)) * 0.035 +
             Math.sin(bounce * Math.PI) * 0.25);
       ours.rotation.y =
-        (enemy ? 0.45 : -0.13) + (reduced ? 0 : Math.sin(t * 0.001) * 0.08);
+        (enemy ? 2.65 : -0.13) + (reduced ? 0 : Math.sin(t * 0.001) * 0.08);
       if (theirs && !reduced)
         theirs.position.y = enemyY + Math.sin(t * 0.002 + 1) * 0.035;
       if (theirs) {
         const units = [ours, theirs],
           bases = [baseY, enemyY];
         units.forEach((unit, i) => {
-          unit.position.x = i === 0 ? -1.65 : 1.65;
+          unit.position.x = i === 0 ? -1.15 : 1.1;
+          unit.position.z = i === 0 ? 1.7 : -1.7;
           unit.rotation.z = faint.current?.[i] ? (i === 0 ? -0.75 : 0.75) : 0;
           unit.position.y = bases[i] + (faint.current?.[i] ? -0.18 : 0);
         });
         const { event: action, start } = animation.current;
-        camera.position.x = 0;
+        camera.position.set(0, 4.2, camera.aspect < 1 ? 12 : 10);
+        const focus = new THREE.Vector3(0, 0.8, 0);
         if (action && !reduced) {
           const elapsed = t - start,
             p = Math.max(0, Math.min(1, elapsed / action.duration)),
@@ -151,19 +153,30 @@ export default function CreatureScene({
             action.skill === "tackle" ||
             action.skill === "struggle" ||
             action.skill?.startsWith("Netral-");
+          // Smooth push-in and return, preserving the near/far battle axis.
+          const emphasis = Math.sin(p * Math.PI);
+          camera.position.z -= emphasis * 0.75;
+          camera.position.y -= emphasis * 0.3;
+          focus.x = caster.position.x * emphasis * 0.18;
           const wind = Math.sin(Math.min(1, p / 0.3) * Math.PI);
-          caster.position.x -= direction * wind * 0.22;
+          caster.position.x -= direction * wind * 0.16;
+          caster.position.z += direction * wind * 0.24;
           caster.rotation.z = -direction * wind * 0.12;
           if (physical && p > 0.25 && p < 0.8) {
-            const dash = Math.sin(((p - 0.25) / 0.55) * Math.PI);
-            caster.position.x += direction * dash * 1.55;
+            const dash =
+              p < hit
+                ? THREE.MathUtils.smoothstep(p, 0.25, hit)
+                : 1 - THREE.MathUtils.smoothstep(p, hit, 0.8);
+            caster.position.x += direction * dash * 1.7;
+            caster.position.z -= direction * dash * 2.6;
             caster.position.y += dash * 0.15;
           }
           if (!physical && p < 0.5)
             caster.position.y += Math.sin((p / 0.5) * Math.PI) * 0.16;
           if (p >= hit && !action.missed && action.damage) {
             const recoil = Math.max(0, 1 - (p - hit) / (1 - hit));
-            target.position.x += direction * Math.sin(recoil * Math.PI) * 0.35;
+            target.position.x += direction * Math.sin(recoil * Math.PI) * 0.25;
+            target.position.z -= direction * Math.sin(recoil * Math.PI) * 0.4;
             target.rotation.z = direction * Math.sin(recoil * Math.PI) * 0.22;
             if (action.ko) {
               target.rotation.z = direction * (1 - recoil) * 0.75;
@@ -175,7 +188,7 @@ export default function CreatureScene({
               (action.critical ? 0.08 : 0.025);
           }
         }
-        camera.lookAt(0, 1, 0);
+        camera.lookAt(focus);
       }
       renderer.render(scene, camera);
     };

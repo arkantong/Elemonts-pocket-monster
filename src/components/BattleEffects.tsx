@@ -43,67 +43,81 @@ export function BattleEffects({ event }: { event?: PlayingEvent }) {
         )}
       </div>
       {event.kind === "skill" && (
-        <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid meet">
-          <g className="fx-charge">
-            <circle cx="105" cy="150" r="22" />
-            <circle cx="105" cy="150" r="33" />
+        <svg viewBox="0 0 400 230" preserveAspectRatio="none">
+          <g
+            transform={
+              event.side === 0
+                ? "matrix(.5,-.158,0,1,100,36.6)"
+                : "matrix(-.5,.263,0,1,300,-47.6)"
+            }
+          >
+            <g className="fx-charge">
+              <circle cx="105" cy="150" r="22" />
+              <circle cx="105" cy="150" r="33" />
+            </g>
+            {guard ? (
+              <ellipse
+                className="fx-shield"
+                cx="105"
+                cy="140"
+                rx="44"
+                ry="62"
+              />
+            ) : (
+              <>
+                {Array.from({ length: count }, (_, i) => (
+                  <g
+                    key={i}
+                    className="fx-projectile"
+                    style={
+                      {
+                        "--i": i,
+                        "--spread": `${(i - count / 2) * 5}px`,
+                      } as CSSProperties
+                    }
+                  >
+                    {element === "Listrik" ? (
+                      <path d="M0 -14 L-8 1 L2 0 L-5 16 L14 -4 L3 -3 Z" />
+                    ) : element === "Tanah" ? (
+                      <path d="M-10 -7 L3 -12 L12 -2 L7 10 L-8 8 Z" />
+                    ) : element === "Netral" ? (
+                      <path d="M-18 10 Q-5 -16 20 -12 Q0 -4 -18 10" />
+                    ) : element === "Holy" ? (
+                      <path d="M0 -15 L4 -4 L15 0 L4 4 L0 15 L-4 4 L-15 0 L-4 -4 Z" />
+                    ) : (
+                      <ellipse
+                        rx={element === "Air" ? 8 : 11}
+                        ry={element === "Api" ? 17 : 10}
+                      />
+                    )}
+                  </g>
+                ))}
+                {tier > 0 && (
+                  <path
+                    className="fx-beam"
+                    d={
+                      element === "Listrik"
+                        ? "M105 150 L150 128 L170 158 L208 128 L238 150 L295 140"
+                        : "M105 150 Q200 110 295 140"
+                    }
+                  />
+                )}
+                {!event.missed && (
+                  <g className="fx-impact">
+                    <circle cx="295" cy="140" r="29" />
+                    <circle cx="295" cy="140" r="46" />
+                    {Array.from({ length: 10 }, (_, i) => (
+                      <path
+                        key={i}
+                        d="M295 96 L295 77"
+                        transform={`rotate(${i * 36} 295 140)`}
+                      />
+                    ))}
+                  </g>
+                )}
+              </>
+            )}
           </g>
-          {guard ? (
-            <ellipse className="fx-shield" cx="105" cy="140" rx="44" ry="62" />
-          ) : (
-            <>
-              {Array.from({ length: count }, (_, i) => (
-                <g
-                  key={i}
-                  className="fx-projectile"
-                  style={
-                    {
-                      "--i": i,
-                      "--spread": `${(i - count / 2) * 5}px`,
-                    } as CSSProperties
-                  }
-                >
-                  {element === "Listrik" ? (
-                    <path d="M0 -14 L-8 1 L2 0 L-5 16 L14 -4 L3 -3 Z" />
-                  ) : element === "Tanah" ? (
-                    <path d="M-10 -7 L3 -12 L12 -2 L7 10 L-8 8 Z" />
-                  ) : element === "Netral" ? (
-                    <path d="M-18 10 Q-5 -16 20 -12 Q0 -4 -18 10" />
-                  ) : element === "Holy" ? (
-                    <path d="M0 -15 L4 -4 L15 0 L4 4 L0 15 L-4 4 L-15 0 L-4 -4 Z" />
-                  ) : (
-                    <ellipse
-                      rx={element === "Air" ? 8 : 11}
-                      ry={element === "Api" ? 17 : 10}
-                    />
-                  )}
-                </g>
-              ))}
-              {tier > 0 && (
-                <path
-                  className="fx-beam"
-                  d={
-                    element === "Listrik"
-                      ? "M105 150 L150 128 L170 158 L208 128 L238 150 L295 140"
-                      : "M105 150 Q200 110 295 140"
-                  }
-                />
-              )}
-              {!event.missed && (
-                <g className="fx-impact">
-                  <circle cx="295" cy="140" r="29" />
-                  <circle cx="295" cy="140" r="46" />
-                  {Array.from({ length: 10 }, (_, i) => (
-                    <path
-                      key={i}
-                      d="M295 96 L295 77"
-                      transform={`rotate(${i * 36} 295 140)`}
-                    />
-                  ))}
-                </g>
-              )}
-            </>
-          )}
         </svg>
       )}
       <div className={`fx-result ${event.side === 1 ? "target-left" : ""}`}>

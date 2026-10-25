@@ -25,6 +25,8 @@ test("battle shows ordered skills, locks input, and changes HP at impact", async
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
+  await page.locator(".creature-canvas canvas").waitFor();
+  await page.screenshot({ path: "docs/qa/battle-depth.png" });
   const hp = await page.locator(".health-panel.side-1 small").innerText();
   await page.locator(".move-button").nth(1).click();
   await expect(page.locator(".battle-stage")).toHaveAttribute(
