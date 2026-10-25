@@ -15,4 +15,9 @@ fi
 if [[ ! -d "$DESIGN_TOOLS_ROOT/3d-game-shaders-for-beginners/.git" ]]; then
   git clone --depth 1 https://github.com/lettier/3d-game-shaders-for-beginners.git "$DESIGN_TOOLS_ROOT/3d-game-shaders-for-beginners"
 fi
+if command -v blender >/dev/null 2>&1; then
+  blender --version
+else
+  printf 'Blender is not provided by this base image; install an official Linux build before running scripts/check-blender.py.\n'
+fi
 printf 'Tools installed under %s. See docs/DESIGN-TOOLS.md for launch commands and limitations.\n' "$DESIGN_TOOLS_ROOT"
