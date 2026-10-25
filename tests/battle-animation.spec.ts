@@ -44,5 +44,21 @@ test("battle shows ordered skills, locks input, and changes HP at impact", async
     "aria-busy",
     "false",
   );
+  for (const viewport of [
+    { width: 320, height: 740 },
+    { width: 430, height: 932 },
+    { width: 1280, height: 900 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await expect(page.locator(".move-button").first()).toBeVisible();
+    await expect
+      .poll(() =>
+        page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+      )
+      .toBe(true);
+    await page.screenshot({
+      path: `/tmp/elemonts-portrait-${viewport.width}.png`,
+    });
+  }
   expect(errors).toEqual([]);
 });

@@ -2437,3 +2437,51 @@ input[type="checkbox"] {
 .capture-welcome-icon, .capture-new-friend { display: flex; align-items: center; gap: 14px; margin: 16px 0; color: #587c3d; }
 .capture-new-friend .portrait { width: 90px; height: 90px; }
 .capture-new-friend strong { font-size: 1.4rem; }
+
+/* Immersive portrait battle: navy/violet HUD over the existing Nusaraya arena. */
+.app-shell:has(.battle-page) { display:block; max-width:none; padding:0; }
+.app-shell:has(.battle-page) .sidebar,
+.app-shell:has(.battle-page) .topbar,
+.app-shell:has(.battle-page) .bottom-nav { display:none; }
+.app-shell:has(.battle-page) main,
+.app-shell:has(.battle-page) .main-content { padding:0; margin:0; max-width:none; }
+.battle-page { --battle-ink:#121535; --battle-edge:#b8a5ff; position:relative; isolation:isolate; min-height:100dvh; color:#fff; padding: max(12px,env(safe-area-inset-top)) 14px max(14px,env(safe-area-inset-bottom)); background:linear-gradient(180deg,#090e2500 35%,#111334cc 67%,#141333 100%),url('/art/nusaraya.png') center/cover; }
+.battle-page > .page-heading { position:absolute; z-index:4; left:14px; top:max(12px,env(safe-area-inset-top)); margin:0; }
+.battle-page > .page-heading h1,.battle-page > .page-heading p { display:none; }
+.battle-page .turn-label { background:#171637e8; border:1px solid var(--battle-edge); color:#fff; border-radius:4px 18px 4px 18px; padding:8px 14px; }
+.battle-page .battle-stage { height: max(320px,55dvh); border-radius:0; overflow:visible; }
+.battle-page .scene-background { display:none; }
+.battle-page .battle-stage > .creature-canvas { inset:8% -14px 0; }
+.battle-page .health-panels { inset:0; display:block; pointer-events:none; }
+.battle-page .health-panel { position:absolute; width: min(240px,66%); padding:9px 13px; background:linear-gradient(115deg,#47309b,#111735 65%); border:2px solid var(--battle-edge); border-radius:5px 22px 5px 22px; box-shadow:0 3px 12px #09091d70; color:white; }
+.battle-page .health-panel.side-1 { right:0; top:48px; }
+.battle-page .health-panel.side-0 { left:0; bottom:0; }
+.battle-page .health-panel > div:first-child { margin-bottom:5px; }
+.battle-page .health-panel strong { font:700 17px 'Nunito Sans'; }
+.battle-page .health-panel small { font-size:12px; color:white; margin-top:3px; }
+.battle-page .health-panel span { color:#e4dfff; }
+.battle-page .battle-console { background:transparent; border:0; padding:0; margin:10px 0 0; border-radius:0; }
+.battle-page .battle-log { min-height:0; padding:0; border:0; color:#e9e8ff; font-size:12px; }
+.battle-page .battle-log p { margin:0; }
+.battle-page .battle-log p:not(:last-child) { display:none; }
+.battle-page .action-heading { margin:8px 0; }
+.battle-page .action-heading h3 { font:700 14px 'Nunito Sans'; color:white; }
+.battle-page .move-grid { grid-template-columns:1fr; gap:8px; }
+.battle-page .move-button { display:grid; grid-template-columns:40px minmax(0,1fr) auto; align-items:center; align-content:center; gap:10px; min-height:59px; padding:8px 15px; color:white; background:linear-gradient(115deg,#684bcc 0%,#392b85 22%,#111630 23%,#181b40 90%,#5031a2 91%); border:2px solid #b8a5ff; border-radius:23px 6px 23px 6px; box-shadow:0 2px 0 #322060,0 3px 10px #0004; }
+.battle-page .move-button > svg,.battle-page .move-button > .skill-icon { grid-column:1; grid-row:1; width:38px; height:38px; border:2px solid #ffffff9c; border-radius:50%; padding:7px; background:var(--skill-color,#73648e); color:white!important; }
+.battle-page .move-button > div { grid-column:2; grid-row:1; }
+.battle-page .move-button > span { grid-column:3; grid-row:1; font-size:17px; font-weight:800; font-style:italic; }
+.battle-page .move-button strong { font-size:16px; }
+.battle-page .move-button small { font-size:10px; line-height:1.2; margin-top:2px; color:#d9d6ed; }
+.battle-page .move-button:hover:not(:disabled),.battle-page .move-button:focus-visible { border-color:#d9ff72; outline:2px solid #d9ff72; outline-offset:2px; background:linear-gradient(115deg,#656f20,#292855 35%); }
+.battle-page .move-button:disabled { opacity:.48; }
+.battle-page .battle-tools { display:flex; gap:8px; margin-top:12px; }
+.battle-page .battle-tools button { flex:1; justify-content:center; min-height:48px; font-size:12px; color:white; background:#1a193c; border:1px solid #b8a5ff; border-radius:6px 16px; padding:6px; }
+.battle-page .battle-tools > span { width:100%; justify-content:flex-end; font-size:11px; color:#d9d6ed; }
+.battle-page .battle-result { color:white; background:#151831e8; border:1px solid #b8a5ff; padding:18px; border-radius:12px; }
+.battle-page .capture-guide { color:#203421; }
+@media(min-width:700px) { .battle-page { max-width:540px; margin:auto; } .app-shell:has(.battle-page) { background:#10132b; } }
+@media(max-height:740px) { .battle-page .battle-stage { height:380px; } }
+.app-shell:has(.battle-page) .app-content { margin:0; padding:0; width:100%; }
+.battle-page { background-color:#141333; background-size:100% 100%,auto max(340px,60dvh); background-position:center,center top; background-repeat:no-repeat; }
+.battle-page .move-button > svg { stroke:#fff; }

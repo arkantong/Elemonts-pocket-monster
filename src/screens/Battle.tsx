@@ -3,7 +3,7 @@ import { useBattlePlayback } from "../game/useBattlePlayback";
 import { BattleEffects } from "../components/BattleEffects";
 import { CaptureGuide } from "../components/CaptureGuide";
 import { t } from "../i18n";
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useState, type CSSProperties } from "react";
 import { motion } from "motion/react";
 import {
   ArrowRight,
@@ -14,7 +14,7 @@ import {
   Shield,
   Trophy,
 } from "lucide-react";
-import { SPECIES, SKILLS, ITEMS, type ItemId } from "../game/data";
+import { SPECIES, SKILLS, ITEMS, COLORS, type ItemId } from "../game/data";
 import type { Battle as BattleState, BattleAction } from "../game/types";
 import { ElementIcon, Meter, Modal, Portrait } from "../components/ui";
 const CreatureScene = lazy(() => import("../components/CreatureScene"));
@@ -272,6 +272,11 @@ export function BattleScreen({
                     return (
                       <button
                         key={id}
+                        style={
+                          {
+                            "--skill-color": COLORS[skill.element],
+                          } as CSSProperties
+                        }
                         className={`move-button ${lesson && save.captureTutorial === "weaken" && i === 0 ? "capture-target" : ""}`}
                         disabled={
                           waiting ||
@@ -282,7 +287,11 @@ export function BattleScreen({
                         }
                         onClick={() => send({ type: "skill", index: i })}
                       >
-                        <ElementIcon element={skill.element} size={23} />
+                        {id === "guard" ? (
+                          <Shield className="skill-icon" size={23} />
+                        ) : (
+                          <ElementIcon element={skill.element} size={23} />
+                        )}
                         <div>
                           <strong>{t(skill.name)}</strong>
                           <small>
