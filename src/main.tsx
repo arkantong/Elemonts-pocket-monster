@@ -1,3 +1,4 @@
+import { MusicProvider } from "./components/Music";
 import { t } from "./i18n";
 import React, { Component, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
@@ -42,7 +43,9 @@ createRoot(document.getElementById("root")!).render(
     <LanguageProvider>
       <ErrorBoundary>
         <GameProvider>
-          <App />
+          <MusicProvider>
+            <App />
+          </MusicProvider>
         </GameProvider>
       </ErrorBoundary>
     </LanguageProvider>

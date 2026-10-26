@@ -1,3 +1,4 @@
+import { MusicToggle } from "../components/Music";
 import { BrandMark } from "../components/BrandMark";
 import { useState } from "react";
 import { Check, Globe, Leaf, ArrowRight } from "lucide-react";
@@ -44,6 +45,9 @@ export function LanguagePicker() {
   return (
     <main className="language-screen">
       <div className="language-card">
+        <div className="opening-music">
+          <MusicToggle />
+        </div>
         <div className="language-brand">
           <BrandMark size={48} /> Elemonts
         </div>

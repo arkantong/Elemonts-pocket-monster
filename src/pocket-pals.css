@@ -48,3 +48,10 @@ input,select,textarea,.search { border-color:#E0D3E5; color:#332A3F; }
 .battle-page > .page-heading { right:14px; gap:8px; padding:4px 8px; border-radius:12px; background:#332a3fe8; }
 .battle-page > .page-heading h1 { display:block; font:700 12px/1.4 'Plus Jakarta Sans',sans-serif; color:#FFF7F0; margin:0; max-width:210px; }
 .battle-page .turn-label { background:transparent; border:0; color:#FFF7F0; padding:6px; font-size:12px; }
+
+.music-toggle { min-width:48px; min-height:48px; flex-shrink:0; }
+.music-toggle[aria-pressed="true"] { background:#E5DAFF; color:#5D4B7B; }
+.language-card { position:relative; }
+.opening-music { display:flex; justify-content:flex-end; margin-bottom:8px; }
+@media(max-width:380px) { .top-actions { gap:4px; } .topbar .wallet { padding:6px; font-size:11px; } .mobile-brand { font-size:18px; gap:4px; } .mobile-brand .pocket-mark { width:26px; } }
+@media(max-width:380px) { .topbar .wallet.capsules { display:none; } }

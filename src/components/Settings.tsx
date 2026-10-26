@@ -1,3 +1,4 @@
+import { MusicToggle } from "./Music";
 import { t } from "../i18n";
 import { useState } from "react";
 import { Download, Upload, Volume2, VolumeX, Trash2 } from "lucide-react";
@@ -54,6 +55,7 @@ export function Settings({ close }: { close: () => void }) {
         )}
       </p>
       {t(storageError && <p className="notice">{t(storageError)}</p>)}
+      <MusicToggle settings />
       <button className="item-row" onClick={() => act({ type: "sound" })}>
         {t(save.sound ? <Volume2 /> : <VolumeX />)}
         <span>
