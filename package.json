@@ -1,6 +1,6 @@
 {
   "name": "elemonts",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,8 +10,9 @@
     "server": "tsx watch server/index.ts",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "android:sync": "npm run build && cap sync android",
-    "android:open": "cap open android"
+    "android:sync": "npm run build:android && cap sync android",
+    "android:open": "cap open android",
+    "build:android": "tsc --noEmit && vite build --mode native"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.3",

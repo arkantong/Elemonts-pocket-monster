@@ -2,7 +2,13 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.10 (debug)](downloads/elemonts-0.1.10-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.11 (debug)](downloads/elemonts-0.1.11-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+
+## Perbaikan update Android 0.1.11
+
+APK memakai build native tanpa service worker. Hook Android membersihkan registrasi service worker lama dan cache aset Workbox, kemudian memuat ulang bila diperlukan; localStorage, IndexedDB, cookies, dan data game tidak dihapus. Label versi Pengaturan berasal dari versi build, bukan teks tetap. Pasang APK baru sebagai pembaruan pada aplikasi lama; tidak perlu uninstall atau Hapus data.
+
+Build Android harus memakai `npm run android:sync` (menjalankan `build:android` / mode native). `npm run build` tetap menghasilkan PWA untuk browser. Uji regresi upgrade di `tests/android-upgrade.spec.ts` memerlukan aset `assets/public/` dari APK 0.1.9 diekstrak ke `/tmp/elemonts-upgrade-old/` dan hasil `npm run build:android` di `dist/`. Uji tersebut mereproduksi worker lama yang masih menyajikan aplikasi lama, menjalankan skrip pemulihan yang sama dengan Android, lalu memeriksa model terbaru dan penyimpanan pemain.
 
 ## Grafis 0.1.10
 

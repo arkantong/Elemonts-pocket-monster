@@ -138,7 +138,7 @@ export function Settings({ close }: { close: () => void }) {
         ),
       )}
       <p className="small-help section-space">
-        {t("Elemonts 0.1.4 · Prototipe internal")}
+        {`Elemonts ${__APP_VERSION__} · ${language === "id" ? "Prototipe internal" : "Internal prototype"}`}
         <br />
         {t("Model 3D dan balancing masih dalam tahap penyempurnaan.")}
       </p>
