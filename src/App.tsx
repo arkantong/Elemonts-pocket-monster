@@ -1,3 +1,4 @@
+import { BrandMark } from "./components/BrandMark";
 import { APPEARANCE } from "./game/appearance";
 import { t, formatLocale } from "./i18n";
 import { useEffect, useState } from "react";
@@ -108,7 +109,7 @@ export default function App() {
       <div className="app-shell">
         <aside className="sidebar">
           <a className="brand" href="#rumah" aria-label={t("Elemonts, rumah")}>
-            <Leaf size={30} />
+            <BrandMark size={42} />
             <span>{t("Elemonts")}</span>
           </a>
           <nav aria-label={t("Navigasi utama")}>
@@ -135,7 +136,7 @@ export default function App() {
         <div className="app-content">
           <header className="topbar">
             <a className="mobile-brand" href="#rumah">
-              <Leaf size={22} />
+              <BrandMark size={34} />
               <strong>{t("Elemonts")}</strong>
             </a>
             <span className="desktop-topline">{t("Jurnal petualanganmu")}</span>

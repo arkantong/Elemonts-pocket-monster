@@ -25,13 +25,13 @@ export type Species = {
   base: Stats;
 };
 export const COLORS: Record<Element, string> = {
-  Api: "#d95c29",
-  Air: "#238ba6",
-  Listrik: "#b58516",
-  Tanah: "#877052",
-  Netral: "#8c6fa0",
-  Holy: "#bf9f47",
-  Dark: "#535178",
+  Api: "#FF7B5A",
+  Air: "#5CC8E8",
+  Listrik: "#F5C84B",
+  Tanah: "#B58A63",
+  Netral: "#B8A7FF",
+  Holy: "#FFE28A",
+  Dark: "#6B5E91",
 };
 const families: [
   string[],

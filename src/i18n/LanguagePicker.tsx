@@ -1,3 +1,4 @@
+import { BrandMark } from "../components/BrandMark";
 import { useState } from "react";
 import { Check, Globe, Leaf, ArrowRight } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
@@ -44,7 +45,7 @@ export function LanguagePicker() {
     <main className="language-screen">
       <div className="language-card">
         <div className="language-brand">
-          <Leaf size={32} aria-hidden="true" /> Elemonts
+          <BrandMark size={48} /> Elemonts
         </div>
         <Globe className="language-globe" size={40} aria-hidden="true" />
         <h1>Choose your language</h1>

@@ -1,12 +1,13 @@
 import { t } from "./i18n";
 import React, { Component, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
-import "@fontsource/nunito-sans/400.css";
-import "@fontsource/nunito-sans/600.css";
-import "@fontsource/nunito-sans/700.css";
-import "@fontsource/fredoka/500.css";
-import "@fontsource/fredoka/600.css";
+import "@fontsource/bricolage-grotesque/600.css";
+import "@fontsource/bricolage-grotesque/700.css";
+import "@fontsource/plus-jakarta-sans/400.css";
+import "@fontsource/plus-jakarta-sans/600.css";
+import "@fontsource/plus-jakarta-sans/700.css";
 import "./styles.css";
+import "./pocket-pals.css";
 import App from "./App";
 import { LanguageProvider } from "./i18n/LanguageProvider";
 import { GameProvider } from "./game/context";
