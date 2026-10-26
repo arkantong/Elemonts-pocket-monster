@@ -2,7 +2,13 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.9 (debug)](downloads/elemonts-0.1.9-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.10 (debug)](downloads/elemonts-0.1.10-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+
+## Grafis 0.1.10
+
+Pyroo dan Croobit memakai model Blender dari studi karakter yang disetujui, beserta potret baru. Model GLB dibundel untuk penggunaan offline dan dimuat dengan fallback jika aset gagal dibaca. Model yang dimuat ulang memakai salinan resource terpisah agar perpindahan layar tidak merusak instance lain.
+
+Monster memakai cel shading tiga tingkat. Arena battle menggunakan padang rumput 3D orisinal dengan bukit, kabut, pepohonan, bunga, dan rumput yang bergerak (diam saat reduced motion aktif). Arah visual terinspirasi petualangan alam bergaya ilustrasi; ini tahap awal, bukan reproduksi kualitas atau aset Breath of the Wild. Latar rumah masih menggunakan gambar sebelumnya. Animasi serangan masih berupa pergerakan seluruh model, belum rig anggota tubuh.
 
 ## Menjalankan game
 

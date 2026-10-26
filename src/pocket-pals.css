@@ -55,3 +55,14 @@ input,select,textarea,.search { border-color:#E0D3E5; color:#332A3F; }
 .opening-music { display:flex; justify-content:flex-end; margin-bottom:8px; }
 @media(max-width:380px) { .top-actions { gap:4px; } .topbar .wallet { padding:6px; font-size:11px; } .mobile-brand { font-size:18px; gap:4px; } .mobile-brand .pocket-mark { width:26px; } }
 @media(max-width:380px) { .topbar .wallet.capsules { display:none; } }
+
+/* Original meadow art direction: quiet forest HUD above the 3D arena. */
+.battle-page { background: #233c36; }
+.battle-page .battle-stage > .creature-canvas { inset: -20px -14px -28px; }
+.battle-page .battle-console { position: relative; z-index: 2; background: linear-gradient(#233c3600, #233c36 42px); }
+.battle-page .health-panel { background: #233c36e8; border-color: #d7d8ae; box-shadow: 0 3px 12px #152d2940; }
+.battle-page .turn-label { background: #233c36df; border-color: #d7d8ae; }
+.battle-page .move-button { background: #f5f0df; border-color: #d1d3af; box-shadow: 0 3px 0 #728779; color: #263c37; }
+.battle-page .move-button small { color: #52685b; }
+.battle-page .move-button:enabled:hover { background: #e7ebcf; }
+.battle-page .battle-tools button { background: #334e44; border-color: #bcc9ac; color: #fff7e5; }

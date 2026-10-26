@@ -1,3 +1,9 @@
+import { toonMaterials, createPainterlyMeadow } from "./painterlyWorld";
+import {
+  BLENDER_MODELS,
+  loadBlenderCreature,
+  disposeCreature,
+} from "./blenderCreatures";
 import { animateLivingCreature } from "./livingCreatures";
 import type { PlayingEvent } from "../game/useBattlePlayback";
 import { creature, APPEARANCE } from "./creatures";
@@ -53,24 +59,59 @@ export default function CreatureScene({
     renderer.setClearColor(0, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.15;
+    renderer.toneMappingExposure = 1.0;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
     el.appendChild(renderer.domElement);
     const scene = new THREE.Scene(),
-      camera = new THREE.PerspectiveCamera(33, 1, 0.1, 60);
+      camera = new THREE.PerspectiveCamera(33, 1, 0.1, 150);
     camera.position.set(0, 2.1, enemy ? 9.5 : 7);
     camera.lookAt(0, 1, 0);
-    scene.add(new THREE.HemisphereLight("#ffefd5", "#52654d", 3));
-    const key = new THREE.DirectionalLight("#fff0ce", 3.5);
+    scene.add(new THREE.HemisphereLight("#e2f0e4", "#78845a", 1.6));
+    const key = new THREE.DirectionalLight("#fff0ce", 2.6);
     key.position.set(-3, 6, 4);
     key.castShadow = true;
     key.shadow.mapSize.set(1024, 1024);
+    key.shadow.bias = -0.0005;
+    key.shadow.normalBias = 0.025;
     scene.add(key);
-    const fill = new THREE.DirectionalLight("#b8e7f5", 1.5);
+    const fill = new THREE.DirectionalLight("#b8e7f5", 0.65);
     fill.position.set(4, 2, -2);
     scene.add(fill);
-    const ours = creature(species);
+    const meadow = enemy ? createPainterlyMeadow() : undefined;
+    if (meadow) {
+      scene.add(meadow);
+      scene.background = new THREE.Color("#b4d4d1");
+      scene.fog = new THREE.Fog("#b4d4d1", 20, 100);
+    }
+    el.dataset.artStyle = "painterly";
+    let disposed = false;
+    const makeActor = (id: string, side: string) => {
+      const root = new THREE.Group();
+      const fallback = creature(id);
+      toonMaterials(fallback);
+      root.add(fallback);
+      el.dataset[side] = BLENDER_MODELS[id] ? "loading" : "procedural";
+      if (BLENDER_MODELS[id]) {
+        void loadBlenderCreature(id)
+          .then((model) => {
+            if (disposed) {
+              disposeCreature(model);
+              return;
+            }
+            root.remove(fallback);
+            disposeCreature(fallback);
+            toonMaterials(model);
+            root.add(model);
+            el.dataset[side] = "blender";
+          })
+          .catch(() => {
+            if (!disposed) el.dataset[side] = "fallback";
+          });
+      }
+      return root;
+    };
+    const ours = makeActor(species, "playerModel");
     const baseY = ours.position.y;
     const calm = ["Tenang", "Santai", "Pemalu", "Bijak"].includes(
       APPEARANCE[species].character,
@@ -80,9 +121,9 @@ export default function CreatureScene({
     scene.add(ours);
     let theirs: THREE.Group | undefined;
     if (enemy) {
-      theirs = creature(enemy);
+      theirs = makeActor(enemy, "enemyModel");
       theirs.position.set(1.1, theirs.position.y, -1.7);
-      theirs.rotation.y = -0.58;
+      theirs.rotation.y = -0.25;
       scene.add(theirs);
     }
     const floor = new THREE.Mesh(
@@ -141,7 +182,7 @@ export default function CreatureScene({
           unit.position.y = bases[i] + (faint.current?.[i] ? -0.18 : 0);
         });
         const { event: action, start } = animation.current;
-        camera.position.set(0, 4.2, camera.aspect < 1 ? 12 : 10);
+        camera.position.set(0, 2.7, camera.aspect < 1 ? 12 : 10);
         const focus = new THREE.Vector3(0, 0.8, 0);
         if (action && !reduced) {
           const elapsed = t - start,
@@ -191,23 +232,33 @@ export default function CreatureScene({
         }
         camera.lookAt(focus);
       }
-      animateLivingCreature(ours, t, reduced, !!faint.current?.[0]);
+      ours.children.forEach((child) =>
+        animateLivingCreature(
+          child as THREE.Group,
+          t,
+          reduced,
+          !!faint.current?.[0],
+        ),
+      );
       if (theirs)
-        animateLivingCreature(theirs, t, reduced, !!faint.current?.[1]);
+        theirs.children.forEach((child) =>
+          animateLivingCreature(
+            child as THREE.Group,
+            t,
+            reduced,
+            !!faint.current?.[1],
+          ),
+        );
+      if (meadow?.userData.windUniform)
+        meadow.userData.windUniform.value = reduced ? 0 : t * 0.001;
       renderer.render(scene, camera);
     };
     frame = requestAnimationFrame(tick);
     return () => {
+      disposed = true;
       cancelAnimationFrame(frame);
       observer.disconnect();
-      scene.traverse((o) => {
-        if (o instanceof THREE.Mesh) {
-          o.geometry.dispose();
-          (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) =>
-            m.dispose(),
-          );
-        }
-      });
+      disposeCreature(scene);
       renderer.dispose();
       renderer.forceContextLoss();
       renderer.domElement.remove();
