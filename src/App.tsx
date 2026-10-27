@@ -1,4 +1,3 @@
-import { MusicToggle } from "./components/Music";
 import { BrandMark } from "./components/BrandMark";
 import { APPEARANCE } from "./game/appearance";
 import { t, formatLocale } from "./i18n";
@@ -142,7 +141,6 @@ export default function App() {
             </a>
             <span className="desktop-topline">{t("Jurnal petualanganmu")}</span>
             <div className="top-actions">
-              <MusicToggle />
               <span className="wallet" aria-label={t(`${save.gold} gold`)}>
                 <Coins size={20} />
                 {t(save.gold.toLocaleString(formatLocale()))}
