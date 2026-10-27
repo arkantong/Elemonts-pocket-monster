@@ -4,7 +4,7 @@ import { createBattle } from '../src/game/battle';
 test('BGM plays after interaction, toggle persists and pauses while hidden',async({page})=>{
  await page.addInitScript(()=>{
   const Original=window.Audio;
-  window.Audio=class extends Original {constructor(src?:string){super(src);if(src?.includes('bgm-01'))(window as any).bgm=this;}};
+  window.Audio=class extends Original {constructor(src?:string){super(src);(window as any).bgm=this;}};
  });
  const s=transition(emptySave(),{type:'starter',species:'pyroo'});s.tutorial=true;s.captureTutorial='done';
  await page.addInitScript(({s,key})=>{if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(s));localStorage.setItem('elemonts.language.v1','en');},{s,key:SAVE_KEY});
@@ -22,11 +22,12 @@ test('BGM plays after interaction, toggle persists and pauses while hidden',asyn
  await expect.poll(()=>page.evaluate(()=>(window as any).bgm.paused)).toBe(false);
  await off.click();await expect.poll(()=>page.evaluate(()=>(window as any).bgm.paused)).toBe(true);
 });
-test('battle does not play the menu BGM',async({page})=>{
+test('wild battle plays its encounter BGM',async({page})=>{
  const s=transition(emptySave(),{type:'starter',species:'pyroo'});s.tutorial=true;s.captureTutorial='done';s.battle=createBattle('wild',[s.monsters[0]],[makeMonster('mippo',5)]);
- await page.addInitScript(({s,key})=>{localStorage.setItem(key,JSON.stringify(s));localStorage.setItem('elemonts.language.v1','en');const Original=window.Audio;window.Audio=class extends Original {constructor(src?:string){super(src);if(src?.includes('bgm-01'))(window as any).bgm=this;}};},{s,key:SAVE_KEY});
+ await page.addInitScript(({s,key})=>{localStorage.setItem(key,JSON.stringify(s));localStorage.setItem('elemonts.language.v1','en');const Original=window.Audio;window.Audio=class extends Original {constructor(src?:string){super(src);(window as any).bgm=this;}};},{s,key:SAVE_KEY});
  await page.goto('/');await page.locator('.battle-stage').waitFor();await page.locator('.move-button').first().click();
- expect(await page.evaluate(()=>(window as any).bgm.paused)).toBe(true);
+ await expect.poll(()=>page.evaluate(()=>(window as any).bgm.src)).toContain('bgm-06-a-wild-encounter');
+ await expect.poll(()=>page.evaluate(()=>(window as any).bgm.paused)).toBe(false);
 });
 test('music control is only in settings on narrow phones',async({page})=>{
  const s=transition(emptySave(),{type:'starter',species:'pyroo'});s.tutorial=true;s.captureTutorial='done';
@@ -37,4 +38,22 @@ test('music control is only in settings on narrow phones',async({page})=>{
  await expect(page.getByRole('button',{name:'Turn music on',exact:true})).toBeInViewport();
  await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await page.screenshot({path:'/tmp/elemonts-music-header.png'});
+});
+
+test('BGM follows language, starter, home, collection and explore screens',async({page})=>{
+ await page.addInitScript(()=>{const Original=window.Audio;window.Audio=class extends Original {constructor(src?:string){super(src);(window as any).bgm=this;}};});
+ await page.goto('/');
+ await expect.poll(()=>page.evaluate(()=>(window as any).bgm.src)).toContain('bgm-01-welcome-to-elemonts');
+ await page.locator('.language-card > button').click();
+ await expect.poll(()=>page.evaluate(()=>(window as any).bgm.src)).toContain('bgm-02-our-first-friend');
+ const s=transition(emptySave(),{type:'starter',species:'pyroo'});s.tutorial=true;s.captureTutorial='done';
+ await page.evaluate(({s,key})=>localStorage.setItem(key,JSON.stringify(s)),{s,key:SAVE_KEY});
+ await page.reload();
+ await expect.poll(()=>page.evaluate(()=>(window as any).bgm.src)).toContain('bgm-03-home-in-nusaraya');
+ await page.evaluate(()=>{location.hash='koleksi';});
+ await expect.poll(()=>page.evaluate(()=>(window as any).bgm.src)).toContain('bgm-04-pocket-companions');
+ await page.evaluate(()=>{location.hash='jelajah';});
+ await expect.poll(()=>page.evaluate(()=>(window as any).bgm.src)).toContain('bgm-05-beyond-the-garden');
+ await page.evaluate(()=>{location.hash='arena';});
+ await expect.poll(()=>page.evaluate(()=>(window as any).bgm.paused)).toBe(true);
 });

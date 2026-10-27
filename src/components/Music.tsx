@@ -15,6 +15,21 @@ const KEY = "elemonts.music.v1";
 const Context = createContext({ enabled: true, toggle: () => {} });
 export function MusicProvider({ children }: { children: ReactNode }) {
   const { save } = useGame();
+  const { chosen } = useLanguage();
+  const [tab, setTab] = useState(() => location.hash.slice(1) || "rumah");
+  useEffect(() => {
+    const update = () => setTab(location.hash.slice(1) || "rumah");
+    window.addEventListener("hashchange", update);
+    return () => window.removeEventListener("hashchange", update);
+  }, []);
+  const lesson = save.captureTutorial && save.captureTutorial !== "done";
+  const route = lesson ? (save.captureTutorial === "intro" ? "rumah" : "jelajah") : tab;
+  const track = !chosen ? "01-welcome-to-elemonts"
+    : !save.monsters.length ? "02-our-first-friend"
+    : save.battle ? (save.battle.mode === "wild" ? "06-a-wild-encounter" : null)
+    : route === "rumah" ? "03-home-in-nusaraya"
+    : route === "koleksi" ? "04-pocket-companions"
+    : route === "jelajah" ? "05-beyond-the-garden" : null;
   const [enabled, setEnabled] = useState(() => {
     try {
       return localStorage.getItem(KEY) !== "off";
@@ -25,9 +40,9 @@ export function MusicProvider({ children }: { children: ReactNode }) {
   const audio = useRef<HTMLAudioElement | null>(null);
   const allowed = useRef(false),
     foreground = useRef(true);
-  allowed.current = enabled && !save.battle;
+  allowed.current = enabled && !!track;
   useEffect(() => {
-    const player = new Audio("/audio/music/bgm-01-welcome-home.m4a");
+    const player = new Audio();
     audio.current = player;
     player.loop = true;
     player.volume = 0.3;
@@ -64,13 +79,23 @@ export function MusicProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const player = audio.current;
     if (!player) return;
+    player.pause();
+    if (track) player.src = `/audio/music/bgm-${track}.m4a`;
+    else player.removeAttribute("src");
+    player.load();
     if (allowed.current && foreground.current && !document.hidden)
       void player.play().catch(() => {});
     else player.pause();
-  }, [enabled, !!save.battle]);
+  }, [track]);
+  useEffect(() => {
+    const player = audio.current;
+    if (!player) return;
+    if (allowed.current && foreground.current && !document.hidden) void player.play().catch(() => {});
+    else player.pause();
+  }, [enabled]);
   const toggle = () => {
     const next = !enabled;
-    allowed.current = next && !save.battle;
+    allowed.current = next && !!track;
     setEnabled(next);
     try {
       localStorage.setItem(KEY, next ? "on" : "off");
