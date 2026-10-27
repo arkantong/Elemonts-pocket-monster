@@ -6,7 +6,7 @@ import {
   SAVE_KEY,
 } from "../src/game/state";
 import { createBattle } from "../src/game/battle";
-test("battle shows ordered skills, locks input, and changes HP at impact", async ({
+test("battle shows ordered skills, locks input, and drains HP after the hit response", async ({
   page,
 }) => {
   let s = transition(emptySave(), { type: "starter", species: "pyroo" });
@@ -18,7 +18,8 @@ test("battle shows ordered skills, locks input, and changes HP at impact", async
     ({ s, key }) => {
       localStorage.setItem(key, JSON.stringify(s));
       localStorage.setItem("elemonts.language.v1", "en");
-      Math.random = () => 0.1;
+      let seed = 123;
+      Math.random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
     },
     { s, key: SAVE_KEY },
   );
@@ -26,7 +27,7 @@ test("battle shows ordered skills, locks input, and changes HP at impact", async
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
   await page.locator(".creature-canvas canvas").waitFor();
-  await page.screenshot({ path: "docs/qa/battle-depth.png" });
+  await page.screenshot({ path: "/tmp/elemonts-battle-entry.png" });
   const hp = await page.locator(".health-panel.side-1 small").innerText();
   await page.locator(".move-button").nth(1).click();
   await expect(page.locator(".battle-stage")).toHaveAttribute(
@@ -38,6 +39,7 @@ test("battle shows ordered skills, locks input, and changes HP at impact", async
     "data-skill",
     "Api-0",
   );
+  await expect(page.locator(".battle-stage")).toHaveAttribute("data-phase", "hit", {timeout:10000});
   await expect(page.locator(".health-panel.side-1 small")).toHaveText(hp);
   await expect(page.locator(".health-panel.side-1 small")).not.toHaveText(hp);
   await expect(page.locator(".battle-stage")).toHaveAttribute(

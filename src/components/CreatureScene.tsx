@@ -19,6 +19,7 @@ export default function CreatureScene({
   room = true,
   event,
   fainted,
+  entry = 3,
 }: {
   species: string;
   enemy?: string;
@@ -26,6 +27,7 @@ export default function CreatureScene({
   room?: boolean;
   event?: PlayingEvent;
   fainted?: [boolean, boolean];
+  entry?: number;
 }) {
   const host = useRef<HTMLDivElement>(null),
     reaction = useRef(react),
@@ -33,6 +35,10 @@ export default function CreatureScene({
   const animation = useRef<{ event?: PlayingEvent; start: number }>({
     start: 0,
   });
+  const arrival = useRef({ phase: entry, start: performance.now() });
+  useEffect(() => {
+    arrival.current = { phase: entry, start: performance.now() };
+  }, [entry]);
   const faint = useRef(fainted);
   faint.current = fainted;
   useEffect(() => {
@@ -186,8 +192,17 @@ export default function CreatureScene({
         const focus = new THREE.Vector3(0, 0.8, 0);
         if (action && !reduced) {
           const elapsed = t - start,
-            p = Math.max(0, Math.min(1, elapsed / action.duration)),
-            hit = action.impact / action.duration;
+            p = Math.max(
+              0,
+              Math.min(
+                1,
+                (elapsed - action.motionStart) /
+                  (action.animationEnd - action.motionStart),
+              ),
+            ),
+            hit =
+              (action.impact - action.motionStart) /
+              (action.animationEnd - action.motionStart);
           const caster = units[action.side],
             target = units[1 - action.side],
             direction = action.side === 0 ? 1 : -1;
@@ -196,7 +211,7 @@ export default function CreatureScene({
             action.skill === "struggle" ||
             action.skill?.startsWith("Netral-");
           // Smooth push-in and return, preserving the near/far battle axis.
-          const emphasis = Math.sin(p * Math.PI);
+          const emphasis = 0;
           camera.position.z -= emphasis * 0.75;
           camera.position.y -= emphasis * 0.3;
           focus.x = caster.position.x * emphasis * 0.18;
@@ -204,14 +219,14 @@ export default function CreatureScene({
           caster.position.x -= direction * wind * 0.16;
           caster.position.z += direction * wind * 0.24;
           caster.rotation.z = -direction * wind * 0.12;
-          if (physical && p > 0.25 && p < 0.8) {
+          if (physical && p > 0 && p < 0.9) {
             const dash =
               p < hit
-                ? THREE.MathUtils.smoothstep(p, 0.25, hit)
-                : 1 - THREE.MathUtils.smoothstep(p, hit, 0.8);
-            caster.position.x += direction * dash * 1.7;
-            caster.position.z -= direction * dash * 2.6;
-            caster.position.y += dash * 0.15;
+                ? THREE.MathUtils.smoothstep(p, 0, hit)
+                : 1 - THREE.MathUtils.smoothstep(p, hit, 0.9);
+            caster.position.x += direction * dash * 0.38;
+            caster.position.z -= direction * dash * 0.5;
+            caster.position.y += dash * 0.04;
           }
           if (!physical && p < 0.5)
             caster.position.y += Math.sin((p / 0.5) * Math.PI) * 0.16;
@@ -220,17 +235,39 @@ export default function CreatureScene({
             target.position.x += direction * Math.sin(recoil * Math.PI) * 0.25;
             target.position.z -= direction * Math.sin(recoil * Math.PI) * 0.4;
             target.rotation.z = direction * Math.sin(recoil * Math.PI) * 0.22;
-            if (action.ko) {
+            if (action.ko && elapsed >= action.resultStart) {
               target.rotation.z = direction * (1 - recoil) * 0.75;
               target.position.y -= 0.18 * (1 - recoil);
             }
-            camera.position.x =
-              Math.sin(elapsed * 0.06) *
-              recoil *
-              (action.critical ? 0.08 : 0.025);
+            camera.position.x = 0;
           }
         }
         camera.lookAt(focus);
+        units.forEach((unit) => {
+          unit.visible = true;
+          unit.scale.setScalar(1);
+        });
+        const entering = arrival.current;
+        const progress = Math.min(1, (t - entering.start) / 600);
+        ours.visible = entering.phase >= 2;
+        theirs.visible = entering.phase >= 1;
+        if (!reduced && entering.phase === 1)
+          theirs.position.x += (1 - progress) * 3;
+        if (!reduced && entering.phase === 2)
+          ours.scale.setScalar(0.05 + 0.95 * progress);
+        const elapsed = t - animation.current.start;
+        if (
+          action &&
+          action.damage &&
+          !reduced &&
+          elapsed >= action.hitStart &&
+          elapsed < action.hpStart
+        ) {
+          units[1 - action.side].visible =
+            Math.floor((elapsed - action.hitStart) / ((1000 / 59.7275) * 4)) %
+              2 ===
+            1;
+        }
       }
       ours.children.forEach((child) =>
         animateLivingCreature(

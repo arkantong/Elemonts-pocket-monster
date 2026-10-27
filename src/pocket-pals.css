@@ -66,3 +66,17 @@ input,select,textarea,.search { border-color:#E0D3E5; color:#332A3F; }
 .battle-page .move-button small { color: #52685b; }
 .battle-page .move-button:enabled:hover { background: #e7ebcf; }
 .battle-page .battle-tools button { background: #334e44; border-color: #bcc9ac; color: #fff7e5; }
+
+/* Separate announcement, move, hit response, HP drain and result beats. */
+.battle-entry-wipe { position:absolute; inset:-30px -14px; z-index:8; background:#152b29; animation:battle-uncover .4s both; pointer-events:none; }
+@keyframes battle-uncover { from { clip-path:inset(0); } to { clip-path:inset(50% 0); } }
+.battle-fx .fx-charge,.battle-fx .fx-beam,.battle-fx .fx-shield { animation-duration:var(--fx-motion); animation-delay:var(--fx-start); }
+.battle-fx .fx-projectile { animation-name:classic-projectile; animation-duration:var(--fx-travel); animation-delay:calc(var(--fx-start) + var(--i)*12ms); }
+@keyframes classic-projectile { 0% { opacity:0;transform:translate(105px,150px) scale(.4); } 10%{opacity:1;} 80%{opacity:1;transform:translate(295px,calc(140px + var(--spread))) scale(1);} 100%{opacity:0;transform:translate(300px,calc(140px + var(--spread))) scale(.3);} }
+.battle-fx.melee-fx .fx-projectile,.battle-fx.melee-fx .fx-charge,.battle-fx.melee-fx .fx-beam { display:none; }
+.battle-fx .fx-impact { animation:classic-hit 250ms var(--fx-impact) both; }
+@keyframes classic-hit { 0%{opacity:0;scale:.3;} 15%{opacity:1;scale:.7;} 100%{opacity:0;scale:1.45;} }
+.battle-fx .fx-result { animation-delay:var(--fx-result); animation-duration:600ms; }
+@media(prefers-reduced-motion:reduce){ .battle-entry-wipe{animation:none;display:none;} .battle-fx .fx-projectile,.battle-fx .fx-impact {display:none;} }
+
+.battle-fx.miss-fx .fx-projectile { animation-name:projectile-miss; }

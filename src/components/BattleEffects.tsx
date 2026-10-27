@@ -19,6 +19,10 @@ export function BattleEffects({ event }: { event?: PlayingEvent }) {
     "--fx-color": COLORS[element],
     "--fx-time": `${event.duration}ms`,
     "--fx-impact": `${event.impact}ms`,
+    "--fx-start": `${event.motionStart}ms`,
+    "--fx-motion": `${event.animationEnd - event.motionStart}ms`,
+    "--fx-travel": `${(event.impact - event.motionStart) / 0.8}ms`,
+    "--fx-result": `${event.hpStart}ms`,
   } as CSSProperties;
   const count = guard ? 1 : tier === 2 ? 16 : tier === 1 ? 10 : 6;
   return (

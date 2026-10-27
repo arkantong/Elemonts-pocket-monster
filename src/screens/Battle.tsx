@@ -1,9 +1,10 @@
+import { useLanguage } from "../i18n/LanguageProvider";
 import { useGame } from "../game/context";
 import { useBattlePlayback } from "../game/useBattlePlayback";
 import { BattleEffects } from "../components/BattleEffects";
 import { CaptureGuide } from "../components/CaptureGuide";
 import { t } from "../i18n";
-import { lazy, Suspense, useState, type CSSProperties } from "react";
+import { lazy, Suspense, useState, useEffect, type CSSProperties } from "react";
 import { motion } from "motion/react";
 import {
   ArrowRight,
@@ -34,14 +35,32 @@ export function BattleScreen({
   onForfeit?: () => void;
 }) {
   const { save, act } = useGame();
+  const { language } = useLanguage();
+  const [entry, setEntry] = useState(incoming.turn === 1 ? 0 : 3);
+  useEffect(() => {
+    if (incoming.turn !== 1) {
+      setEntry(3);
+      return;
+    }
+    setEntry(0);
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const times = reduced ? [80, 160, 300] : [400, 1050, 1850];
+    const timers = times.map((ms, i) => setTimeout(() => setEntry(i + 1), ms));
+    return () => timers.forEach(clearTimeout);
+  }, [incoming.id]);
   const lesson =
     save.battle?.id === incoming.id &&
     !!save.captureTutorial &&
     save.captureTutorial !== "done";
-  const { battle, event, playing } = useBattlePlayback(incoming, save.sound);
+  const { battle, event, playing, phase } = useBattlePlayback(
+    incoming,
+    save.sound,
+  );
   const animating =
     playing || incoming.turn !== battle.turn || incoming.id !== battle.id;
-  const waiting = remoteWaiting || animating;
+  const waiting = remoteWaiting || animating || entry < 3;
   const [menu, setMenu] = useState<"switch" | "bag" | null>(() =>
     lesson && save.captureTutorial === "capsule" ? "bag" : null,
   );
@@ -85,7 +104,15 @@ export function BattleScreen({
           {t(battle.turn)}
         </span>
       </div>
-      <section className="battle-stage" aria-busy={animating}>
+      <section
+        className="battle-stage"
+        aria-busy={animating || entry < 3}
+        data-entry={entry}
+        data-phase={phase}
+      >
+        {entry === 0 && (
+          <div className="battle-entry-wipe" aria-hidden="true" />
+        )}
         <BattleEffects event={event} />
         {t(
           captureFx && (
@@ -176,6 +203,7 @@ export function BattleScreen({
             species={ours.monster.species}
             enemy={enemy.monster.species}
             event={event}
+            entry={entry}
             fainted={[ours.hp <= 0, enemy.hp <= 0]}
             react={0}
             room={false}
@@ -184,10 +212,31 @@ export function BattleScreen({
       </section>
       <div className="battle-console">
         <div className="battle-log" role="log" aria-live="polite">
-          {t(
+          {entry < 3 ? (
+            <p>
+              {language === "id"
+                ? entry < 2
+                  ? `${SPECIES[enemy.monster.species].name} muncul!`
+                  : `Ayo, ${SPECIES[ours.monster.species].name}!`
+                : entry < 2
+                  ? `${SPECIES[enemy.monster.species].name} appeared!`
+                  : `Go, ${SPECIES[ours.monster.species].name}!`}
+            </p>
+          ) : event?.skill && phase !== "result" ? (
+            <p>
+              {
+                SPECIES[
+                  battle.teams[event.side][battle.active[event.side]].monster
+                    .species
+                ].name
+              }{" "}
+              {language === "id" ? "menggunakan" : "used"}{" "}
+              {t(SKILLS[event.skill].name)}!
+            </p>
+          ) : (
             battle.log
               .slice(-3)
-              .map((line, i) => <p key={`${battle.turn}-${i}`}>{t(line)}</p>),
+              .map((line, i) => <p key={`${battle.turn}-${i}`}>{t(line)}</p>)
           )}
         </div>
         {lesson && !battle.result && (
