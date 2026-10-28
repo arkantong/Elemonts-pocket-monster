@@ -32,7 +32,7 @@ test('wild battle plays its encounter BGM',async({page})=>{
 test('music control is only in settings on narrow phones',async({page})=>{
  const s=transition(emptySave(),{type:'starter',species:'pyroo'});s.tutorial=true;s.captureTutorial='done';
  await page.addInitScript(({s,key})=>{localStorage.setItem(key,JSON.stringify(s));localStorage.setItem('elemonts.language.v1','en');localStorage.setItem('elemonts.music.v1','off');},{s,key:SAVE_KEY});
- await page.setViewportSize({width:320,height:740});await page.goto('/');await page.locator('canvas').waitFor();await page.evaluate(()=>document.fonts.ready);
+ await page.setViewportSize({width:320,height:740});await page.goto('/');await page.locator('.pet-illustration').waitFor();await page.evaluate(()=>document.fonts.ready);
  await expect(page.locator('.topbar .music-toggle')).toHaveCount(0);
  await page.getByRole('button',{name:'Settings',exact:true}).click();
  await expect(page.getByRole('button',{name:'Turn music on',exact:true})).toBeInViewport();

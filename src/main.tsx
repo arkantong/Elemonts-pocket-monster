@@ -1,3 +1,5 @@
+import "@fontsource/fredoka/500.css";
+import "@fontsource/fredoka/600.css";
 import { MusicProvider } from "./components/Music";
 import { t } from "./i18n";
 import React, { Component, type ReactNode } from "react";

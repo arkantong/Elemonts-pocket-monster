@@ -16,5 +16,5 @@ test('compact pet rooms, play, food and saved care', async ({page})=>{
  await page.getByRole('button',{name:'Catch the ball',exact:true}).click();await expect(page.locator('.pet-room-action')).toContainText('1');
  await page.getByRole('button',{name:'Rest',exact:true}).click();await expect(page.getByRole('heading',{name:'Bedroom',exact:true})).toBeVisible();
  for(const width of [320,390,1280]){await page.setViewportSize({width,height:844});await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);}
- await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'Next room',exact:true}).click();await page.locator('canvas').waitFor();await page.waitForTimeout(1500);await page.screenshot({path:'/tmp/elemonts-pet-home.png',fullPage:true});expect(errors).toEqual([]);
+ await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'Next room',exact:true}).click();await expect(page.locator('.pet-illustration')).toBeVisible();await expect(page.locator('.pet-home canvas')).toHaveCount(0);await page.waitForTimeout(1500);await page.screenshot({path:'/tmp/elemonts-pet-home.png',fullPage:true});expect(errors).toEqual([]);
 });

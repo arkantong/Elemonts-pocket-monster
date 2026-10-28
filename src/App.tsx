@@ -106,7 +106,7 @@ export default function App() {
   if (!chosen) return <LanguagePicker />;
   return (
     <MotionConfig reducedMotion="user">
-      <div className="app-shell">
+      <div className={`app-shell ${!save.battle && activeTab === "rumah" && save.monsters.length ? "illustrated-home-shell" : ""}`}>
         <aside className="sidebar">
           <a className="brand" href="#rumah" aria-label={t("Elemonts, rumah")}>
             <BrandMark size={42} />
@@ -243,6 +243,7 @@ export default function App() {
             nav.map((n) => (
               <button
                 key={n.id}
+                data-tab={n.id}
                 className={activeTab === n.id ? "active" : ""}
                 disabled={!!save.battle || lessonActive}
                 aria-current={activeTab === n.id ? "page" : undefined}
