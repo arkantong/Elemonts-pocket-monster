@@ -135,7 +135,7 @@ export default function App() {
         </aside>
         <div className="app-content">
           <header className="topbar">
-            <a className="mobile-brand" href="#rumah">
+            <a className="mobile-brand" href="#rumah" aria-label={t("Elemonts, rumah")}>
               <BrandMark size={34} />
               <strong>{t("Elemonts")}</strong>
             </a>

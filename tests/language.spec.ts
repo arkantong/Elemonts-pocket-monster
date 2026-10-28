@@ -17,11 +17,13 @@ test("first launch defaults to English, persists, and switches language without 
   await page.getByRole("button", { name: "Choose Pyroo", exact: true }).click();
   await completeCapturePractice(page, "en");
   await expect(
-    page.getByRole("heading", { name: "Welcome home." }),
+    page.getByRole("heading", { name: "Home", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Feed", exact: true }).click();
+  await page.getByRole("button", { name: "Food", exact: true }).click();
+  await page.getByRole("button", { name: "Choose food", exact: true }).click();
   await expect(page.getByRole("button", { name: /Sun berry/ })).toBeVisible();
   await page.getByRole("button", { name: "Close", exact: true }).click();
+  await page.getByRole("button", { name: "Previous room", exact: true }).click();
   const before = await page.evaluate(() =>
     localStorage.getItem("elemonts-save-v1"),
   );
@@ -33,14 +35,14 @@ test("first launch defaults to English, persists, and switches language without 
   await expect(page.locator("html")).toHaveAttribute("lang", "id");
   await page.getByRole("button", { name: "Tutup", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Selamat datang di rumah." }),
+    page.getByRole("heading", { name: "Rumah", exact: true }),
   ).toBeVisible();
   expect(
     await page.evaluate(() => localStorage.getItem("elemonts-save-v1")),
   ).toBe(before);
   await page.reload();
   await expect(
-    page.getByRole("heading", { name: "Selamat datang di rumah." }),
+    page.getByRole("heading", { name: "Rumah", exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Pengaturan", exact: true }).click();
   await page.getByRole("button", { name: "English English" }).click();
@@ -48,7 +50,7 @@ test("first launch defaults to English, persists, and switches language without 
   await page.getByRole("button", { name: "Close", exact: true }).click();
   await page.reload();
   await expect(
-    page.getByRole("heading", { name: "Welcome home." }),
+    page.getByRole("heading", { name: "Home", exact: true }),
   ).toBeVisible();
   const nav = page.getByRole("navigation", { name: "Mobile navigation" });
   await nav.getByRole("button", { name: "Collection", exact: true }).click();

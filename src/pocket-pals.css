@@ -194,3 +194,9 @@ input,select,textarea,.search { border-color:#E0D3E5; color:#332A3F; }
 .illustrated-home-shell .bottom-nav button[data-tab="jelajah"]::before { background-size:1312.308% 2974.194%; background-position:50.635% 95.230%; }
 .illustrated-home-shell .bottom-nav button[data-tab="arena"]::before { background-size:1312.308% 2836.923%; background-position:72.208% 95.110%; }
 .illustrated-home-shell .bottom-nav button[data-tab="toko"]::before { background-size:1292.424% 2881.250%; background-position:93.011% 95.169%; }
+/* Keep the reference's small circular artwork inside Android-sized hit targets. */
+.illustrated-home-shell .pet-room-nav button { position:relative; flex:0 0 48px; width:48px; min-width:48px; height:48px; min-height:48px; background:transparent; border:0; box-shadow:none; }
+.illustrated-home-shell .pet-room-nav button::before { content:""; position:absolute; width:clamp(27px,4.2svh,78px); height:clamp(27px,4.2svh,78px); max-width:100%; max-height:100%; border:1px solid #9577ae; border-radius:50%; background:#a185c3; box-shadow:inset 0 2px 3px #d1b9e8,0 2px 2px #b7a18f; }
+.illustrated-home-shell .pet-room-nav button svg { position:relative; z-index:1; width:20px; height:20px; }
+.illustrated-home-shell .top-actions .icon-button { min-width:48px; min-height:48px; }
+.illustrated-home-shell button:focus-visible { outline:3px solid #704694; outline-offset:2px; }

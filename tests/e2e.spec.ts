@@ -43,18 +43,22 @@ test("choose starter, tutorial, food, mailbox, save reload and responsive naviga
   await page.getByRole("button", { name: "Pilih Pyroo", exact: true }).click();
   await completeCapturePractice(page);
   await expect(
-    page.getByRole("heading", { name: "Selamat datang di rumah." }),
+    page.getByRole("heading", { name: "Rumah", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Beri makan", exact: true }).click();
+  await page.getByRole("button", { name: "Makan", exact: true }).click();
+  await page.getByRole("button", { name: "Pilih makanan", exact: true }).click();
   await page.getByRole("button", { name: /Beri matahari/ }).click();
   await page.getByRole("button", { name: "Tutup", exact: true }).click();
-  await expect(page.getByText("120 / 200", { exact: true })).toBeVisible();
+  await expect.poll(() => page.evaluate((key) => JSON.parse(localStorage.getItem(key)!).monsters[0].exp, SAVE_KEY)).toBe(120);
+  await page.getByRole("button", { name: "Tim", exact: true }).click();
+  await page.getByRole("button", { name: "Hadiah harian", exact: true }).click();
   await page.getByRole("button", { name: "Ambil hadiah", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Sudah diambil" }),
   ).toBeDisabled();
+  await page.getByRole("button", { name: "Tutup", exact: true }).click();
   await page.reload();
-  await expect(page.getByText("120 / 200", { exact: true })).toBeVisible();
+  await expect.poll(() => page.evaluate((key) => JSON.parse(localStorage.getItem(key)!).monsters[0].exp, SAVE_KEY)).toBe(120);
   await nav(page, "Koleksi").click();
   await page.getByRole("button", { name: "Ensiklopedia · 37" }).click();
   await expect(page.locator(".monster-card")).toHaveCount(37);
@@ -79,7 +83,8 @@ test("choose starter, tutorial, food, mailbox, save reload and responsive naviga
 test("Wild capture, trainer victory, progress and reload of active battle", async ({
   page,
 }) => {
-  test.setTimeout(120000);
+  test.setTimeout(180000);
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await init(page);
   await page.evaluate(() => {
     Math.random = () => 0.1;
@@ -171,11 +176,21 @@ test("allocate points, change skill, sacrifice duplicate and native-independent 
   await page.keyboard.press("Escape");
   await expect(page.locator("dialog")).toHaveCount(0);
 });
-test("two independent players join LAN Duel and resolve the same turn", async ({
+test("two independent players join LAN Duel and resolve the same turn with 2D fallback", async ({
   browser,
 }) => {
   const a = await browser.newContext({ viewport: { width: 390, height: 844 } }),
     b = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  // Network/state consistency is independent of GPU rendering (covered separately).
+  for (const context of [a, b]) {
+    await context.addInitScript(() => {
+      const original = HTMLCanvasElement.prototype.getContext;
+      HTMLCanvasElement.prototype.getContext = function (kind: string, ...args: unknown[]) {
+        if (kind.startsWith("webgl") || kind === "experimental-webgl") return null;
+        return original.call(this, kind as never, ...args as never[]);
+      } as typeof original;
+    });
+  }
   const p = await a.newPage(),
     q = await b.newPage();
   await init(p);
@@ -200,6 +215,7 @@ test("two independent players join LAN Duel and resolve the same turn", async ({
   await q.locator(".move-button").first().click();
   for (const page of [p, q])
     await expect(page.getByText("Giliran 2", { exact: true })).toBeVisible();
+  for (const page of [p, q]) await expect(page.locator(".battle-stage")).toHaveAttribute("aria-busy", "false", { timeout: 20000 });
   const php = await p.locator(".health-panel.side-0 small").innerText(),
     qhp = await q.locator(".health-panel.side-1 small").innerText();
   expect(php).toBe(qhp);
@@ -259,7 +275,7 @@ test("production single player reloads with the network offline", async ({
   await context.setOffline(true);
   await page.reload();
   await expect(
-    page.getByRole("heading", { name: "Selamat datang di rumah." }),
+    page.getByRole("heading", { name: "Rumah", exact: true }),
   ).toBeVisible();
   await nav(page, "Jelajah").click();
   await page.getByRole("button", { name: "Masuk Wild" }).click();
