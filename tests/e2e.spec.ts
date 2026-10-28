@@ -185,9 +185,9 @@ test("two independent players join LAN Duel and resolve the same turn with 2D fa
   for (const context of [a, b]) {
     await context.addInitScript(() => {
       const original = HTMLCanvasElement.prototype.getContext;
-      HTMLCanvasElement.prototype.getContext = function (kind: string, ...args: unknown[]) {
+      HTMLCanvasElement.prototype.getContext = function (this: HTMLCanvasElement, kind: string, ...args: unknown[]) {
         if (kind.startsWith("webgl") || kind === "experimental-webgl") return null;
-        return original.call(this, kind as never, ...args as never[]);
+        return Reflect.apply(original, this, [kind, ...args]);
       } as typeof original;
     });
   }
