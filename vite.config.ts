@@ -6,6 +6,10 @@ export default defineConfig(({ mode }) => ({
   define: { __APP_VERSION__: JSON.stringify(version) },
   plugins: [
     react(),
+    {
+      name: "elemonts-build-identity",
+      transformIndexHtml: () => [{ tag: "meta", attrs: { name: "elemonts-ui-version", content: version }, injectTo: "head" }],
+    },
     VitePWA({
       disable: mode === "native",
       registerType: "autoUpdate",

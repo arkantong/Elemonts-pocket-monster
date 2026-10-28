@@ -1,6 +1,7 @@
+import { App as NativeApp } from "@capacitor/app";
 import { MusicToggle } from "./Music";
 import { t } from "../i18n";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Download, Upload, Volume2, VolumeX, Trash2 } from "lucide-react";
 import { useGame } from "../game/context";
 import { emptySave, parseSave, SAVE_KEY } from "../game/state";
@@ -14,6 +15,14 @@ export function Settings({ close }: { close: () => void }) {
   const { language, chooseLanguage } = useLanguage();
   const { save, act, notify, replace, storageError } = useGame(),
     [reset, setReset] = useState(false);
+  const [installed, setInstalled] = useState<{version: string; build: string}>();
+  useEffect(() => {
+    let active = true;
+    if (Capacitor.isNativePlatform()) void NativeApp.getInfo().then(info => {
+      if (active) setInstalled(info);
+    }).catch(() => {});
+    return () => { active = false; };
+  }, []);
   const exportSave = async () => {
     try {
       const data = storageError
@@ -47,6 +56,11 @@ export function Settings({ close }: { close: () => void }) {
   };
   return (
     <Modal title={t("Pengaturan")} onClose={close}>
+      {installed && <p className="small-help" data-testid="installed-build">
+        {language === "id" ? "Aplikasi terpasang" : "Installed app"}: {installed.version} · build {installed.build}<br/>
+        UI: {__APP_VERSION__}
+        {installed.version !== __APP_VERSION__ && <strong role="alert">{language === "id" ? " · Versi UI belum sesuai aplikasi." : " · UI version does not match the app."}</strong>}
+      </p>}
       <h3>{language === "en" ? "Language" : "Bahasa"}</h3>
       <LanguageOptions value={language} onChange={chooseLanguage} />
       <p className="muted">

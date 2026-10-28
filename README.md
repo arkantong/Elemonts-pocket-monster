@@ -2,7 +2,11 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.16 (debug)](downloads/elemonts-0.1.16-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.17 (debug)](downloads/elemonts-0.1.17-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+
+## Pemeriksaan versi Android 0.1.17
+
+Pengaturan menampilkan versi Android terpasang beserta nomor build, terpisah dari versi UI. Pemulihan membandingkan identitas HTML dan UI yang benar-benar berjalan, mempertahankan save, dan membatasi reload otomatis. Lihat [hasil investigasi](docs/qa/ANDROID-BUILD-IDENTITY.md).
 
 ## Perbaikan QA Android 0.1.16
 

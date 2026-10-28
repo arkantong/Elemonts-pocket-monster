@@ -107,11 +107,8 @@ test("legacy APK worker is retired without deleting player storage", async ({
     );
     await page.evaluate(recovery);
     await navigation;
-    await expect(page.locator(".creature-canvas")).toHaveAttribute(
-      "data-player-model",
-      "blender",
-      { timeout: 30000 },
-    );
+    await expect(page.locator(".pet-illustration")).toBeVisible({timeout:30000});
+    await expect(page.locator(".pet-home canvas")).toHaveCount(0);
     await expect
       .poll(() =>
         page.evaluate(() =>
@@ -152,11 +149,8 @@ test("legacy APK worker is retired without deleting player storage", async ({
     ).toBeVisible();
     await page.screenshot({ path: "/tmp/elemonts-upgrade-verified.png" });
     await page.reload();
-    await expect(page.locator(".creature-canvas")).toHaveAttribute(
-      "data-player-model",
-      "blender",
-      { timeout: 30000 },
-    );
+    await expect(page.locator(".pet-illustration")).toBeVisible({timeout:30000});
+    await expect(page.locator(".pet-home canvas")).toHaveCount(0);
     expect(
       await page.evaluate(() =>
         navigator.serviceWorker.getRegistrations().then((r) => r.length),
@@ -166,3 +160,30 @@ test("legacy APK worker is retired without deleting player storage", async ({
     await new Promise<void>((resolve) => server.close(() => resolve()));
   }
 });
+
+for (const refreshWorks of [true, false]) {
+  test(`native recovery verifies HTML without a service worker (refresh=${refreshWorks})`, async ({page}) => {
+    let loads=0;
+    let current="old-ui";
+    await page.route('http://127.0.0.1:5189/**', route => {
+      loads++;
+      return route.fulfill({contentType:'text/html',body:`<!doctype html><html data-elemonts-ui-version="${current}"><head><meta name="elemonts-ui-version" content="${current}"></head><body><h1>Test UI</h1></body></html>`});
+    });
+    await page.goto('http://127.0.0.1:5189/');
+    await page.evaluate(()=>{localStorage.setItem('player-save','keep-save');localStorage.setItem('elemonts.language.v1','id');});
+    if(refreshWorks)current=version;
+    const recovery=readFileSync('android/app/src/main/assets/native-upgrade.js','utf8');
+    await page.evaluate(v=>{(window as any).__elemontsNativeVersion=v;},version);
+    const navigation=page.waitForEvent('framenavigated',frame=>frame===page.mainFrame());
+    await page.evaluate(recovery);
+    await navigation;
+    await expect(page).toHaveURL(new RegExp('elemontsBuild='+version.replaceAll('.','\\.')));
+    await page.evaluate(v=>{(window as any).__elemontsNativeVersion=v;},version);
+    await page.evaluate(recovery);
+    if(refreshWorks)await expect(page.locator('meta[name="elemonts-ui-version"]')).toHaveAttribute('content',version);
+    else await expect(page.locator('#elemonts-build-mismatch')).toContainText('old-ui');
+    expect(await page.evaluate(()=>localStorage.getItem('player-save'))).toBe('keep-save');
+    expect(await page.evaluate(()=>localStorage.getItem('elemonts.language.v1'))).toBe('id');
+    expect(loads).toBe(2);
+  });
+}

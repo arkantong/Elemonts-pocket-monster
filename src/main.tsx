@@ -40,6 +40,7 @@ class ErrorBoundary extends Component<
     );
   }
 }
+document.documentElement.dataset.elemontsUiVersion = __APP_VERSION__;
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <LanguageProvider>
