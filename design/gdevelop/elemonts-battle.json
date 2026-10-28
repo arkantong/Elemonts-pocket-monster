@@ -1,0 +1,3510 @@
+{
+  "gdVersion": {
+    "build": 0,
+    "major": 5,
+    "minor": 6,
+    "revision": 0
+  },
+  "firstLayout": "BattleGarden",
+  "properties": {
+    "name": "Elemonts · 2D Battle Garden",
+    "description": "2D visual scene; live battle rules and saves are owned by the Elemonts app.",
+    "author": "Elemonts",
+    "authorUsernames": [],
+    "projectUuid": "343f9b9b-7840-4bd6-95c4-d19d3d25e960",
+    "platforms": [
+      {
+        "name": "GDevelop JS platform"
+      }
+    ],
+    "currentPlatform": "GDevelop JS platform",
+    "platformSpecificAssets": {},
+    "version": "0.1.19",
+    "windowWidth": 960,
+    "windowHeight": 1200,
+    "maxFPS": 60,
+    "minFPS": 15,
+    "verticalSync": true,
+    "sizeOnStartupMode": "adaptWidth",
+    "adaptGameResolutionAtRuntime": false,
+    "orientation": "portrait",
+    "scaleMode": "linear",
+    "pixelsRounding": false,
+    "antialiasingMode": "MSAA",
+    "antialisingEnabledOnMobile": false,
+    "sceneResourcesPreloading": "at-startup",
+    "sceneResourcesUnloading": "never",
+    "watermark": {
+      "showWatermark": false,
+      "placement": "bottom-left"
+    },
+    "loadingScreen": {
+      "showGDevelopSplash": false,
+      "showProgressBar": false,
+      "backgroundImageResourceName": "Garden",
+      "backgroundColor": 6976614,
+      "backgroundFadeInDuration": 0,
+      "logoAndProgressFadeInDuration": 0,
+      "logoAndProgressLogoFadeInDelay": 0,
+      "minDuration": 0,
+      "progressBarColor": 11967449,
+      "progressBarHeight": 10,
+      "progressBarMaxWidth": 200,
+      "progressBarMinWidth": 40,
+      "progressBarWidthPercent": 40
+    }
+  },
+  "resources": {
+    "resources": [
+      {
+        "kind": "image",
+        "name": "pyroo:home",
+        "file": "../../public/art/monsters-2d/pyroo-home.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "pyroo:back",
+        "file": "../../public/art/monsters-2d/pyroo-back.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "pyroo:front",
+        "file": "../../public/art/monsters-2d/pyroo-front.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "pyroo:hit",
+        "file": "../../public/art/monsters-2d/pyroo-hit.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "pyroar:front",
+        "file": "../../public/art/monsters/pyroar.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "infernox:front",
+        "file": "../../public/art/monsters/infernox.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "croobit:home",
+        "file": "../../public/art/monsters-2d/croobit-home.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "croobit:back",
+        "file": "../../public/art/monsters-2d/croobit-back.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "croobit:front",
+        "file": "../../public/art/monsters-2d/croobit-front.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "croobit:hit",
+        "file": "../../public/art/monsters-2d/croobit-hit.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "rivaclaw:front",
+        "file": "../../public/art/monsters/rivaclaw.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "hydragon:front",
+        "file": "../../public/art/monsters/hydragon.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "voltavi:front",
+        "file": "../../public/art/monsters/voltavi.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "voltusk:front",
+        "file": "../../public/art/monsters/voltusk.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "voltitan:front",
+        "file": "../../public/art/monsters/voltitan.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "pebblit:front",
+        "file": "../../public/art/monsters/pebblit.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "rockhorn:front",
+        "file": "../../public/art/monsters/rockhorn.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "terragorn:front",
+        "file": "../../public/art/monsters/terragorn.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "mippo:front",
+        "file": "../../public/art/monsters/mippo.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "pluffluff:front",
+        "file": "../../public/art/monsters/pluffluff.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "pufflare:front",
+        "file": "../../public/art/monsters/pufflare.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "boarlit:front",
+        "file": "../../public/art/monsters/boarlit.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "magboar:front",
+        "file": "../../public/art/monsters/magboar.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "flicklet:front",
+        "file": "../../public/art/monsters/flicklet.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "dawnphoenix:front",
+        "file": "../../public/art/monsters/dawnphoenix.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "seabbi:front",
+        "file": "../../public/art/monsters/seabbi.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "marilune:front",
+        "file": "../../public/art/monsters/marilune.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "jellun:front",
+        "file": "../../public/art/monsters/jellun.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "pelaglow:front",
+        "file": "../../public/art/monsters/pelaglow.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "sparko:front",
+        "file": "../../public/art/monsters/sparko.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "luxerion:front",
+        "file": "../../public/art/monsters/luxerion.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "buzzbit:front",
+        "file": "../../public/art/monsters/buzzbit.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "thundrax:front",
+        "file": "../../public/art/monsters/thundrax.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "pebblisk:front",
+        "file": "../../public/art/monsters/pebblisk.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "georoll:front",
+        "file": "../../public/art/monsters/georoll.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "dribble:front",
+        "file": "../../public/art/monsters/dribble.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "burrowox:front",
+        "file": "../../public/art/monsters/burrowox.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "aurapaw:front",
+        "file": "../../public/art/monsters/aurapaw.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "swifttail:front",
+        "file": "../../public/art/monsters/swifttail.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "mallow:front",
+        "file": "../../public/art/monsters/mallow.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "hoplet:front",
+        "file": "../../public/art/monsters/hoplet.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "aurelyth:front",
+        "file": "../../public/art/monsters/aurelyth.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "noxarion:front",
+        "file": "../../public/art/monsters/noxarion.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "Garden",
+        "file": "../../public/art/battle-garden-2d.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "ContactShadow",
+        "file": "../../public/art/monster-shadow.svg",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      }
+    ],
+    "resourceFolders": []
+  },
+  "objects": [],
+  "objectsGroups": [],
+  "variables": [],
+  "layouts": [
+    {
+      "name": "BattleGarden",
+      "mangledName": "BattleGarden",
+      "title": "Elemonts · 2D",
+      "r": 106,
+      "v": 148,
+      "b": 102,
+      "standardSortMethod": true,
+      "stopSoundsOnStartup": false,
+      "disableInputWhenNotFocused": false,
+      "renderer3DWorldScale": 100,
+      "objectsGroups": [],
+      "variables": [],
+      "behaviorsSharedData": [],
+      "layers": [
+        {
+          "name": "",
+          "visibility": true,
+          "effects": [],
+          "renderingType": "2d",
+          "cameraType": "orthographic",
+          "ambientLightColorR": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorB": 200,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "width": 0,
+              "height": 0,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "viewportBottom": 1
+            }
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "name": "Garden",
+          "type": "Sprite",
+          "variables": [],
+          "behaviors": [],
+          "effects": [],
+          "animations": [
+            {
+              "name": "Garden",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 1,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "Garden",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": true,
+                        "x": 0,
+                        "y": 0
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PartnerShadow",
+          "type": "Sprite",
+          "variables": [],
+          "behaviors": [],
+          "effects": [],
+          "animations": [
+            {
+              "name": "ContactShadow",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 1,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "ContactShadow",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": true,
+                        "x": 0,
+                        "y": 0
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "OpponentShadow",
+          "type": "Sprite",
+          "variables": [],
+          "behaviors": [],
+          "effects": [],
+          "animations": [
+            {
+              "name": "ContactShadow",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 1,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "ContactShadow",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": true,
+                        "x": 0,
+                        "y": 0
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Partner",
+          "type": "Sprite",
+          "variables": [],
+          "behaviors": [],
+          "effects": [],
+          "animations": [
+            {
+              "name": "pyroo:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pyroo:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 221.5,
+                        "y": 436
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 221.5,
+                        "y": 436
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pyroo:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pyroo:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 228,
+                        "y": 440
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 228,
+                        "y": 440
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pyroo:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pyroo:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 222.5,
+                        "y": 444
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 222.5,
+                        "y": 444
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pyroo:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pyroo:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 211.5,
+                        "y": 446
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 211.5,
+                        "y": 446
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pyroar:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pyroar:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 126.5,
+                        "y": 232
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 126.5,
+                        "y": 232
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "infernox:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "infernox:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 127,
+                        "y": 232
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 127,
+                        "y": 232
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "croobit:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "croobit:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 231,
+                        "y": 371
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 231,
+                        "y": 371
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "croobit:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "croobit:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 227,
+                        "y": 364
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 227,
+                        "y": 364
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "croobit:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "croobit:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 210,
+                        "y": 374
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 210,
+                        "y": 374
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "croobit:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "croobit:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 209.5,
+                        "y": 377
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 209.5,
+                        "y": 377
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "rivaclaw:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "rivaclaw:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 143.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 143.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "hydragon:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "hydragon:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 130.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 130.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "voltavi:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltavi:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 131.5,
+                        "y": 221
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 131.5,
+                        "y": 221
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "voltusk:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltusk:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "voltitan:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltitan:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pebblit:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pebblit:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 128.5,
+                        "y": 223
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 128.5,
+                        "y": 223
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "rockhorn:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "rockhorn:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "terragorn:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "terragorn:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "mippo:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "mippo:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 124,
+                        "y": 230
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 124,
+                        "y": 230
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pluffluff:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pluffluff:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129.5,
+                        "y": 217
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129.5,
+                        "y": 217
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pufflare:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pufflare:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 130.5,
+                        "y": 217
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 130.5,
+                        "y": 217
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "boarlit:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "boarlit:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 135,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 135,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "magboar:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "magboar:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 135,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 135,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "flicklet:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "flicklet:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 133,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 133,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "dawnphoenix:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "dawnphoenix:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 131,
+                        "y": 221
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 131,
+                        "y": 221
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "seabbi:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "seabbi:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 130.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 130.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "marilune:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "marilune:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 133.5,
+                        "y": 216
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 133.5,
+                        "y": 216
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "jellun:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "jellun:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 219
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 219
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pelaglow:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pelaglow:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 131.5,
+                        "y": 207
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 131.5,
+                        "y": 207
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "sparko:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "sparko:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 147,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 147,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "luxerion:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "luxerion:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 133,
+                        "y": 221
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 133,
+                        "y": 221
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "buzzbit:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "buzzbit:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 132,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 132,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "thundrax:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "thundrax:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 132.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 132.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pebblisk:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pebblisk:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 144.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 144.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "georoll:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "georoll:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 223
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 223
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "dribble:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "dribble:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 128.5,
+                        "y": 217
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 128.5,
+                        "y": 217
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "burrowox:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "burrowox:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 127.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 127.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "aurapaw:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "aurapaw:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 142,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 142,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "swifttail:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "swifttail:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 145,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 145,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "mallow:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "mallow:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 128.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 128.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "hoplet:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "hoplet:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 221
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 221
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "aurelyth:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "aurelyth:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 215
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 215
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "noxarion:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "noxarion:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 142.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 142.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Opponent",
+          "type": "Sprite",
+          "variables": [],
+          "behaviors": [],
+          "effects": [],
+          "animations": [
+            {
+              "name": "pyroo:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pyroo:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 221.5,
+                        "y": 436
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 221.5,
+                        "y": 436
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pyroo:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pyroo:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 228,
+                        "y": 440
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 228,
+                        "y": 440
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pyroo:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pyroo:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 222.5,
+                        "y": 444
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 222.5,
+                        "y": 444
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pyroo:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pyroo:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 211.5,
+                        "y": 446
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 211.5,
+                        "y": 446
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pyroar:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pyroar:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 126.5,
+                        "y": 232
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 126.5,
+                        "y": 232
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "infernox:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "infernox:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 127,
+                        "y": 232
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 127,
+                        "y": 232
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "croobit:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "croobit:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 231,
+                        "y": 371
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 231,
+                        "y": 371
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "croobit:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "croobit:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 227,
+                        "y": 364
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 227,
+                        "y": 364
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "croobit:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "croobit:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 210,
+                        "y": 374
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 210,
+                        "y": 374
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "croobit:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "croobit:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 209.5,
+                        "y": 377
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 209.5,
+                        "y": 377
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "rivaclaw:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "rivaclaw:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 143.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 143.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "hydragon:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "hydragon:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 130.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 130.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "voltavi:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltavi:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 131.5,
+                        "y": 221
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 131.5,
+                        "y": 221
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "voltusk:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltusk:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "voltitan:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltitan:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pebblit:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pebblit:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 128.5,
+                        "y": 223
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 128.5,
+                        "y": 223
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "rockhorn:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "rockhorn:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "terragorn:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "terragorn:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "mippo:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "mippo:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 124,
+                        "y": 230
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 124,
+                        "y": 230
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pluffluff:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pluffluff:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129.5,
+                        "y": 217
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129.5,
+                        "y": 217
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pufflare:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pufflare:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 130.5,
+                        "y": 217
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 130.5,
+                        "y": 217
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "boarlit:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "boarlit:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 135,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 135,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "magboar:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "magboar:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 135,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 135,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "flicklet:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "flicklet:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 133,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 133,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "dawnphoenix:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "dawnphoenix:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 131,
+                        "y": 221
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 131,
+                        "y": 221
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "seabbi:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "seabbi:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 130.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 130.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "marilune:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "marilune:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 133.5,
+                        "y": 216
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 133.5,
+                        "y": 216
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "jellun:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "jellun:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 219
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 219
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pelaglow:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pelaglow:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 131.5,
+                        "y": 207
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 131.5,
+                        "y": 207
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "sparko:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "sparko:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 147,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 147,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "luxerion:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "luxerion:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 133,
+                        "y": 221
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 133,
+                        "y": 221
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "buzzbit:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "buzzbit:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 132,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 132,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "thundrax:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "thundrax:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 132.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 132.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pebblisk:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "pebblisk:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 144.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 144.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "georoll:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "georoll:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 223
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 223
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "dribble:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "dribble:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 128.5,
+                        "y": 217
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 128.5,
+                        "y": 217
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "burrowox:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "burrowox:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 127.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 127.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "aurapaw:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "aurapaw:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 142,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 142,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "swifttail:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "swifttail:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 145,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 145,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "mallow:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "mallow:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 128.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 128.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "hoplet:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "hoplet:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 221
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 221
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "aurelyth:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "aurelyth:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 129,
+                        "y": 215
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 129,
+                        "y": 215
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "noxarion:front",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "noxarion:front",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 142.5,
+                        "y": 222
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 142.5,
+                        "y": 222
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+          "name": "Garden",
+          "x": 0,
+          "y": -70,
+          "zOrder": 0,
+          "angle": 0,
+          "layer": "",
+          "customSize": true,
+          "width": 960,
+          "height": 1440,
+          "numberProperties": [
+            {
+              "name": "animation",
+              "value": 0
+            }
+          ],
+          "stringProperties": [],
+          "initialVariables": [],
+          "persistentUuid": "elemonts-Garden"
+        },
+        {
+          "name": "PartnerShadow",
+          "x": 105,
+          "y": 980,
+          "zOrder": 3,
+          "angle": 0,
+          "layer": "",
+          "customSize": true,
+          "width": 220,
+          "height": 40,
+          "numberProperties": [
+            {
+              "name": "animation",
+              "value": 0
+            }
+          ],
+          "stringProperties": [],
+          "initialVariables": [],
+          "persistentUuid": "elemonts-PartnerShadow"
+        },
+        {
+          "name": "OpponentShadow",
+          "x": 680,
+          "y": 635,
+          "zOrder": 1,
+          "angle": 0,
+          "layer": "",
+          "customSize": true,
+          "width": 150,
+          "height": 30,
+          "numberProperties": [
+            {
+              "name": "animation",
+              "value": 0
+            }
+          ],
+          "stringProperties": [],
+          "initialVariables": [],
+          "persistentUuid": "elemonts-OpponentShadow"
+        },
+        {
+          "name": "Partner",
+          "x": 215,
+          "y": 1000,
+          "zOrder": 4,
+          "angle": 0,
+          "layer": "",
+          "customSize": true,
+          "width": 365,
+          "height": 365,
+          "numberProperties": [
+            {
+              "name": "animation",
+              "value": 1
+            }
+          ],
+          "stringProperties": [],
+          "initialVariables": [],
+          "persistentUuid": "elemonts-Partner"
+        },
+        {
+          "name": "Opponent",
+          "x": 755,
+          "y": 700,
+          "zOrder": 2,
+          "angle": 0,
+          "layer": "",
+          "customSize": true,
+          "width": 245,
+          "height": 245,
+          "numberProperties": [
+            {
+              "name": "animation",
+              "value": 8
+            }
+          ],
+          "stringProperties": [],
+          "initialVariables": [],
+          "persistentUuid": "elemonts-Opponent"
+        }
+      ],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": [
+            "/* Shared JavaScript event: embedded in the editable GDevelop scene and web runtime. */",
+            "(function installElemontsBattle() {",
+            "  if (window.ElemontsBattle) return;",
+            "  const positions = [",
+            "    { x: 215, y: 1000, width: 365, height: 365 },",
+            "    { x: 755, y: 700, width: 245, height: 245 },",
+            "  ];",
+            "  const concept = new Set([\"pyroo\", \"croobit\"]);",
+            "  const ease = (n) => 1 - Math.pow(1 - Math.max(0, Math.min(1, n)), 3);",
+            "  const state = {",
+            "    species: \"pyroo\",",
+            "    enemy: \"croobit\",",
+            "    entry: 3,",
+            "    fainted: [false, false],",
+            "    reduced: false,",
+            "    event: null,",
+            "    eventStartedAt: 0,",
+            "    entryStartedAt: Date.now(),",
+            "  };",
+            "  window.addEventListener(\"message\", (message) => {",
+            "    if (",
+            "      message.source !== parent ||",
+            "      message.origin !== location.origin ||",
+            "      message.data?.type !== \"elemonts:battle-state\"",
+            "    )",
+            "      return;",
+            "    const next = message.data;",
+            "    if (!/^[a-z]+$/.test(next.species) || !/^[a-z]+$/.test(next.enemy)) return;",
+            "    if (next.entry !== state.entry) state.entryStartedAt = Date.now();",
+            "    Object.assign(state, {",
+            "      species: next.species,",
+            "      enemy: next.enemy,",
+            "      entry: next.entry,",
+            "      fainted: next.fainted,",
+            "      reduced: !!next.reduced,",
+            "      event: next.event,",
+            "      eventStartedAt: next.eventStartedAt || Date.now(),",
+            "    });",
+            "  });",
+            "  window.ElemontsBattle = {",
+            "    state,",
+            "    positions,",
+            "    update(scene) {",
+            "      if (!scene._elemontsLayoutReady) {",
+            "        for (let side = 0; side < 2; side++) {",
+            "          const actor = scene.getObjects(side ? \"Opponent\" : \"Partner\")[0];",
+            "          if (actor)",
+            "            Object.assign(positions[side], {",
+            "              x: actor.getX(),",
+            "              y: actor.getY(),",
+            "              width: actor.getWidth(),",
+            "              height: actor.getHeight(),",
+            "            });",
+            "        }",
+            "        scene._elemontsLayoutReady = true;",
+            "      }",
+            "      const now = Date.now();",
+            "      const vertical = scene.getGame().getGameResolutionHeight() / 1200;",
+            "      const size = Math.min(1, vertical);",
+            "      for (let side = 0; side < 2; side++) {",
+            "        const actor = scene.getObjects(side ? \"Opponent\" : \"Partner\")[0];",
+            "        if (!actor) continue;",
+            "        const species = side ? state.enemy : state.species;",
+            "        const base = positions[side];",
+            "        const event = state.event;",
+            "        const elapsed = now - state.eventStartedAt;",
+            "        const target = event?.side === side ? 1 - side : side;",
+            "        const hit =",
+            "          event?.kind === \"skill\" &&",
+            "          event.side !== side &&",
+            "          !event.missed &&",
+            "          event.damage > 0 &&",
+            "          elapsed >= event.hitStart &&",
+            "          elapsed < event.hpStart;",
+            "        const guard = event?.skill === \"guard\";",
+            "        const melee =",
+            "          event?.skill === \"tackle\" ||",
+            "          event?.skill === \"struggle\" ||",
+            "          event?.skill?.startsWith(\"Netral-\");",
+            "        const isActing =",
+            "          event?.side === side &&",
+            "          elapsed >= event.motionStart &&",
+            "          elapsed < event.animationEnd;",
+            "        const sprite = concept.has(species)",
+            "          ? hit && side === 1",
+            "            ? \"hit\"",
+            "            : side === 0",
+            "              ? \"back\"",
+            "              : \"front\"",
+            "          : \"front\";",
+            "        const animation = `${species}:${sprite}`;",
+            "        actor.setAnimationName(animation);",
+            "        const frame = window.ElemontsSpriteFrames[animation];",
+            "        const scale =",
+            "          size * Math.min(base.width / frame[4], base.height / frame[5]);",
+            "        let x = base.x,",
+            "          y = base.y * vertical;",
+            "        let stretch =",
+            "          1 + (state.reduced ? 0 : Math.sin(now / 440 + side * 2) * 0.012);",
+            "        let opacity = state.fainted?.[side] ? 85 : 255;",
+            "        if (isActing && !state.reduced) {",
+            "          const progress =",
+            "            (elapsed - event.motionStart) /",
+            "            (event.animationEnd - event.motionStart);",
+            "          if (melee && !guard) {",
+            "            const impactAt =",
+            "              (event.impact - event.motionStart) /",
+            "              (event.animationEnd - event.motionStart);",
+            "            const amount =",
+            "              progress < impactAt",
+            "                ? ease(progress / impactAt)",
+            "                : 1 - ease((progress - impactAt) / (1 - impactAt));",
+            "            const other = positions[target];",
+            "            x += (other.x - base.x) * 0.72 * amount;",
+            "            y +=",
+            "              (other.y - base.y) * vertical * 0.72 * amount -",
+            "              Math.sin(progress * Math.PI) * 30;",
+            "          } else {",
+            "            y -= Math.sin(progress * Math.PI) * 18;",
+            "            stretch += Math.sin(progress * Math.PI) * 0.035;",
+            "          }",
+            "        }",
+            "        if (hit && !state.reduced) {",
+            "          const age = elapsed - event.hitStart;",
+            "          x += Math.sin(age / 25) * 10 * Math.max(0, 1 - age / 500);",
+            "          opacity = Math.floor(age / 65) % 2 ? 130 : 255;",
+            "        }",
+            "        if (state.entry < (side ? 1 : 2)) opacity = 0;",
+            "        else if (state.entry < 3 && !state.reduced) {",
+            "          const arrival = ease((now - state.entryStartedAt) / 450);",
+            "          x += (side ? 220 : -260) * (1 - arrival);",
+            "          opacity *= arrival;",
+            "        }",
+            "        if (state.fainted?.[side]) {",
+            "          y += 28;",
+            "          stretch *= 0.7;",
+            "        }",
+            "        actor.setScaleX(scale / stretch);",
+            "        actor.setScaleY(scale * stretch);",
+            "        actor.setPosition(x, y);",
+            "        actor.setOpacity(opacity);",
+            "        actor.setZOrder(side ? 2 : 4);",
+            "        const shadow = scene.getObjects(",
+            "          side ? \"OpponentShadow\" : \"PartnerShadow\",",
+            "        )[0];",
+            "        if (shadow) {",
+            "          shadow.setPosition(",
+            "            x - base.width * size * 0.3,",
+            "            base.y * vertical - 14,",
+            "          );",
+            "          shadow.setWidth(base.width * size * 0.6);",
+            "          shadow.setHeight(side ? 26 : 38);",
+            "          shadow.setOpacity(opacity * 0.8);",
+            "        }",
+            "      }",
+            "      // Stable observability for QA and edit previews; never drives battle rules.",
+            "      window.ElemontsBattle.scene = scene;",
+            "    },",
+            "  };",
+            "})();",
+            "",
+            "window.ElemontsSpriteFrames = {\"pyroo:home\":[460,470,23,49,397,387],\"pyroo:back\":[455,470,22,61,412,379],\"pyroo:front\":[435,470,23,77,399,367],\"pyroo:hit\":[424,470,13,83,397,363],\"pyroar:front\":[256,256,68,36,117,196],\"infernox:front\":[256,256,58,35,138,197],\"croobit:home\":[460,417,22,37,418,334],\"croobit:back\":[455,417,37,23,380,341],\"croobit:front\":[435,417,7,57,406,317],\"croobit:hit\":[424,417,16,82,387,295],\"rivaclaw:front\":[256,256,67,37,153,185],\"hydragon:front\":[256,256,48,38,165,184],\"voltavi:front\":[256,256,36,38,191,183],\"voltusk:front\":[256,256,73,40,112,182],\"voltitan:front\":[256,256,58,38,143,184],\"pebblit:front\":[256,256,56,38,145,185],\"rockhorn:front\":[256,256,73,40,112,182],\"terragorn:front\":[256,256,73,40,112,182],\"mippo:front\":[256,256,58,35,132,195],\"pluffluff:front\":[256,256,69,39,121,178],\"pufflare:front\":[256,256,47,38,167,179],\"boarlit:front\":[256,256,74,37,122,185],\"magboar:front\":[256,256,74,37,122,185],\"flicklet:front\":[256,256,22,37,222,185],\"dawnphoenix:front\":[256,256,41,39,180,182],\"seabbi:front\":[256,256,44,40,173,182],\"marilune:front\":[256,256,36,37,195,179],\"jellun:front\":[256,256,51,38,156,181],\"pelaglow:front\":[256,256,33,41,197,166],\"sparko:front\":[256,256,74,37,146,185],\"luxerion:front\":[256,256,59,39,148,182],\"buzzbit:front\":[256,256,54,37,156,185],\"thundrax:front\":[256,256,54,38,157,184],\"pebblisk:front\":[256,256,69,37,151,185],\"georoll:front\":[256,256,56,38,146,185],\"dribble:front\":[256,256,69,37,119,180],\"burrowox:front\":[256,256,72,38,111,184],\"aurapaw:front\":[256,256,74,37,136,185],\"swifttail:front\":[256,256,74,37,142,185],\"mallow:front\":[256,256,67,41,123,181],\"hoplet:front\":[256,256,81,39,96,182],\"aurelyth:front\":[256,256,84,38,90,177],\"noxarion:front\":[256,256,74,37,137,185]};",
+            "window.ElemontsBattle.update(runtimeScene);"
+          ],
+          "parameterObjects": "",
+          "useStrict": true
+        }
+      ],
+      "usedResources": [
+        {
+          "name": "pyroo:home"
+        },
+        {
+          "name": "pyroo:back"
+        },
+        {
+          "name": "pyroo:front"
+        },
+        {
+          "name": "pyroo:hit"
+        },
+        {
+          "name": "pyroar:front"
+        },
+        {
+          "name": "infernox:front"
+        },
+        {
+          "name": "croobit:home"
+        },
+        {
+          "name": "croobit:back"
+        },
+        {
+          "name": "croobit:front"
+        },
+        {
+          "name": "croobit:hit"
+        },
+        {
+          "name": "rivaclaw:front"
+        },
+        {
+          "name": "hydragon:front"
+        },
+        {
+          "name": "voltavi:front"
+        },
+        {
+          "name": "voltusk:front"
+        },
+        {
+          "name": "voltitan:front"
+        },
+        {
+          "name": "pebblit:front"
+        },
+        {
+          "name": "rockhorn:front"
+        },
+        {
+          "name": "terragorn:front"
+        },
+        {
+          "name": "mippo:front"
+        },
+        {
+          "name": "pluffluff:front"
+        },
+        {
+          "name": "pufflare:front"
+        },
+        {
+          "name": "boarlit:front"
+        },
+        {
+          "name": "magboar:front"
+        },
+        {
+          "name": "flicklet:front"
+        },
+        {
+          "name": "dawnphoenix:front"
+        },
+        {
+          "name": "seabbi:front"
+        },
+        {
+          "name": "marilune:front"
+        },
+        {
+          "name": "jellun:front"
+        },
+        {
+          "name": "pelaglow:front"
+        },
+        {
+          "name": "sparko:front"
+        },
+        {
+          "name": "luxerion:front"
+        },
+        {
+          "name": "buzzbit:front"
+        },
+        {
+          "name": "thundrax:front"
+        },
+        {
+          "name": "pebblisk:front"
+        },
+        {
+          "name": "georoll:front"
+        },
+        {
+          "name": "dribble:front"
+        },
+        {
+          "name": "burrowox:front"
+        },
+        {
+          "name": "aurapaw:front"
+        },
+        {
+          "name": "swifttail:front"
+        },
+        {
+          "name": "mallow:front"
+        },
+        {
+          "name": "hoplet:front"
+        },
+        {
+          "name": "aurelyth:front"
+        },
+        {
+          "name": "noxarion:front"
+        },
+        {
+          "name": "Garden"
+        },
+        {
+          "name": "ContactShadow"
+        }
+      ]
+    }
+  ],
+  "externalEvents": [],
+  "externalLayouts": [],
+  "eventsFunctionsExtensions": [],
+  "externalSourceFiles": [],
+  "usedResources": []
+}

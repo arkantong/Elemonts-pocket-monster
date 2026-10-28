@@ -26,7 +26,7 @@ test("battle shows ordered skills, locks input, and drains HP after the hit resp
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
-  await page.locator(".creature-canvas canvas").waitFor();
+  await expect(page.locator(".battle-scene-2d")).toHaveAttribute("data-engine", "gdevelop", {timeout:15000});
   await page.screenshot({ path: "/tmp/elemonts-battle-entry.png" });
   const hp = await page.locator(".health-panel.side-1 small").innerText();
   await page.locator(".move-button").nth(1).click();

@@ -7,6 +7,8 @@ import { SPECIES, ITEMS, type ItemId } from "../game/data";
 import { dayKey, energyCap } from "../game/state";
 import { Meter, Modal, Portrait } from "../components/ui";
 import { t } from "../i18n";
+import { CONCEPT_MONSTERS, monsterPortrait } from "../game/visuals";
+import conceptFrames from "../game/conceptFrames.json" with { type: "json" };
 export function Home({ navigate }: { navigate: (s: string) => void }) {
   const { save, act, notify } = useGame();
   const { language } = useLanguage();
@@ -16,8 +18,8 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
     [gifts, setGifts] = useState(false), [score, setScore] = useState(0);
   const m = save.monsters.find(m => m.uid === save.team[0])!;
   const s = SPECIES[m.species];
-  const frame = portraitFrames[(m.species === "pyroo" ? "pyroo-home" : m.species) as keyof typeof portraitFrames];
-  const illustration = m.species === "pyroo" ? "/art/pet-home-pyroo.png" : `/art/monsters/${m.species}.png`;
+  const frame = CONCEPT_MONSTERS.has(m.species) ? conceptFrames[`${m.species}-home` as keyof typeof conceptFrames] : portraitFrames[m.species as keyof typeof portraitFrames];
+  const illustration = monsterPortrait(m.species);
   const rooms = id ? ["Rumah", "Dapur", "Ruang bermain", "Kamar tidur"] : ["Home", "Kitchen", "Playroom", "Bedroom"];
   const claimed = save.claimedDay === dayKey();
   const changeRoom = (next: number) => setRoom((next + rooms.length) % rooms.length);

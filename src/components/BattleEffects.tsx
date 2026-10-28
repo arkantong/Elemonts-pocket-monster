@@ -51,8 +51,8 @@ export function BattleEffects({ event }: { event?: PlayingEvent }) {
           <g
             transform={
               event.side === 0
-                ? "matrix(.5,-.158,0,1,100,36.6)"
-                : "matrix(-.5,.263,0,1,300,-47.6)"
+                ? "matrix(1.205,-.179,0,1,-38.5,24.8)"
+                : "matrix(-1.205,.284,0,1,443.5,-67.8)"
             }
           >
             <g className="fx-charge">

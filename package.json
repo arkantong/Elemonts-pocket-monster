@@ -1,6 +1,6 @@
 {
   "name": "elemonts",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "private": true,
   "type": "module",
   "scripts": {
@@ -14,7 +14,8 @@
     "android:open": "cap open android",
     "build:android": "tsc --noEmit && vite build --mode native",
     "ios:sync": "npm run build:android && cap sync ios",
-    "ios:open": "cap open ios"
+    "ios:open": "cap open ios",
+    "design:2d": "tsx scripts/gdevelop/generate-project.mts"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.3",

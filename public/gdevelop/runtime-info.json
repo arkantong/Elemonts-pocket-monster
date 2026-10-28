@@ -1,0 +1,238 @@
+{
+  "editor": "GDevelop 5.6.285",
+  "source": "4ian/GDevelop",
+  "upstreamCommit": "bc466cd57b8005d254859400c0dbf0940db6e53c",
+  "renderer": "PixiJS 2D; Canvas fallback; no Three.js library",
+  "files": [
+    {
+      "source": "libs/jshashtable.js",
+      "file": "jshashtable.js",
+      "sha256": "0d1dc83dd04fa261f568e78c88333970a03ba4ca997e77e6b648e6f461d46898"
+    },
+    {
+      "source": "libs/rbush.js",
+      "file": "rbush.js",
+      "sha256": "d8dfa5dfbc98600696ce5f4a90bf7c93b20d2d908f737403654c39cda5ca6bb9"
+    },
+    {
+      "source": "pixi-renderers/pixi.js",
+      "file": "pixi.js",
+      "sha256": "53569cd70e3780db8f39c90ef49d77141e297f5b7e1cdb5a8bd14338680ca869"
+    },
+    {
+      "source": "gd.js",
+      "file": "gd.js",
+      "sha256": "58650971e82f1ca960c38521e5e791fc76715b76b5fe78c360adfeadb31bddaa"
+    },
+    {
+      "source": "logger.js",
+      "file": "logger.js",
+      "sha256": "e3a095926591360319ef6e096351c42f0ffe41f3fbb0177feeac35f5a5ff73d4"
+    },
+    {
+      "source": "polygon.js",
+      "file": "polygon.js",
+      "sha256": "2f51480c4d0e44c712dff3e6f3d4c7990524fbc6688ea29b18d109aa249bc6dc"
+    },
+    {
+      "source": "variable.js",
+      "file": "variable.js",
+      "sha256": "858a845f6e306bf398be63d1a01ba2718c5dacbdcb91fd8e86c8f38a1f9f5c88"
+    },
+    {
+      "source": "variablescontainer.js",
+      "file": "variablescontainer.js",
+      "sha256": "9676ef673273d0905e2341a55c9fbe14091fdb81c8f58cf15e3da37ba8b0c920"
+    },
+    {
+      "source": "force.js",
+      "file": "force.js",
+      "sha256": "296353cba9ed7be1b6fef14ec9d2ba625c2d6e1c8a0eec42591b44766e519ea0"
+    },
+    {
+      "source": "timer.js",
+      "file": "timer.js",
+      "sha256": "2286b8d0c69863ddae5597d276c304284b491870cb2fda5a78e87494ed64139b"
+    },
+    {
+      "source": "timemanager.js",
+      "file": "timemanager.js",
+      "sha256": "1ec7803e499c8cac301daecb08a6078919d1ca28d0530fa19e69e175ba92bf1d"
+    },
+    {
+      "source": "oncetriggers.js",
+      "file": "oncetriggers.js",
+      "sha256": "c87004330905e8f80f25df66fabdb75c7b2dffc7570ce4561020ef2a6858d306"
+    },
+    {
+      "source": "runtimebehavior.js",
+      "file": "runtimebehavior.js",
+      "sha256": "85a05e3a56928719eef8b644e7c4a3c8fbf53009ab31cb575123578c313352f4"
+    },
+    {
+      "source": "runtimeobject.js",
+      "file": "runtimeobject.js",
+      "sha256": "66d54bef9cbacc2c68a04ebc530656e57d9137e66348e16eaab65048fdd3c124"
+    },
+    {
+      "source": "RuntimeLayer.js",
+      "file": "RuntimeLayer.js",
+      "sha256": "2cd531a6c305aedb0a2c30031f3a61ddc01842f38bb08170276af16d70e5f57b"
+    },
+    {
+      "source": "layer.js",
+      "file": "layer.js",
+      "sha256": "18b6d1192126fd153f2ccdff8c3d2535500db71226d7c52fb25aa8b6ecf4480c"
+    },
+    {
+      "source": "RuntimeInstanceContainer.js",
+      "file": "RuntimeInstanceContainer.js",
+      "sha256": "988d6fddaaba88d76adb7351721d2e3f0f4a37f4a84a643374c2faa77c0fe178"
+    },
+    {
+      "source": "runtimescene.js",
+      "file": "runtimescene.js",
+      "sha256": "0f17f196962401377b4fdcd74cabae70b59202745273c6bb87f72f9e26baf36d"
+    },
+    {
+      "source": "scenestack.js",
+      "file": "scenestack.js",
+      "sha256": "6842a6aeb98f3f6e33f315fa666fe75a34e307f3532cd4b6dad08828d4f55ecb"
+    },
+    {
+      "source": "inputmanager.js",
+      "file": "inputmanager.js",
+      "sha256": "b3cd6a7da0436975264ecfefd4558fd7006debb1a2fa0f94cd82a7db784b7293"
+    },
+    {
+      "source": "AsyncTasksManager.js",
+      "file": "AsyncTasksManager.js",
+      "sha256": "4fcf9749fef76cb4687a7c20adf466ca8f1f31525a3ef135d08ed00747a4581f"
+    },
+    {
+      "source": "ResourceCache.js",
+      "file": "ResourceCache.js",
+      "sha256": "838cdb7c262b5c7412fd660dd245ad27454db7a490a22d2d12ad5f2958b56e46"
+    },
+    {
+      "source": "ResourceLoader.js",
+      "file": "ResourceLoader.js",
+      "sha256": "ba51b664a2b705d0d553a065b31901a6251d2fa5f8338f1d40064f63a4449287"
+    },
+    {
+      "source": "jsonmanager.js",
+      "file": "jsonmanager.js",
+      "sha256": "48585fc5ecfa9208d1a344a81654d3ac68840d2d0f52d3f6e80843d1efc8b390"
+    },
+    {
+      "source": "Model3DManager.js",
+      "file": "Model3DManager.js",
+      "sha256": "5ca60c989b2b664bb80a932d0f9c1fd3dce597426a173b1e56de5503501e5b07"
+    },
+    {
+      "source": "named-easings-manager.js",
+      "file": "named-easings-manager.js",
+      "sha256": "b07065b98100423f1d1cd7c040ea69f360f5a5539636061170610be139425d1e"
+    },
+    {
+      "source": "runtimewatermark.js",
+      "file": "runtimewatermark.js",
+      "sha256": "b591c7e705aec51fabc5f20caae370315a6c071cfcea0b3f9515244a1a2b1a48"
+    },
+    {
+      "source": "runtimegame.js",
+      "file": "runtimegame.js",
+      "sha256": "d6d598987018bbd5899738663e5f9ec2de2ecba465efb5ac32ba1c8ba8fb1020"
+    },
+    {
+      "source": "SpriteAnimator.js",
+      "file": "SpriteAnimator.js",
+      "sha256": "e3643a638a682ffa21cfe60ed4fe6947f01ed279c71f214fbb71a1232a1a9afb"
+    },
+    {
+      "source": "spriteruntimeobject.js",
+      "file": "spriteruntimeobject.js",
+      "sha256": "12c1639927524e0476f4f52652b6cf870f70de36e2eef474104b2d160d808206"
+    },
+    {
+      "source": "pixi-renderers/pixi-filters-tools.js",
+      "file": "pixi-filters-tools.js",
+      "sha256": "3b7e9de552c361449deb3b3697e212a737856f1f0187178e0f8efbedfaf8ef8d"
+    },
+    {
+      "source": "pixi-renderers/pixi-effects-manager.js",
+      "file": "pixi-effects-manager.js",
+      "sha256": "33b1299030e3e14184c3839034377b199aa34895ffe89aefe2b2180b2dd1c7c5"
+    },
+    {
+      "source": "pixi-renderers/pixi-image-manager.js",
+      "file": "pixi-image-manager.js",
+      "sha256": "afe65bf3dc8dd9a61c37b2c3f54817f0f15b70498fb643efcedfdae7bebf79b5"
+    },
+    {
+      "source": "pixi-renderers/pixi-bitmapfont-manager.js",
+      "file": "pixi-bitmapfont-manager.js",
+      "sha256": "70b8df6e6e88b02e646caafd9ea69a8986b8dcf2619070e01de84844fcc6d22e"
+    },
+    {
+      "source": "pixi-renderers/runtimegame-pixi-renderer.js",
+      "file": "runtimegame-pixi-renderer.js",
+      "sha256": "ce60afb20829a4aee8ad0a425f35c5458d114692e656c9d196973f18e081d3c1"
+    },
+    {
+      "source": "pixi-renderers/RuntimeInstanceContainerPixiRenderer.js",
+      "file": "RuntimeInstanceContainerPixiRenderer.js",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "source": "pixi-renderers/runtimescene-pixi-renderer.js",
+      "file": "runtimescene-pixi-renderer.js",
+      "sha256": "e0fb58d4648fa1f40f230f1910510ac1843fcd4520edf678e3041834521e9f51"
+    },
+    {
+      "source": "pixi-renderers/DebuggerPixiRenderer.js",
+      "file": "DebuggerPixiRenderer.js",
+      "sha256": "fc9db216b10087f54f87ee6a43c3b8ac9a78b18b7c270e96595809d36b310e32"
+    },
+    {
+      "source": "pixi-renderers/layer-pixi-renderer.js",
+      "file": "layer-pixi-renderer.js",
+      "sha256": "b7686a6a054e499f75a6cd0c91cf2dd3060fa06f58ffa3b9c72ac77acf577b51"
+    },
+    {
+      "source": "pixi-renderers/spriteruntimeobject-pixi-renderer.js",
+      "file": "spriteruntimeobject-pixi-renderer.js",
+      "sha256": "7e3890ae481a975dd51fb7bd9fe546d2aa8ed011b7776b5d4f4390b8aad3df56"
+    },
+    {
+      "source": "pixi-renderers/loadingscreen-pixi-renderer.js",
+      "file": "loadingscreen-pixi-renderer.js",
+      "sha256": "3b09b8c935908140c4527f329758a57aebc4b9eece4873dd04a22eca3c00a615"
+    },
+    {
+      "source": "howler-sound-manager/howler.min.js",
+      "file": "howler.min.js",
+      "sha256": "0a6eeb8765e9c09e86d2c32efa098e12ff3da4494cb7f307608ebb216317db7c"
+    },
+    {
+      "source": "howler-sound-manager/howler-sound-manager.js",
+      "file": "howler-sound-manager.js",
+      "sha256": "1670b9d1448fc855216f7cd48a3a707f6f3158dc60d2d1a89d6d0834df2178e0"
+    },
+    {
+      "source": "fontfaceobserver-font-manager/fontfaceobserver.js",
+      "file": "fontfaceobserver.js",
+      "sha256": "3bd539b6e9476fb2059b702af226c9c6922ea1dec064aa6c9d1c3426fe87ddfe"
+    },
+    {
+      "source": "fontfaceobserver-font-manager/fontfaceobserver-font-manager.js",
+      "file": "fontfaceobserver-font-manager.js",
+      "sha256": "98006d94b2986a0d40f4d67e55e0ace948bedc026d0c517a20c43a66d2acf8e4"
+    },
+    {
+      "source": "events-tools/commontools.js",
+      "file": "commontools.js",
+      "sha256": "adf0ae66b2d26137bdc586e0282fa44299fff5566c7aa9dd91ac89dfd1ecab49"
+    }
+  ]
+}

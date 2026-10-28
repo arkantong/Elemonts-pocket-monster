@@ -11,6 +11,7 @@ import "@fontsource/plus-jakarta-sans/600.css";
 import "@fontsource/plus-jakarta-sans/700.css";
 import "./styles.css";
 import "./pocket-pals.css";
+import "./battle-2d.css";
 import App from "./App";
 import { LanguageProvider } from "./i18n/LanguageProvider";
 import { GameProvider } from "./game/context";

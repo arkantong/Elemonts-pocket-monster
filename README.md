@@ -2,7 +2,15 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.18 (debug)](downloads/elemonts-0.1.18-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.19 (debug)](downloads/elemonts-0.1.19-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+
+## Tampilan 2D dan GDevelop 0.1.19
+
+Home dan seluruh mode battle kini memakai ilustrasi/sprite 2D. Scene battle berjalan dengan runtime GDevelop 5.6.285, memakai PixiJS dan mendukung Canvas ketika WebGL tidak tersedia. Pyroo serta Croobit menggunakan sprite baru berdasarkan concept sheet pengguna, termasuk arah belakang untuk partner dan depan untuk lawan. Sumber sprite yang sama dipakai di Home, Koleksi, starter, dan pemilih tim. Sebanyak 35 bentuk monster lainnya mempertahankan ilustrasi 2D sebelumnya; belum mendapat desain ulang setara dua karakter tersebut.
+
+Arena taman dilukis dalam 2D, dengan posisi partner dan lawan berjauhan. Serangan fisik mendekat lalu kembali, serangan elemen melintas di celah arena, dan respons hit serta HP mengikuti urutan battle yang sudah ada. UI memakai krim/plum, kontrol sentuh, reduced motion, serta fallback sprite bila engine gagal dimuat. Aturan, progres, bahasa dan musik dipertahankan. Model 3D lama tidak lagi dibundel ke aplikasi; sumber Blender tetap di `design/characters/`.
+
+[Proyek scene GDevelop](design/gdevelop/elemonts-battle.json) · [Paket sumber siap dibuka](downloads/Elemonts-GDevelop-2D-v0.1.19.zip) · [Panduan dan batas implementasi](design/gdevelop/README.md).
 
 ## Home Android 0.1.18
 
@@ -56,7 +64,7 @@ Buka `http://localhost:3001`. Single-player APK bekerja offline; server hanya di
 
 ## Android
 
-Prasyarat: JDK 21 lengkap (termasuk javac), Android SDK platform 36 dan build-tools 36.0.0. Minimum Android 7/API 24. WebView yang mendukung WebGL diperlukan untuk model 3D; portrait 2D ditampilkan jika WebGL gagal dibuat.
+Prasyarat: JDK 21 lengkap (termasuk javac), Android SDK platform 36 dan build-tools 36.0.0. Minimum Android 7/API 24. Battle menggunakan sprite 2D dengan renderer Canvas sebagai cadangan ketika WebGL tidak tersedia.
 
 ```sh
 npm run android:sync

@@ -1,5 +1,7 @@
 # UI/UX Elemonts v0.1.18
 
+Catatan versi: PDF ini adalah arsip 0.1.18. Versi 0.1.19 beralih ke battle 2D GDevelop dan sprite Pyroo/Croobit baru; screenshot battle pada PDF belum menggambarkan perubahan tersebut.
+
 [Unduh PDF lengkap](../../downloads/Elemonts-UIUX-Design-Complete-v0.1.18.pdf)
 
 - Edisi 28 Oktober 2026, bahasa utama Indonesia.

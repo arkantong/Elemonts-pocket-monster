@@ -1,0 +1,221 @@
+/* Concept-sheet palette: cream, coral, mint and plum. GDevelop draws flat sprites. */
+.battle-page {
+  --battle-ink: #38234e;
+  --battle-edge: #b49bd9;
+  background: #254a3c url("/art/battle-garden-2d.png") center top / 100% auto
+    no-repeat;
+  padding: 12px 14px 18px;
+}
+.battle-page .battle-stage {
+  height: clamp(350px, 56svh, 620px);
+  overflow: visible;
+}
+.battle-scene-2d {
+  position: absolute;
+  inset: 0 -14px;
+  overflow: hidden;
+}
+.battle-scene-2d iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+}
+.battle-scene-2d[data-engine="loading"] .battle-2d-fallback {
+  z-index: 1;
+}
+.battle-2d-fallback {
+  position: absolute;
+  inset: 0;
+  background: url("/art/battle-garden-2d.png") center / cover;
+}
+.battle-2d-fallback img {
+  position: absolute;
+  object-fit: contain;
+}
+.sprite-player {
+  width: 38%;
+  height: 31%;
+  left: 3%;
+  bottom: 17%;
+}
+.sprite-enemy {
+  width: 26%;
+  height: 21%;
+  right: 8%;
+  bottom: 46%;
+}
+.battle-page .health-panels {
+  z-index: 3;
+}
+.battle-page .health-panel {
+  width: min(214px, 61%);
+  padding: 9px 12px;
+  background: #fff8efed;
+  border: 2px solid #e3d5ef;
+  border-radius: 19px 7px 19px 7px;
+  color: #38234e;
+  box-shadow:
+    0 3px 0 #72538b35,
+    0 5px 15px #304e4020;
+}
+.battle-page .health-panel strong {
+  font:
+    600 17px/1.1 Fredoka,
+    sans-serif;
+}
+.battle-page .health-panel span,
+.battle-page .health-panel small {
+  color: #695378;
+}
+.battle-page .health-panel.side-1 {
+  top: 52px;
+  right: 0;
+}
+.battle-page .health-panel.side-0 {
+  bottom: 0;
+  left: 0;
+}
+.battle-page .health-panel .meter {
+  height: 9px;
+  background: #e1d7e8;
+}
+.battle-page > .page-heading {
+  background: #fff8efeb;
+  border: 1px solid #e3d5ef;
+  padding: 3px 9px;
+}
+.battle-page > .page-heading h1 {
+  color: #513563;
+}
+.battle-page .turn-label {
+  background: transparent;
+  color: #513563;
+}
+.battle-page .battle-console {
+  position: relative;
+  z-index: 6;
+  margin: 10px -2px 0;
+  padding: 12px;
+  background: #fff7ecef;
+  border: 1px solid #e7d8eb;
+  border-radius: 22px;
+  box-shadow: 0 5px 20px #253f3330;
+}
+.battle-page .battle-log {
+  color: #665371;
+  min-height: 18px;
+  font-size: 11px;
+}
+.battle-page .action-heading h3 {
+  color: #513563;
+  font-family: Fredoka, sans-serif;
+  font-weight: 500;
+}
+.battle-page .move-grid {
+  gap: 8px;
+}
+.battle-page .move-button {
+  background: #f3e9fc;
+  border: 2px solid #d4bfe9;
+  border-radius: 18px 6px 18px 6px;
+  color: #432958;
+  box-shadow: 0 3px 0 #bca0d0;
+  min-height: 58px;
+  padding: 7px 11px;
+}
+.battle-page .move-button strong {
+  font:
+    500 18px Fredoka,
+    sans-serif;
+}
+.battle-page .move-button small {
+  color: #725c81;
+}
+.battle-page .move-button > span {
+  font-size: 15px;
+}
+.battle-page .move-button:enabled:hover {
+  background: #e5d4fa;
+}
+.battle-page .move-button:focus-visible {
+  outline: 3px solid #664188;
+  outline-offset: 3px;
+  border-color: #664188;
+  background: #e5d4fa;
+}
+.battle-page .battle-tools {
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.battle-page .battle-tools button {
+  background: #725096;
+  color: #fff8f0;
+  border: 1px solid #5e3c80;
+  border-radius: 14px;
+  min-height: 48px;
+  font-weight: 600;
+}
+.battle-page .battle-tools > span {
+  color: #725c81;
+}
+.battle-page .battle-result {
+  background: #f5ebfc;
+  color: #432958;
+  border-color: #d4bfe9;
+}
+.battle-page .battle-result h2 {
+  color: #432958;
+}
+.battle-page .fx-result {
+  left: 73%;
+  top: 35%;
+  font-size: 20px;
+}
+.battle-page .fx-result.target-left {
+  left: 14%;
+  top: 62%;
+}
+.battle-page .capture-fx {
+  left: 20%;
+  top: 68%;
+  z-index: 7;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (min-width: 700px) {
+  .battle-page {
+    max-width: 540px;
+  }
+  .app-shell:has(.battle-page) {
+    background: #e9ddcf;
+  }
+}
+@media (max-height: 740px) {
+  .battle-page .battle-stage {
+    height: 350px;
+  }
+  .battle-page .battle-console {
+    padding: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .battle-page .fx-result {
+    top: 35%;
+  }
+  .battle-page .fx-result.target-left {
+    top: 62%;
+  }
+}

@@ -33,7 +33,7 @@ export default defineConfig(({ mode }) => ({
       workbox: {
         globPatterns: ["**/*.{js,css,html,png,svg,woff2,wav,m4a,glb}"],
         maximumFileSizeToCacheInBytes: 8000000,
-        navigateFallbackDenylist: [/^\/api/],
+        navigateFallbackDenylist: [/^\/api/, /^\/gdevelop\//],
       },
     }),
   ],

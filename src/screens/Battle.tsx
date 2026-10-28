@@ -4,7 +4,7 @@ import { useBattlePlayback } from "../game/useBattlePlayback";
 import { BattleEffects } from "../components/BattleEffects";
 import { CaptureGuide } from "../components/CaptureGuide";
 import { t } from "../i18n";
-import { lazy, Suspense, useState, useEffect, type CSSProperties } from "react";
+import { useState, useEffect, type CSSProperties } from "react";
 import { motion } from "motion/react";
 import {
   ArrowRight,
@@ -18,7 +18,7 @@ import {
 import { SPECIES, SKILLS, ITEMS, COLORS, type ItemId } from "../game/data";
 import type { Battle as BattleState, BattleAction } from "../game/types";
 import { ElementIcon, Meter, Modal, Portrait } from "../components/ui";
-const CreatureScene = lazy(() => import("../components/CreatureScene"));
+import { BattleScene2D } from "../components/BattleScene2D";
 export function BattleScreen({
   battle: incoming,
   onAction,
@@ -37,6 +37,7 @@ export function BattleScreen({
   const { save, act } = useGame();
   const { language } = useLanguage();
   const [entry, setEntry] = useState(incoming.turn === 1 ? 0 : 3);
+  const [sceneReady, setSceneReady] = useState(false);
   useEffect(() => {
     if (incoming.turn !== 1) {
       setEntry(3);
@@ -60,7 +61,7 @@ export function BattleScreen({
   );
   const animating =
     playing || incoming.turn !== battle.turn || incoming.id !== battle.id;
-  const waiting = remoteWaiting || animating || entry < 3;
+  const waiting = remoteWaiting || animating || entry < 3 || !sceneReady;
   const [menu, setMenu] = useState<"switch" | "bag" | null>(() =>
     lesson && save.captureTutorial === "capsule" ? "bag" : null,
   );
@@ -106,7 +107,7 @@ export function BattleScreen({
       </div>
       <section
         className="battle-stage"
-        aria-busy={animating || entry < 3}
+        aria-busy={animating || entry < 3 || !sceneReady}
         data-entry={entry}
         data-phase={phase}
       >
@@ -194,21 +195,14 @@ export function BattleScreen({
             )),
           )}
         </div>
-        <Suspense
-          fallback={
-            <div className="scene-loading">{t("Menyiapkan arena…")}</div>
-          }
-        >
-          <CreatureScene
+          <BattleScene2D
             species={ours.monster.species}
             enemy={enemy.monster.species}
             event={event}
             entry={entry}
             fainted={[ours.hp <= 0, enemy.hp <= 0]}
-            react={0}
-            room={false}
+            onReady={setSceneReady}
           />
-        </Suspense>
       </section>
       <div className="battle-console">
         <div className="battle-log" role="log" aria-live="polite">

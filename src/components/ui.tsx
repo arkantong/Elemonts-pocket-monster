@@ -15,6 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { COLORS, SPECIES, type Element } from "../game/data";
+import { monsterPortrait } from "../game/visuals";
 export function ElementIcon({
   element,
   size = 18,
@@ -50,7 +51,7 @@ export function Portrait({
         role="img"
         aria-label={s.name}
         style={{
-          backgroundImage: `url(/art/monsters/${species}.png)`,
+          backgroundImage: `url(${monsterPortrait(species)})`,
           backgroundSize: "contain",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
