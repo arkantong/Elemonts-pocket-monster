@@ -19,7 +19,7 @@
     ],
     "currentPlatform": "GDevelop JS platform",
     "platformSpecificAssets": {},
-    "version": "0.1.19",
+    "version": "0.1.20",
     "windowWidth": 960,
     "windowHeight": 1200,
     "maxFPS": 60,
@@ -154,8 +154,32 @@
       },
       {
         "kind": "image",
+        "name": "voltavi:home",
+        "file": "../../public/art/monsters-2d/voltavi-home.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "voltavi:back",
+        "file": "../../public/art/monsters-2d/voltavi-back.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
         "name": "voltavi:front",
-        "file": "../../public/art/monsters/voltavi.png",
+        "file": "../../public/art/monsters-2d/voltavi-front.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "voltavi:hit",
+        "file": "../../public/art/monsters-2d/voltavi-hit.png",
         "smoothed": true,
         "userAdded": true,
         "metadata": ""
@@ -202,8 +226,32 @@
       },
       {
         "kind": "image",
+        "name": "mippo:home",
+        "file": "../../public/art/monsters-2d/mippo-home.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "mippo:back",
+        "file": "../../public/art/monsters-2d/mippo-back.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
         "name": "mippo:front",
-        "file": "../../public/art/monsters/mippo.png",
+        "file": "../../public/art/monsters-2d/mippo-front.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "mippo:hit",
+        "file": "../../public/art/monsters-2d/mippo-hit.png",
         "smoothed": true,
         "userAdded": true,
         "metadata": ""
@@ -932,6 +980,64 @@
               ]
             },
             {
+              "name": "voltavi:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltavi:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 257.5,
+                        "y": 425
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 257.5,
+                        "y": 425
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "voltavi:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltavi:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 186.5,
+                        "y": 426
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 186.5,
+                        "y": 426
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "voltavi:front",
               "useMultipleDirections": false,
               "directions": [
@@ -944,14 +1050,43 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 131.5,
-                        "y": 221
+                        "x": 230.5,
+                        "y": 432
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 131.5,
-                        "y": 221
+                        "x": 230.5,
+                        "y": 432
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "voltavi:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltavi:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 213,
+                        "y": 438
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 213,
+                        "y": 438
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -1106,6 +1241,64 @@
               ]
             },
             {
+              "name": "mippo:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "mippo:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 240.5,
+                        "y": 367
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 240.5,
+                        "y": 367
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "mippo:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "mippo:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 201,
+                        "y": 365
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 201,
+                        "y": 365
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "mippo:front",
               "useMultipleDirections": false,
               "directions": [
@@ -1118,14 +1311,43 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 124,
-                        "y": 230
+                        "x": 237,
+                        "y": 368
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 124,
-                        "y": 230
+                        "x": 237,
+                        "y": 368
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "mippo:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "mippo:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 221,
+                        "y": 369
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 221,
+                        "y": 369
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -2188,6 +2410,64 @@
               ]
             },
             {
+              "name": "voltavi:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltavi:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 257.5,
+                        "y": 425
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 257.5,
+                        "y": 425
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "voltavi:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltavi:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 186.5,
+                        "y": 426
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 186.5,
+                        "y": 426
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "voltavi:front",
               "useMultipleDirections": false,
               "directions": [
@@ -2200,14 +2480,43 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 131.5,
-                        "y": 221
+                        "x": 230.5,
+                        "y": 432
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 131.5,
-                        "y": 221
+                        "x": 230.5,
+                        "y": 432
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "voltavi:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "voltavi:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 213,
+                        "y": 438
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 213,
+                        "y": 438
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -2362,6 +2671,64 @@
               ]
             },
             {
+              "name": "mippo:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "mippo:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 240.5,
+                        "y": 367
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 240.5,
+                        "y": 367
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "mippo:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "mippo:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 201,
+                        "y": 365
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 201,
+                        "y": 365
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "mippo:front",
               "useMultipleDirections": false,
               "directions": [
@@ -2374,14 +2741,43 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 124,
-                        "y": 230
+                        "x": 237,
+                        "y": 368
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 124,
-                        "y": 230
+                        "x": 237,
+                        "y": 368
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "mippo:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "mippo:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 221,
+                        "y": 369
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 221,
+                        "y": 369
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -3195,6 +3591,7 @@
         {
           "type": "BuiltinCommonInstructions::JsCode",
           "inlineCode": [
+            "window.ElemontsConceptSpecies = [\"pyroo\",\"croobit\",\"voltavi\",\"mippo\"];",
             "/* Shared JavaScript event: embedded in the editable GDevelop scene and web runtime. */",
             "(function installElemontsBattle() {",
             "  if (window.ElemontsBattle) return;",
@@ -3202,7 +3599,7 @@
             "    { x: 215, y: 1000, width: 365, height: 365 },",
             "    { x: 755, y: 700, width: 245, height: 245 },",
             "  ];",
-            "  const concept = new Set([\"pyroo\", \"croobit\"]);",
+            "  const concept = new Set(window.ElemontsConceptSpecies || []);",
             "  const ease = (n) => 1 - Math.pow(1 - Math.max(0, Math.min(1, n)), 3);",
             "  const state = {",
             "    species: \"pyroo\",",
@@ -3356,7 +3753,7 @@
             "  };",
             "})();",
             "",
-            "window.ElemontsSpriteFrames = {\"pyroo:home\":[460,470,23,49,397,387],\"pyroo:back\":[455,470,22,61,412,379],\"pyroo:front\":[435,470,23,77,399,367],\"pyroo:hit\":[424,470,13,83,397,363],\"pyroar:front\":[256,256,68,36,117,196],\"infernox:front\":[256,256,58,35,138,197],\"croobit:home\":[460,417,22,37,418,334],\"croobit:back\":[455,417,37,23,380,341],\"croobit:front\":[435,417,7,57,406,317],\"croobit:hit\":[424,417,16,82,387,295],\"rivaclaw:front\":[256,256,67,37,153,185],\"hydragon:front\":[256,256,48,38,165,184],\"voltavi:front\":[256,256,36,38,191,183],\"voltusk:front\":[256,256,73,40,112,182],\"voltitan:front\":[256,256,58,38,143,184],\"pebblit:front\":[256,256,56,38,145,185],\"rockhorn:front\":[256,256,73,40,112,182],\"terragorn:front\":[256,256,73,40,112,182],\"mippo:front\":[256,256,58,35,132,195],\"pluffluff:front\":[256,256,69,39,121,178],\"pufflare:front\":[256,256,47,38,167,179],\"boarlit:front\":[256,256,74,37,122,185],\"magboar:front\":[256,256,74,37,122,185],\"flicklet:front\":[256,256,22,37,222,185],\"dawnphoenix:front\":[256,256,41,39,180,182],\"seabbi:front\":[256,256,44,40,173,182],\"marilune:front\":[256,256,36,37,195,179],\"jellun:front\":[256,256,51,38,156,181],\"pelaglow:front\":[256,256,33,41,197,166],\"sparko:front\":[256,256,74,37,146,185],\"luxerion:front\":[256,256,59,39,148,182],\"buzzbit:front\":[256,256,54,37,156,185],\"thundrax:front\":[256,256,54,38,157,184],\"pebblisk:front\":[256,256,69,37,151,185],\"georoll:front\":[256,256,56,38,146,185],\"dribble:front\":[256,256,69,37,119,180],\"burrowox:front\":[256,256,72,38,111,184],\"aurapaw:front\":[256,256,74,37,136,185],\"swifttail:front\":[256,256,74,37,142,185],\"mallow:front\":[256,256,67,41,123,181],\"hoplet:front\":[256,256,81,39,96,182],\"aurelyth:front\":[256,256,84,38,90,177],\"noxarion:front\":[256,256,74,37,137,185]};",
+            "window.ElemontsSpriteFrames = {\"pyroo:home\":[460,470,23,49,397,387],\"pyroo:back\":[455,470,22,61,412,379],\"pyroo:front\":[435,470,23,77,399,367],\"pyroo:hit\":[424,470,13,83,397,363],\"pyroar:front\":[256,256,68,36,117,196],\"infernox:front\":[256,256,58,35,138,197],\"croobit:home\":[460,417,22,37,418,334],\"croobit:back\":[455,417,37,23,380,341],\"croobit:front\":[435,417,7,57,406,317],\"croobit:hit\":[424,417,16,82,387,295],\"rivaclaw:front\":[256,256,67,37,153,185],\"hydragon:front\":[256,256,48,38,165,184],\"voltavi:home\":[490,470,55,54,405,371],\"voltavi:back\":[390,470,20,58,333,368],\"voltavi:front\":[450,470,32,82,397,350],\"voltavi:hit\":[444,470,46,137,334,301],\"voltusk:front\":[256,256,73,40,112,182],\"voltitan:front\":[256,256,58,38,143,184],\"pebblit:front\":[256,256,56,38,145,185],\"rockhorn:front\":[256,256,73,40,112,182],\"terragorn:front\":[256,256,73,40,112,182],\"mippo:home\":[490,417,44,22,393,345],\"mippo:back\":[390,417,41,23,320,342],\"mippo:front\":[450,417,49,21,376,347],\"mippo:hit\":[444,417,30,77,382,292],\"pluffluff:front\":[256,256,69,39,121,178],\"pufflare:front\":[256,256,47,38,167,179],\"boarlit:front\":[256,256,74,37,122,185],\"magboar:front\":[256,256,74,37,122,185],\"flicklet:front\":[256,256,22,37,222,185],\"dawnphoenix:front\":[256,256,41,39,180,182],\"seabbi:front\":[256,256,44,40,173,182],\"marilune:front\":[256,256,36,37,195,179],\"jellun:front\":[256,256,51,38,156,181],\"pelaglow:front\":[256,256,33,41,197,166],\"sparko:front\":[256,256,74,37,146,185],\"luxerion:front\":[256,256,59,39,148,182],\"buzzbit:front\":[256,256,54,37,156,185],\"thundrax:front\":[256,256,54,38,157,184],\"pebblisk:front\":[256,256,69,37,151,185],\"georoll:front\":[256,256,56,38,146,185],\"dribble:front\":[256,256,69,37,119,180],\"burrowox:front\":[256,256,72,38,111,184],\"aurapaw:front\":[256,256,74,37,136,185],\"swifttail:front\":[256,256,74,37,142,185],\"mallow:front\":[256,256,67,41,123,181],\"hoplet:front\":[256,256,81,39,96,182],\"aurelyth:front\":[256,256,84,38,90,177],\"noxarion:front\":[256,256,74,37,137,185]};",
             "window.ElemontsBattle.update(runtimeScene);"
           ],
           "parameterObjects": "",
@@ -3401,7 +3798,16 @@
           "name": "hydragon:front"
         },
         {
+          "name": "voltavi:home"
+        },
+        {
+          "name": "voltavi:back"
+        },
+        {
           "name": "voltavi:front"
+        },
+        {
+          "name": "voltavi:hit"
         },
         {
           "name": "voltusk:front"
@@ -3419,7 +3825,16 @@
           "name": "terragorn:front"
         },
         {
+          "name": "mippo:home"
+        },
+        {
+          "name": "mippo:back"
+        },
+        {
           "name": "mippo:front"
+        },
+        {
+          "name": "mippo:hit"
         },
         {
           "name": "pluffluff:front"

@@ -5,7 +5,7 @@
     { x: 215, y: 1000, width: 365, height: 365 },
     { x: 755, y: 700, width: 245, height: 245 },
   ];
-  const concept = new Set(["pyroo", "croobit"]);
+  const concept = new Set(window.ElemontsConceptSpecies || []);
   const ease = (n) => 1 - Math.pow(1 - Math.max(0, Math.min(1, n)), 3);
   const state = {
     species: "pyroo",

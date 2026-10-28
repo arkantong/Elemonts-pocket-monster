@@ -6,7 +6,8 @@ root = Path(__file__).resolve().parents[2]
 version = json.loads((root/'package.json').read_text())['version']
 project = root/'design/gdevelop/elemonts-battle.json'
 data = json.loads(project.read_text())
-files = {project, project.parent/'README.md', project.parent/'characters-atlas.png', root/'src/game/conceptFrames.json', root/'scripts/gdevelop/battle-events.js',root/'scripts/gdevelop/extract-sprites.sh'}
+files = {project, project.parent/'README.md', project.parent/'characters-atlas.png', root/'src/game/conceptFrames.json', root/'src/game/visuals.ts', root/'scripts/gdevelop/battle-events.js',root/'scripts/gdevelop/extract-sprites.sh',root/'scripts/gdevelop/measure-frames.py'}
+files.update(project.parent.glob('characters-atlas-batch-*.png'))
 for resource in data['resources']['resources']:
     files.add((project.parent/resource['file']).resolve())
 files.update((root/'public/licenses').glob('*.txt'))

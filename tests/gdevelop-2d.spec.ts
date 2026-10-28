@@ -20,7 +20,19 @@ async function fixture(page: Page, species: string, battle = false) {
     save.battle = createBattle(
       "wild",
       [save.monsters[0], partner],
-      [makeMonster(species === "pyroo" ? "croobit" : "pyroo", 5)],
+      [
+        makeMonster(
+          (
+            {
+              pyroo: "croobit",
+              croobit: "pyroo",
+              voltavi: "mippo",
+              mippo: "voltavi",
+            } as Record<string, string>
+          )[species],
+          5,
+        ),
+      ],
     );
     save.battle.turn = 2;
   }
@@ -96,7 +108,7 @@ test("production bundle reaches its first GDevelop frame and resolves a move", a
     await new Promise<void>((resolve) => server.close(() => resolve()));
   }
 });
-for (const species of ["pyroo", "croobit"])
+for (const species of ["pyroo", "croobit", "voltavi", "mippo"])
   test(`${species} uses the concept sheet in Home and Collection`, async ({
     page,
   }) => {
@@ -119,6 +131,101 @@ for (const species of ["pyroo", "croobit"])
     );
     await page.getByRole("button", { name: "Home", exact: true }).click();
     await expect(page.locator(".pet-illustration")).toBeVisible();
+    expect(errors).toEqual([]);
+  });
+for (const species of ["voltavi", "mippo"])
+  test(`${species} batch 02 uses rear/front/hit sprites during battle`, async ({
+    page,
+  }) => {
+    await fixture(page, species, true);
+    await page.addInitScript(() => {
+      let seed = 123;
+      Math.random = () => {
+        seed = (seed * 1664525 + 1013904223) >>> 0;
+        return seed / 4294967296;
+      };
+    });
+    const errors: string[] = [];
+    page.on("pageerror", (e) => errors.push(e.message));
+    page.on("console", (m) => {
+      if (m.type() === "error") errors.push(m.text());
+    });
+    await page.goto("/");
+    await expect(page).toHaveTitle(/Elemonts/);
+    await expect(page.locator(".battle-scene-2d")).toHaveAttribute(
+      "data-engine",
+      "gdevelop",
+      { timeout: 15000 },
+    );
+    await expect(page.locator("vite-error-overlay")).toHaveCount(0);
+    const frame = page
+      .frames()
+      .find((f) => f.url().includes("/gdevelop/index.html"))!;
+    const opponent = species === "voltavi" ? "mippo" : "voltavi";
+    await expect
+      .poll(() =>
+        frame.evaluate(() =>
+          (window as any).ElemontsBattle.scene
+            .getObjects("Partner")[0]
+            .getAnimationName(),
+        ),
+      )
+      .toBe(`${species}:back`);
+    await expect
+      .poll(() =>
+        frame.evaluate(() =>
+          (window as any).ElemontsBattle.scene
+            .getObjects("Opponent")[0]
+            .getAnimationName(),
+        ),
+      )
+      .toBe(`${opponent}:front`);
+    for (const [width, height] of [
+      [320, 640],
+      [390, 844],
+      [1280, 900],
+    ]) {
+      await page.setViewportSize({ width, height });
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+      ).toBe(true);
+      await expect
+        .poll(() =>
+          frame.evaluate(() => {
+            const c = document.querySelector("canvas")!;
+            return Math.abs(c.width / c.height - innerWidth / innerHeight);
+          }),
+        )
+        .toBeLessThan(0.002);
+      await page.screenshot({
+        path: `/tmp/elemonts-batch02-${species}-${width}.png`,
+        fullPage: true,
+      });
+    }
+    await page.setViewportSize({ width: 390, height: 844 });
+    const hp = await page.locator(".health-panel.side-1 small").innerText();
+    await page.locator(".move-button").nth(1).click();
+    await expect
+      .poll(
+        () =>
+          frame.evaluate(() =>
+            (window as any).ElemontsBattle.scene
+              .getObjects("Opponent")[0]
+              .getAnimationName(),
+          ),
+        { intervals: [30, 60, 100], timeout: 6000 },
+      )
+      .toBe(`${opponent}:hit`);
+    await expect(page.locator(".health-panel.side-1 small")).toHaveText(hp);
+    await page.screenshot({ path: `/tmp/elemonts-batch02-${species}-hit.png` });
+    await expect(page.locator(".health-panel.side-1 small")).not.toHaveText(hp);
+    await expect(page.locator(".battle-stage")).toHaveAttribute(
+      "aria-busy",
+      "false",
+      { timeout: 15000 },
+    );
     expect(errors).toEqual([]);
   });
 test("GDevelop renders spaced 2D actors without WebGL, switches partners and resolves a move", async ({

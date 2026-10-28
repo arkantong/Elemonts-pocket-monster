@@ -2,7 +2,15 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.19 (debug)](downloads/elemonts-0.1.19-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.20 (debug)](downloads/elemonts-0.1.20-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+
+## Concept sheet Batch 02: Voltavi dan Mippo · 0.1.20
+
+Voltavi kini memakai bentuk burung chibi kuning pastel, jambul petir dan ujung sayap biru. Mippo memakai bentuk kuda nil lavender dengan pipi pink, moncong krem, dan perut boba. Masing-masing memiliki pose Home, belakang partner, depan lawan dan hit. Home, starter, Koleksi, pemilih tim dan battle memakai aset yang sama; elemen, skill, stat, evolusi dan save tetap mengikuti aturan sebelumnya. Posisi battle tetap berjauhan.
+
+Empat monster sudah memakai sprite concept sheet (Pyroo, Croobit, Voltavi, Mippo), sementara 33 bentuk lainnya mempertahankan ilustrasi sebelumnya. Build Android 21 memakai identitas versi 0.1.20.
+
+[Paket scene GDevelop terbaru](downloads/Elemonts-GDevelop-2D-v0.1.20.zip) · [Panduan sumber](design/gdevelop/README.md).
 
 ## Tampilan 2D dan GDevelop 0.1.19
 

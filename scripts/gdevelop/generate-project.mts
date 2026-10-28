@@ -2,7 +2,11 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { SPECIES } from "../../src/game/data.ts";
 import frames from "../../src/game/portraitFrames.json" with { type: "json" };
 import conceptFrames from "../../src/game/conceptFrames.json" with { type: "json" };
-const concept = ["pyroo", "croobit"];
+import { CONCEPT_MONSTERS } from "../../src/game/visuals.ts";
+const concept = [...CONCEPT_MONSTERS];
+const { version } = JSON.parse(readFileSync("package.json", "utf8")) as {
+  version: string;
+};
 const resources: any[] = [];
 const animationFrames: Record<string, number[]> = {};
 const animations: any[] = [];
@@ -164,7 +168,7 @@ const project: any = {
     platforms: [{ name: "GDevelop JS platform" }],
     currentPlatform: "GDevelop JS platform",
     platformSpecificAssets: {},
-    version: "0.1.19",
+    version,
     windowWidth: 960,
     windowHeight: 1200,
     maxFPS: 60,
@@ -257,6 +261,7 @@ const project: any = {
         {
           type: "BuiltinCommonInstructions::JsCode",
           inlineCode: [
+            `window.ElemontsConceptSpecies = ${JSON.stringify(concept)};`,
             ...eventSource.split("\n"),
             `window.ElemontsSpriteFrames = ${JSON.stringify(animationFrames)};`,
             "window.ElemontsBattle.update(runtimeScene);",
@@ -276,7 +281,7 @@ const project: any = {
 };
 writeFileSync(
   "public/gdevelop/project-data.js",
-  `gdjs.projectData = ${JSON.stringify(project)};\nwindow.ElemontsSpriteFrames = ${JSON.stringify(animationFrames)};\n`,
+  `gdjs.projectData = ${JSON.stringify(project)};\nwindow.ElemontsSpriteFrames = ${JSON.stringify(animationFrames)};\nwindow.ElemontsConceptSpecies = ${JSON.stringify(concept)};\n`,
 );
 writeFileSync(
   "public/gdevelop/battle-events.js",

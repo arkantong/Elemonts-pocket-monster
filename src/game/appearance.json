@@ -69,12 +69,12 @@
     "id": "voltavi",
     "name": "Voltavi",
     "form": "Burung chibi",
-    "palette": ["#ffe696", "#fff8ef", "#b7dbed"],
+    "palette": ["#ffe082", "#fff8f0", "#7fc8ff"],
     "colorDescription": "Kuning pastel · Putih · Biru muda",
     "character": "Riang",
     "signature": "Jambul petir membulat",
     "shape": "bird",
-    "status": "Konsep awal"
+    "status": "Concept sheet Batch 02"
   },
   {
     "id": "voltusk",
@@ -135,12 +135,12 @@
     "id": "mippo",
     "name": "Mippo",
     "form": "Kuda nil mini",
-    "palette": ["#bca4d6", "#d7d0d9", "#f3b6c8"],
+    "palette": ["#c9b4f0", "#e7e1da", "#ffb6c7"],
     "colorDescription": "Lavender · Abu susu · Pink",
     "character": "Santai",
     "signature": "Pipi kenyal dan perut boba",
     "shape": "hippo",
-    "status": "Konsep awal"
+    "status": "Concept sheet Batch 02"
   },
   {
     "id": "pluffluff",
