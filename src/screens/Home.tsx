@@ -1,3 +1,4 @@
+import portraitFrames from "../game/portraitFrames.json" with { type: "json" };
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Utensils, Heart, Zap, Moon, Users, Gift, CircleDot, Star } from "lucide-react";
 import { useGame } from "../game/context";
@@ -15,6 +16,8 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
     [gifts, setGifts] = useState(false), [score, setScore] = useState(0);
   const m = save.monsters.find(m => m.uid === save.team[0])!;
   const s = SPECIES[m.species];
+  const frame = portraitFrames[(m.species === "pyroo" ? "pyroo-home" : m.species) as keyof typeof portraitFrames];
+  const illustration = m.species === "pyroo" ? "/art/pet-home-pyroo.png" : `/art/monsters/${m.species}.png`;
   const rooms = id ? ["Rumah", "Dapur", "Ruang bermain", "Kamar tidur"] : ["Home", "Kitchen", "Playroom", "Bedroom"];
   const claimed = save.claimedDay === dayKey();
   const changeRoom = (next: number) => setRoom((next + rooms.length) % rooms.length);
@@ -31,7 +34,9 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
     <div className="pet-name"><h2>{s.name}</h2><span><Star size={17} fill="#ffd36e"/> Lv. {m.level}</span></div>
     <div className="pet-stage">
 
-      <img key={`${m.uid}:${reaction}`} className={`pet-illustration ${reaction ? "pet-react" : ""}`} src={m.species === "pyroo" ? "/art/pet-home-pyroo.png" : `/art/monsters/${m.species}.png`} alt={s.name}/>
+      <svg key={`${m.uid}:${reaction}`} className={`pet-illustration ${reaction ? "pet-react" : ""}`} viewBox={frame.slice(2).join(" ")} preserveAspectRatio="xMidYMax meet" role="img" aria-label={s.name}>
+        <image href={illustration} width={frame[0]} height={frame[1]}/>
+      </svg>
       <button className="scene-interact" aria-label={t(`Sapa ${s.name}`)} onClick={()=>{setReaction(r=>r+1);notify(`${s.name}${id ? " senang kamu datang!" : " is happy to see you!"}`);}}/>
       {room===3 && <div className="pet-sleep" aria-hidden="true">Z z z</div>}
       {room===2 && <button className={`pet-ball position-${score%3}`} aria-label={id ? "Tangkap bola" : "Catch the ball"} onClick={()=>{setScore(v=>v+1);setReaction(r=>r+1);}}><CircleDot size={44}/></button>}

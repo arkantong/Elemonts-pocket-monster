@@ -200,3 +200,30 @@ input,select,textarea,.search { border-color:#E0D3E5; color:#332A3F; }
 .illustrated-home-shell .pet-room-nav button svg { position:relative; z-index:1; width:20px; height:20px; }
 .illustrated-home-shell .top-actions .icon-button { min-width:48px; min-height:48px; }
 .illustrated-home-shell button:focus-visible { outline:3px solid #704694; outline-offset:2px; }
+
+/* Android 140+ WebView supplies edge-to-edge insets; older versions supply zero
+   after native padding. Reserve them once around the Home, not again in its nav. */
+:root {
+  --app-safe-top: max(env(safe-area-inset-top, 0px), var(--safe-area-inset-top, 0px));
+  --app-safe-bottom: max(env(safe-area-inset-bottom, 0px), var(--safe-area-inset-bottom, 0px));
+  --app-safe-left: max(env(safe-area-inset-left, 0px), var(--safe-area-inset-left, 0px));
+  --app-safe-right: max(env(safe-area-inset-right, 0px), var(--safe-area-inset-right, 0px));
+  --home-usable-height: calc(100svh - var(--app-safe-top) - var(--app-safe-bottom));
+}
+#root:has(.illustrated-home-shell) { padding:var(--app-safe-top) var(--app-safe-right) var(--app-safe-bottom) var(--app-safe-left); background:#f7e9db; }
+.illustrated-home-shell { height:var(--home-usable-height); min-height:0; min-width:0; width:min(100%, calc(var(--home-usable-height) * .46312)); }
+.illustrated-home-shell .bottom-nav { height:max(72px,10%); padding:6px 2%; align-items:stretch; }
+.illustrated-home-shell .bottom-nav button { padding:4px 0; min-height:48px; gap:4px; line-height:1.15; flex-shrink:0; }
+.illustrated-home-shell .bottom-nav button::before { flex:0 0 auto; aspect-ratio:1; min-height:clamp(28px,7vw,60px); }
+.illustrated-home-shell .pet-actions { top:auto; bottom:calc(max(72px,10%) + 12px); height:clamp(76px,13.2%,244px); }
+.illustrated-home-shell .pet-room-action { top:auto; bottom:calc(max(72px,10%) + 16px + clamp(76px,13.2%,244px)); height:auto; }
+.illustrated-home-shell .pet-stage::before { content:""; position:absolute; width:42%; height:5%; left:30%; bottom:-1%; border-radius:50%; background:#4f2a321f; filter:blur(6px); }
+.illustrated-home-shell .pet-illustration { object-fit:initial; }
+#root { padding:var(--app-safe-top) var(--app-safe-right) var(--app-safe-bottom) var(--app-safe-left); }
+.app-shell { min-height:var(--home-usable-height); }
+.illustrated-home-shell { width:min(100%, calc(var(--home-usable-height) * .56)); }
+.app-shell:not(.illustrated-home-shell) > .bottom-nav { bottom:var(--app-safe-bottom); padding-bottom:9px; }
+.sidebar { top:var(--app-safe-top); bottom:var(--app-safe-bottom); }
+.language-screen { min-height:var(--home-usable-height); }
+.battle-page { min-height:var(--home-usable-height); padding-top:12px; padding-bottom:14px; }
+.modal { max-height:min(90svh, calc(var(--home-usable-height) - 24px)); }

@@ -4,6 +4,7 @@ const config: CapacitorConfig = {
   appName: "Elemonts",
   webDir: "dist",
   android: { backgroundColor: "#f3f5ee" },
+  plugins: { SystemBars: { insetsHandling: "css", initialViewportFitValueHint: "cover" } },
   server: { androidScheme: "http", cleartext: true },
 };
 export default config;
