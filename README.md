@@ -2,9 +2,13 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.15 (debug)](downloads/elemonts-0.1.15-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.16 (debug)](downloads/elemonts-0.1.16-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
 
-## Ritme battle 0.1.15
+## Perbaikan QA Android 0.1.16
+
+Area sentuh tombol pindah ruangan dan Pengaturan minimal 48×48 px, dengan fokus keyboard yang terlihat dan label aksesibilitas logo. Home tetap memakai ilustrasi 2D. Pembaruan ini menyertakan perbaikan QA pada source; bukan peningkatan rendering Duel 3D.
+
+## Ritme battle 0.1.12
 
 Masuk battle kini bertahap, diikuti pengumuman jurus, gerakan serangan, kedipan target, HP turun bertahap, lalu hasil. Tackle memakai lunge pendek dan kamera stabil. Elemen/tier berbeda memiliki durasi berbeda; reduced motion meniadakan kedipan. Aturan battle dan progres tetap sama. Lihat [kajian LeafGreen, sumber timing, dan batas adaptasinya](docs/design/LEAFGREEN-BATTLE.md). Perbaikan cache Android 0.1.11 tetap digunakan.
 
