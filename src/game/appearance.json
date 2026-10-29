@@ -311,12 +311,12 @@
     "id": "georoll",
     "name": "Georoll",
     "form": "Batu bergulir",
-    "palette": ["#bc9b7c", "#e9d9b8", "#a6aaa6"],
+    "palette": ["#c9a27e", "#eee1c6", "#9b9b9b"],
     "colorDescription": "Cokelat muda · Krem · Abu",
     "character": "Playful",
     "signature": "Cangkang spiral dan kaki yang bisa dilipat",
     "shape": "shell",
-    "status": "Konsep awal"
+    "status": "Concept sheet Batch 05"
   },
   {
     "id": "dribble",
@@ -333,23 +333,23 @@
     "id": "burrowox",
     "name": "Burrowox",
     "form": "Penggali bertanduk",
-    "palette": ["#997757", "#e8d6b4", "#575d64"],
+    "palette": ["#8b6a4e", "#eadcc7", "#5a5a5a"],
     "colorDescription": "Tanah · Krem · Abu gelap",
     "character": "Tekun",
     "signature": "Moncong lebar dan cakar bundar",
     "shape": "burrow",
-    "status": "Konsep awal"
+    "status": "Concept sheet Batch 05"
   },
   {
     "id": "aurapaw",
     "name": "Aurapaw",
     "form": "Kucing roh",
-    "palette": ["#fff6ee", "#f2c2cf", "#d9c58e"],
+    "palette": ["#fff8f4", "#ffb8cc", "#ffe7a8"],
     "colorDescription": "Putih · Pink · Emas pucat",
     "character": "Penyayang",
     "signature": "Telapak kaki bercahaya lembut",
     "shape": "cat",
-    "status": "Konsep awal"
+    "status": "Concept sheet Batch 04"
   },
   {
     "id": "swifttail",
@@ -399,11 +399,11 @@
     "id": "noxarion",
     "name": "Noxarion",
     "form": "Penjaga malam",
-    "palette": ["#303e62", "#66517d", "#c2cadc"],
+    "palette": ["#2b3b73", "#5b3fa9", "#d7dceb"],
     "colorDescription": "Navy · Ungu gelap · Perak",
     "character": "Tenang",
     "signature": "Bulu berbintang dan ekor bulan",
     "shape": "night",
-    "status": "Konsep awal"
+    "status": "Concept sheet Batch 04"
   }
 ]

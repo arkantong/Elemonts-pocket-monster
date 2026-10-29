@@ -17,6 +17,10 @@ const opponents: Record<string, string> = {
   mippo: "voltavi",
   mallow: "swifttail",
   swifttail: "mallow",
+  aurapaw: "noxarion",
+  noxarion: "aurapaw",
+  georoll: "burrowox",
+  burrowox: "georoll",
 };
 async function fixture(page: Page, species: string, battle = false) {
   const isStarter = STARTERS.some((s) => s.id === species);
@@ -121,6 +125,10 @@ for (const species of [
   "mippo",
   "mallow",
   "swifttail",
+  "aurapaw",
+  "noxarion",
+  "georoll",
+  "burrowox",
 ])
   test(`${species} uses the concept sheet in Home and Collection`, async ({
     page,
@@ -162,11 +170,21 @@ for (const species of [
     await expect(page.locator(".pet-illustration")).toBeVisible();
     expect(errors).toEqual([]);
   });
-for (const species of ["voltavi", "mippo", "mallow", "swifttail"])
+for (const species of [
+  "voltavi",
+  "mippo",
+  "mallow",
+  "swifttail",
+  "aurapaw",
+  "noxarion",
+  "georoll",
+  "burrowox",
+])
   test(`${species} uses rear/front/hit sprites during battle`, async ({
     page,
   }) => {
     await fixture(page, species, true);
+    await page.emulateMedia({ reducedMotion: "no-preference" });
     await page.addInitScript(() => {
       let seed = 123;
       Math.random = () => {
@@ -234,22 +252,65 @@ for (const species of ["voltavi", "mippo", "mallow", "swifttail"])
       });
     }
     await page.setViewportSize({ width: 390, height: 844 });
-    const hp = await page.locator(".health-panel.side-1 small").innerText();
+    await expect
+      .poll(() =>
+        frame.evaluate(() => {
+          const canvas = document.querySelector("canvas")!;
+          return Math.abs(
+            canvas.width / canvas.height - innerWidth / innerHeight,
+          );
+        }),
+      )
+      .toBeLessThan(0.002);
+    await frame.evaluate(
+      () =>
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
+    );
+    const hpBar = page.locator('.health-panel.side-1 [role="progressbar"]');
+    const hp = (await hpBar.getAttribute("aria-valuenow"))!;
+    // Record rendered transitions inside the game loop, rather than sampling a
+    // short pose from the browser process after screenshots/resizes.
+    await frame.evaluate(() => {
+      const w = window as any;
+      w.__poseLog = [];
+      let previous = "";
+      w.gdjs.callbacksRuntimeScenePostEvents.push((scene: any) => {
+        const animation = scene.getObjects("Opponent")[0]?.getAnimationName();
+        if (animation && animation !== previous) {
+          previous = animation;
+          w.__poseLog.push({
+            animation,
+            hp: parent.document
+              .querySelector('.health-panel.side-1 [role="progressbar"]')
+              ?.getAttribute("aria-valuenow"),
+          });
+        }
+      });
+    });
     await page.locator(".move-button").nth(1).click();
     await expect
       .poll(
         () =>
-          frame.evaluate(() =>
-            (window as any).ElemontsBattle.scene
-              .getObjects("Opponent")[0]
-              .getAnimationName(),
+          frame.evaluate(
+            (name) =>
+              (window as any).__poseLog.some(
+                (pose: any) => pose.animation === name,
+              ),
+            `${opponent}:hit`,
           ),
-        { intervals: [30, 60, 100], timeout: 6000 },
+        { intervals: [30, 60, 100], timeout: 12000 },
       )
-      .toBe(`${opponent}:hit`);
-    await expect(page.locator(".health-panel.side-1 small")).toHaveText(hp);
+      .toBe(true);
+    const hit = await frame.evaluate(
+      (name) =>
+        (window as any).__poseLog.find((pose: any) => pose.animation === name),
+      `${opponent}:hit`,
+    );
+    expect(hit.hp).toBe(hp);
     await page.screenshot({ path: `/tmp/elemonts-batch02-${species}-hit.png` });
-    await expect(page.locator(".health-panel.side-1 small")).not.toHaveText(hp);
+    await expect(hpBar).not.toHaveAttribute("aria-valuenow", hp);
     await expect(page.locator(".battle-stage")).toHaveAttribute(
       "aria-busy",
       "false",

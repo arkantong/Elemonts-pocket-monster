@@ -19,7 +19,7 @@
     ],
     "currentPlatform": "GDevelop JS platform",
     "platformSpecificAssets": {},
-    "version": "0.1.21",
+    "version": "0.1.22",
     "windowWidth": 960,
     "windowHeight": 1200,
     "maxFPS": 60,
@@ -378,8 +378,32 @@
       },
       {
         "kind": "image",
+        "name": "georoll:home",
+        "file": "../../public/art/monsters-2d/georoll-home.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "georoll:back",
+        "file": "../../public/art/monsters-2d/georoll-back.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
         "name": "georoll:front",
-        "file": "../../public/art/monsters/georoll.png",
+        "file": "../../public/art/monsters-2d/georoll-front.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "georoll:hit",
+        "file": "../../public/art/monsters-2d/georoll-hit.png",
         "smoothed": true,
         "userAdded": true,
         "metadata": ""
@@ -394,8 +418,48 @@
       },
       {
         "kind": "image",
+        "name": "burrowox:home",
+        "file": "../../public/art/monsters-2d/burrowox-home.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "burrowox:back",
+        "file": "../../public/art/monsters-2d/burrowox-back.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
         "name": "burrowox:front",
-        "file": "../../public/art/monsters/burrowox.png",
+        "file": "../../public/art/monsters-2d/burrowox-front.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "burrowox:hit",
+        "file": "../../public/art/monsters-2d/burrowox-hit.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "aurapaw:home",
+        "file": "../../public/art/monsters-2d/aurapaw-home.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "aurapaw:back",
+        "file": "../../public/art/monsters-2d/aurapaw-back.png",
         "smoothed": true,
         "userAdded": true,
         "metadata": ""
@@ -403,7 +467,15 @@
       {
         "kind": "image",
         "name": "aurapaw:front",
-        "file": "../../public/art/monsters/aurapaw.png",
+        "file": "../../public/art/monsters-2d/aurapaw-front.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "aurapaw:hit",
+        "file": "../../public/art/monsters-2d/aurapaw-hit.png",
         "smoothed": true,
         "userAdded": true,
         "metadata": ""
@@ -490,8 +562,32 @@
       },
       {
         "kind": "image",
+        "name": "noxarion:home",
+        "file": "../../public/art/monsters-2d/noxarion-home.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "noxarion:back",
+        "file": "../../public/art/monsters-2d/noxarion-back.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
         "name": "noxarion:front",
-        "file": "../../public/art/monsters/noxarion.png",
+        "file": "../../public/art/monsters-2d/noxarion-front.png",
+        "smoothed": true,
+        "userAdded": true,
+        "metadata": ""
+      },
+      {
+        "kind": "image",
+        "name": "noxarion:hit",
+        "file": "../../public/art/monsters-2d/noxarion-hit.png",
         "smoothed": true,
         "userAdded": true,
         "metadata": ""
@@ -1840,6 +1936,64 @@
               ]
             },
             {
+              "name": "georoll:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "georoll:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 237.5,
+                        "y": 407
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 237.5,
+                        "y": 407
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "georoll:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "georoll:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 224,
+                        "y": 407
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 224,
+                        "y": 407
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "georoll:front",
               "useMultipleDirections": false,
               "directions": [
@@ -1852,14 +2006,43 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 129,
-                        "y": 223
+                        "x": 226.5,
+                        "y": 413
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 129,
-                        "y": 223
+                        "x": 226.5,
+                        "y": 413
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "georoll:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "georoll:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 212,
+                        "y": 413
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 212,
+                        "y": 413
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -1898,6 +2081,64 @@
               ]
             },
             {
+              "name": "burrowox:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "burrowox:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 237,
+                        "y": 370
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 237,
+                        "y": 370
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "burrowox:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "burrowox:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 221,
+                        "y": 369
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 221,
+                        "y": 369
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "burrowox:front",
               "useMultipleDirections": false,
               "directions": [
@@ -1910,14 +2151,101 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 127.5,
-                        "y": 222
+                        "x": 219,
+                        "y": 369
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 127.5,
-                        "y": 222
+                        "x": 219,
+                        "y": 369
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "burrowox:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "burrowox:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 210.5,
+                        "y": 373
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 210.5,
+                        "y": 373
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "aurapaw:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "aurapaw:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 226,
+                        "y": 430
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 226,
+                        "y": 430
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "aurapaw:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "aurapaw:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 220.5,
+                        "y": 434
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 220.5,
+                        "y": 434
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -1939,14 +2267,43 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 142,
-                        "y": 222
+                        "x": 218.5,
+                        "y": 434
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 142,
-                        "y": 222
+                        "x": 218.5,
+                        "y": 434
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "aurapaw:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "aurapaw:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 217.5,
+                        "y": 436
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 217.5,
+                        "y": 436
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -2246,6 +2603,64 @@
               ]
             },
             {
+              "name": "noxarion:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "noxarion:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 217,
+                        "y": 393
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 217,
+                        "y": 393
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "noxarion:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "noxarion:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 218,
+                        "y": 397
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 218,
+                        "y": 397
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "noxarion:front",
               "useMultipleDirections": false,
               "directions": [
@@ -2258,14 +2673,43 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 142.5,
-                        "y": 222
+                        "x": 227.5,
+                        "y": 399
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 142.5,
-                        "y": 222
+                        "x": 227.5,
+                        "y": 399
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "noxarion:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "noxarion:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 219.5,
+                        "y": 402
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 219.5,
+                        "y": 402
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -3444,6 +3888,64 @@
               ]
             },
             {
+              "name": "georoll:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "georoll:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 237.5,
+                        "y": 407
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 237.5,
+                        "y": 407
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "georoll:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "georoll:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 224,
+                        "y": 407
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 224,
+                        "y": 407
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "georoll:front",
               "useMultipleDirections": false,
               "directions": [
@@ -3456,14 +3958,43 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 129,
-                        "y": 223
+                        "x": 226.5,
+                        "y": 413
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 129,
-                        "y": 223
+                        "x": 226.5,
+                        "y": 413
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "georoll:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "georoll:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 212,
+                        "y": 413
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 212,
+                        "y": 413
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -3502,6 +4033,64 @@
               ]
             },
             {
+              "name": "burrowox:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "burrowox:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 237,
+                        "y": 370
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 237,
+                        "y": 370
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "burrowox:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "burrowox:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 221,
+                        "y": 369
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 221,
+                        "y": 369
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "burrowox:front",
               "useMultipleDirections": false,
               "directions": [
@@ -3514,14 +4103,101 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 127.5,
-                        "y": 222
+                        "x": 219,
+                        "y": 369
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 127.5,
-                        "y": 222
+                        "x": 219,
+                        "y": 369
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "burrowox:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "burrowox:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 210.5,
+                        "y": 373
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 210.5,
+                        "y": 373
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "aurapaw:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "aurapaw:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 226,
+                        "y": 430
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 226,
+                        "y": 430
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "aurapaw:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "aurapaw:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 220.5,
+                        "y": 434
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 220.5,
+                        "y": 434
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -3543,14 +4219,43 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 142,
-                        "y": 222
+                        "x": 218.5,
+                        "y": 434
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 142,
-                        "y": 222
+                        "x": 218.5,
+                        "y": 434
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "aurapaw:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "aurapaw:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 217.5,
+                        "y": 436
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 217.5,
+                        "y": 436
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -3850,6 +4555,64 @@
               ]
             },
             {
+              "name": "noxarion:home",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "noxarion:home",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 217,
+                        "y": 393
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 217,
+                        "y": 393
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "noxarion:back",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "noxarion:back",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 218,
+                        "y": 397
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 218,
+                        "y": 397
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "name": "noxarion:front",
               "useMultipleDirections": false,
               "directions": [
@@ -3862,14 +4625,43 @@
                       "points": [],
                       "originPoint": {
                         "name": "",
-                        "x": 142.5,
-                        "y": 222
+                        "x": 227.5,
+                        "y": 399
                       },
                       "centerPoint": {
                         "name": "",
                         "automatic": false,
-                        "x": 142.5,
-                        "y": 222
+                        "x": 227.5,
+                        "y": 399
+                      },
+                      "hasCustomCollisionMask": false,
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "noxarion:hit",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "timeBetweenFrames": 0.12,
+                  "looping": true,
+                  "sprites": [
+                    {
+                      "image": "noxarion:hit",
+                      "points": [],
+                      "originPoint": {
+                        "name": "",
+                        "x": 219.5,
+                        "y": 402
+                      },
+                      "centerPoint": {
+                        "name": "",
+                        "automatic": false,
+                        "x": 219.5,
+                        "y": 402
                       },
                       "hasCustomCollisionMask": false,
                       "customCollisionMask": []
@@ -3987,7 +4779,7 @@
         {
           "type": "BuiltinCommonInstructions::JsCode",
           "inlineCode": [
-            "window.ElemontsConceptSpecies = [\"pyroo\",\"croobit\",\"voltavi\",\"mippo\",\"mallow\",\"swifttail\"];",
+            "window.ElemontsConceptSpecies = [\"pyroo\",\"croobit\",\"voltavi\",\"mippo\",\"mallow\",\"swifttail\",\"aurapaw\",\"noxarion\",\"georoll\",\"burrowox\"];",
             "/* Shared JavaScript event: embedded in the editable GDevelop scene and web runtime. */",
             "(function installElemontsBattle() {",
             "  if (window.ElemontsBattle) return;",
@@ -4149,7 +4941,7 @@
             "  };",
             "})();",
             "",
-            "window.ElemontsSpriteFrames = {\"pyroo:home\":[460,470,23,49,397,387],\"pyroo:back\":[455,470,22,61,412,379],\"pyroo:front\":[435,470,23,77,399,367],\"pyroo:hit\":[424,470,13,83,397,363],\"pyroar:front\":[256,256,68,36,117,196],\"infernox:front\":[256,256,58,35,138,197],\"croobit:home\":[460,417,22,37,418,334],\"croobit:back\":[455,417,37,23,380,341],\"croobit:front\":[435,417,7,57,406,317],\"croobit:hit\":[424,417,16,82,387,295],\"rivaclaw:front\":[256,256,67,37,153,185],\"hydragon:front\":[256,256,48,38,165,184],\"voltavi:home\":[490,470,55,54,405,371],\"voltavi:back\":[390,470,20,58,333,368],\"voltavi:front\":[450,470,32,82,397,350],\"voltavi:hit\":[444,470,46,137,334,301],\"voltusk:front\":[256,256,73,40,112,182],\"voltitan:front\":[256,256,58,38,143,184],\"pebblit:front\":[256,256,56,38,145,185],\"rockhorn:front\":[256,256,73,40,112,182],\"terragorn:front\":[256,256,73,40,112,182],\"mippo:home\":[490,417,44,22,393,345],\"mippo:back\":[390,417,41,23,320,342],\"mippo:front\":[450,417,49,21,376,347],\"mippo:hit\":[444,417,30,77,382,292],\"pluffluff:front\":[256,256,69,39,121,178],\"pufflare:front\":[256,256,47,38,167,179],\"boarlit:front\":[256,256,74,37,122,185],\"magboar:front\":[256,256,74,37,122,185],\"flicklet:front\":[256,256,22,37,222,185],\"dawnphoenix:front\":[256,256,41,39,180,182],\"seabbi:front\":[256,256,44,40,173,182],\"marilune:front\":[256,256,36,37,195,179],\"jellun:front\":[256,256,51,38,156,181],\"pelaglow:front\":[256,256,33,41,197,166],\"sparko:front\":[256,256,74,37,146,185],\"luxerion:front\":[256,256,59,39,148,182],\"buzzbit:front\":[256,256,54,37,156,185],\"thundrax:front\":[256,256,54,38,157,184],\"pebblisk:front\":[256,256,69,37,151,185],\"georoll:front\":[256,256,56,38,146,185],\"dribble:front\":[256,256,69,37,119,180],\"burrowox:front\":[256,256,72,38,111,184],\"aurapaw:front\":[256,256,74,37,136,185],\"swifttail:home\":[490,401,16,2,439,338],\"swifttail:back\":[500,401,39,11,428,326],\"swifttail:front\":[500,401,52,11,435,331],\"swifttail:hit\":[493,401,41,23,421,323],\"mallow:home\":[490,392,95,63,336,319],\"mallow:back\":[500,392,88,66,364,316],\"mallow:front\":[500,392,46,62,367,323],\"mallow:hit\":[493,392,33,89,357,296],\"hoplet:front\":[256,256,81,39,96,182],\"aurelyth:front\":[256,256,84,38,90,177],\"noxarion:front\":[256,256,74,37,137,185]};",
+            "window.ElemontsSpriteFrames = {\"pyroo:home\":[460,470,23,49,397,387],\"pyroo:back\":[455,470,22,61,412,379],\"pyroo:front\":[435,470,23,77,399,367],\"pyroo:hit\":[424,470,13,83,397,363],\"pyroar:front\":[256,256,68,36,117,196],\"infernox:front\":[256,256,58,35,138,197],\"croobit:home\":[460,417,22,37,418,334],\"croobit:back\":[455,417,37,23,380,341],\"croobit:front\":[435,417,7,57,406,317],\"croobit:hit\":[424,417,16,82,387,295],\"rivaclaw:front\":[256,256,67,37,153,185],\"hydragon:front\":[256,256,48,38,165,184],\"voltavi:home\":[490,470,55,54,405,371],\"voltavi:back\":[390,470,20,58,333,368],\"voltavi:front\":[450,470,32,82,397,350],\"voltavi:hit\":[444,470,46,137,334,301],\"voltusk:front\":[256,256,73,40,112,182],\"voltitan:front\":[256,256,58,38,143,184],\"pebblit:front\":[256,256,56,38,145,185],\"rockhorn:front\":[256,256,73,40,112,182],\"terragorn:front\":[256,256,73,40,112,182],\"mippo:home\":[490,417,44,22,393,345],\"mippo:back\":[390,417,41,23,320,342],\"mippo:front\":[450,417,49,21,376,347],\"mippo:hit\":[444,417,30,77,382,292],\"pluffluff:front\":[256,256,69,39,121,178],\"pufflare:front\":[256,256,47,38,167,179],\"boarlit:front\":[256,256,74,37,122,185],\"magboar:front\":[256,256,74,37,122,185],\"flicklet:front\":[256,256,22,37,222,185],\"dawnphoenix:front\":[256,256,41,39,180,182],\"seabbi:front\":[256,256,44,40,173,182],\"marilune:front\":[256,256,36,37,195,179],\"jellun:front\":[256,256,51,38,156,181],\"pelaglow:front\":[256,256,33,41,197,166],\"sparko:front\":[256,256,74,37,146,185],\"luxerion:front\":[256,256,59,39,148,182],\"buzzbit:front\":[256,256,54,37,156,185],\"thundrax:front\":[256,256,54,38,157,184],\"pebblisk:front\":[256,256,69,37,151,185],\"georoll:home\":[445,435,41,83,393,324],\"georoll:back\":[435,435,37,83,374,324],\"georoll:front\":[445,435,30,83,393,330],\"georoll:hit\":[449,435,20,85,384,328],\"dribble:front\":[256,256,69,37,119,180],\"burrowox:home\":[445,452,32,16,410,354],\"burrowox:back\":[435,452,30,20,382,349],\"burrowox:front\":[445,452,9,17,420,352],\"burrowox:hit\":[449,452,4,19,413,354],\"aurapaw:home\":[445,445,29,56,394,374],\"aurapaw:back\":[435,445,23,47,395,387],\"aurapaw:front\":[450,445,12,67,413,367],\"aurapaw:hit\":[444,445,8,89,419,347],\"swifttail:home\":[490,401,16,2,439,338],\"swifttail:back\":[500,401,39,11,428,326],\"swifttail:front\":[500,401,52,11,435,331],\"swifttail:hit\":[493,401,41,23,421,323],\"mallow:home\":[490,392,95,63,336,319],\"mallow:back\":[500,392,88,66,364,316],\"mallow:front\":[500,392,46,62,367,323],\"mallow:hit\":[493,392,33,89,357,296],\"hoplet:front\":[256,256,81,39,96,182],\"aurelyth:front\":[256,256,84,38,90,177],\"noxarion:home\":[445,442,13,13,408,380],\"noxarion:back\":[435,442,15,8,406,389],\"noxarion:front\":[450,442,10,15,435,384],\"noxarion:hit\":[444,442,5,56,429,346]};",
             "window.ElemontsBattle.update(runtimeScene);"
           ],
           "parameterObjects": "",
@@ -4278,16 +5070,43 @@
           "name": "pebblisk:front"
         },
         {
+          "name": "georoll:home"
+        },
+        {
+          "name": "georoll:back"
+        },
+        {
           "name": "georoll:front"
+        },
+        {
+          "name": "georoll:hit"
         },
         {
           "name": "dribble:front"
         },
         {
+          "name": "burrowox:home"
+        },
+        {
+          "name": "burrowox:back"
+        },
+        {
           "name": "burrowox:front"
         },
         {
+          "name": "burrowox:hit"
+        },
+        {
+          "name": "aurapaw:home"
+        },
+        {
+          "name": "aurapaw:back"
+        },
+        {
           "name": "aurapaw:front"
+        },
+        {
+          "name": "aurapaw:hit"
         },
         {
           "name": "swifttail:home"
@@ -4320,7 +5139,16 @@
           "name": "aurelyth:front"
         },
         {
+          "name": "noxarion:home"
+        },
+        {
+          "name": "noxarion:back"
+        },
+        {
           "name": "noxarion:front"
+        },
+        {
+          "name": "noxarion:hit"
         },
         {
           "name": "Garden"

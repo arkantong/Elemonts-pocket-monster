@@ -6,6 +6,10 @@ export const CONCEPT_MONSTERS = new Set([
   "mippo",
   "mallow",
   "swifttail",
+  "aurapaw",
+  "noxarion",
+  "georoll",
+  "burrowox",
 ]);
 export function monsterPortrait(species: string) {
   return CONCEPT_MONSTERS.has(species)

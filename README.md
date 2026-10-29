@@ -2,7 +2,17 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.21 (debug)](downloads/elemonts-0.1.21-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.22 (debug)](downloads/elemonts-0.1.22-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+
+## Concept sheets Batch 04–05 · 0.1.22
+
+Aurapaw memakai tubuh putih/pink, aksen emas, berlian di dahi/dada dan ekor lentera melingkar. Noxarion memakai bulu navy/ungu berbintang, bulan sabit perak di dahi dan ujung ekor. Masing-masing memiliki pose Home, belakang partner, depan lawan dan hit, terhubung ke Home, Koleksi, Ensiklopedia, pemilih tim dan battle 2D.
+
+Georoll memakai cangkang batu spiral dan kaki kecil yang bisa dilipat. Burrowox memakai tubuh rendah, tanduk krem besar serta cakar penggali. Keduanya juga memiliki empat pose dan memakai sumber gambar yang sama di Home, Koleksi dan battle. Paket ini menggabungkan kedua batch referensi pengguna.
+
+Sepuluh monster kini memakai 40 sprite concept sheet; 27 bentuk lain masih memakai ilustrasi sebelumnya. Elemen mengikuti roster game: Aurapaw tetap Netral, Noxarion Dark, Georoll dan Burrowox Tanah. Noxarion masih Mythical; event untuk mendapatkannya belum tersedia. Asetnya bisa dilihat melalui Ensiklopedia, sedangkan Home/battle diuji dengan data koleksi QA tanpa menambahkan monster ke progres pemain.
+
+[Paket scene GDevelop terbaru](downloads/Elemonts-GDevelop-2D-v0.1.22.zip) · [Panduan sumber](design/gdevelop/README.md). Versi Android 0.1.22 / build 23.
 
 ## Concept sheet Batch 03: Mallow dan Swifttail · 0.1.21
 

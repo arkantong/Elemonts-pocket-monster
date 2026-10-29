@@ -13,3 +13,4 @@
 - Previous Three.js/Blender work is retained as source study material, but the current game does not load a Three.js renderer or GLB models.
 - Version 0.1.20 adds a second Image Gen atlas for Voltavi/Mippo, following the user's Batch 02 concept sheet. These eight additional sprites are artwork redraws; existing Pyroo/Croobit image bytes remain unchanged.
 - Version 0.1.21 adds a third Image Gen atlas for Mallow/Swifttail from the user's Batch 03 sheet. All eight new sprites are redraws, mechanically extracted from the preserved atlas. Earlier sprite image bytes remain unchanged.
+- Version 0.1.22 adds the fourth and fifth Image Gen atlases for Aurapaw/Noxarion and Georoll/Burrowox from the user's Batch 04/05 sheets. The sixteen additional sprites preserve the lantern/crescent tails, spiral rock shell, large ivory horn and digging claws; earlier sprite image bytes remain unchanged.
