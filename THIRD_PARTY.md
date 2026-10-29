@@ -12,3 +12,4 @@
 - The new Pyroo/Croobit atlas and painted 2D battle garden were generated with Image Gen from the user's character concept direction. Atlas cells are mechanically extracted without repainting. No Pokémon/Pou artwork is extracted. Contact-shadow SVG and procedural skill particles are rendering effects authored for this project.
 - Previous Three.js/Blender work is retained as source study material, but the current game does not load a Three.js renderer or GLB models.
 - Version 0.1.20 adds a second Image Gen atlas for Voltavi/Mippo, following the user's Batch 02 concept sheet. These eight additional sprites are artwork redraws; existing Pyroo/Croobit image bytes remain unchanged.
+- Version 0.1.21 adds a third Image Gen atlas for Mallow/Swifttail from the user's Batch 03 sheet. All eight new sprites are redraws, mechanically extracted from the preserved atlas. Earlier sprite image bytes remain unchanged.

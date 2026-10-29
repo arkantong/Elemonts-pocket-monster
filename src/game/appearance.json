@@ -355,23 +355,23 @@
     "id": "swifttail",
     "name": "Swifttail",
     "form": "Pelari berekor",
-    "palette": ["#acd4c0", "#eee0bf", "#f1d36a"],
+    "palette": ["#b3e7d7", "#fff3dc", "#ffd76b"],
     "colorDescription": "Mint · Krem · Kuning",
     "character": "Lincah",
     "signature": "Ekor pita panjang yang melingkar",
     "shape": "runner",
-    "status": "Konsep awal"
+    "status": "Concept sheet Batch 03"
   },
   {
     "id": "mallow",
     "name": "Mallow",
     "form": "Mochi tumbuhan",
-    "palette": ["#f5e4cd", "#b7d69e", "#f0bdc8"],
+    "palette": ["#fff7e8", "#b7e695", "#ffc3d1"],
     "colorDescription": "Krim · Hijau muda · Pink",
     "character": "Pemalu",
     "signature": "Tunas kecil dan tubuh kenyal",
     "shape": "plant",
-    "status": "Konsep awal"
+    "status": "Concept sheet Batch 03"
   },
   {
     "id": "hoplet",

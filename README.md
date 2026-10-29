@@ -2,7 +2,15 @@
 
 Prototipe game Android portrait: merawat, menangkap, mengoleksi, dan bertarung bersama monster di Nusaraya. Implementasi mengikuti dokumen konsep pengguna v1–v4 dan roster 37 bentuk monster.
 
-[Unduh APK Android 0.1.20 (debug)](downloads/elemonts-0.1.20-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+[Unduh APK Android 0.1.21 (debug)](downloads/elemonts-0.1.21-debug.apk) · [SHA-256](downloads/SHA256SUMS). Di halaman file GitHub, gunakan tombol Download raw file. Paket ini untuk uji internal.
+
+## Concept sheet Batch 03: Mallow dan Swifttail · 0.1.21
+
+Mallow memakai tubuh mochi krim, tunas hijau/pink dan lapisan daun di punggung. Swifttail memakai tubuh mint, telinga besar dan ekor pita krem/kuning yang melingkar. Delapan sprite baru mencakup pose Home, belakang partner, depan lawan dan hit, dipakai bersama di Home, Koleksi, pemilih tim serta battle. Kedua monster tetap didapat melalui alur koleksi game; bukan tambahan starter.
+
+Home memberi ruang 12 px di antara nama/level dan area ilustrasi, sehingga tunas atau telinga tidak tertutup label pada layar kecil maupun desktop. Lantai serta posisi kaki dipertahankan. Enam monster kini memakai 24 sprite concept sheet, dengan 31 bentuk lain masih memakai ilustrasi sebelumnya. Batch visual ini mempertahankan elemen Netral Mallow/Swifttail sesuai aturan game, meskipun sheet menyebut Alam/Angin.
+
+[Paket scene GDevelop terbaru](downloads/Elemonts-GDevelop-2D-v0.1.21.zip) · [Panduan sumber](design/gdevelop/README.md). Versi Android 0.1.21 / build 22.
 
 ## Concept sheet Batch 02: Voltavi dan Mippo · 0.1.20
 

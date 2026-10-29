@@ -33,6 +33,7 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
       <h1>{rooms[room]}</h1>
       <button aria-label={id ? "Ruangan berikutnya" : "Next room"} onClick={()=>changeRoom(room+1)}><ChevronRight/></button>
     </div>
+    <div className="pet-partner-region">
     <div className="pet-name"><h2>{s.name}</h2><span><Star size={17} fill="#ffd36e"/> Lv. {m.level}</span></div>
     <div className="pet-stage">
 
@@ -43,6 +44,7 @@ export function Home({ navigate }: { navigate: (s: string) => void }) {
       {room===3 && <div className="pet-sleep" aria-hidden="true">Z z z</div>}
       {room===2 && <button className={`pet-ball position-${score%3}`} aria-label={id ? "Tangkap bola" : "Catch the ball"} onClick={()=>{setScore(v=>v+1);setReaction(r=>r+1);}}><CircleDot size={44}/></button>}
       <button className="pet-gift" aria-label={id ? "Hadiah harian" : "Daily gift"} onClick={()=>setGifts(true)}><Gift size={22}/></button>
+    </div>
     </div>
     <div className="pet-room-action" aria-live="polite">
       {room===0 ? null

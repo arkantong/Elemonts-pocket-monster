@@ -219,6 +219,9 @@ input,select,textarea,.search { border-color:#E0D3E5; color:#332A3F; }
 .illustrated-home-shell .pet-room-action { top:auto; bottom:calc(max(72px,10%) + 16px + clamp(76px,13.2%,244px)); height:auto; }
 .illustrated-home-shell .pet-stage::before { content:""; position:absolute; width:42%; height:5%; left:30%; bottom:-1%; border-radius:50%; background:#4f2a321f; filter:blur(6px); }
 .illustrated-home-shell .pet-illustration { object-fit:initial; }
+.illustrated-home-shell .pet-partner-region { position:absolute; top:22.4%; bottom:31%; left:0; right:0; display:flex; flex-direction:column; gap:12px; }
+.illustrated-home-shell .pet-partner-region .pet-name { position:relative; top:auto; flex:0 0 auto; }
+.illustrated-home-shell .pet-partner-region .pet-stage { position:relative; top:auto; height:auto; flex:1 1 0; min-height:0; }
 #root { padding:var(--app-safe-top) var(--app-safe-right) var(--app-safe-bottom) var(--app-safe-left); }
 .app-shell { min-height:var(--home-usable-height); }
 .illustrated-home-shell { width:min(100%, calc(var(--home-usable-height) * .56)); }

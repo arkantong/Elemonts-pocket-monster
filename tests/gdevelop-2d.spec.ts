@@ -9,8 +9,26 @@ import { createBattle } from "../src/game/battle";
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { STARTERS } from "../src/game/data";
+const opponents: Record<string, string> = {
+  pyroo: "croobit",
+  croobit: "pyroo",
+  voltavi: "mippo",
+  mippo: "voltavi",
+  mallow: "swifttail",
+  swifttail: "mallow",
+};
 async function fixture(page: Page, species: string, battle = false) {
-  const save = transition(emptySave(), { type: "starter", species });
+  const isStarter = STARTERS.some((s) => s.id === species);
+  const save = transition(emptySave(), {
+    type: "starter",
+    species: isStarter ? species : "pyroo",
+  });
+  if (!isStarter) {
+    const monster = makeMonster(species, 5);
+    save.monsters = [monster];
+    save.team = [monster.uid];
+  }
   save.tutorial = true;
   save.captureTutorial = "done";
   if (battle) {
@@ -20,19 +38,7 @@ async function fixture(page: Page, species: string, battle = false) {
     save.battle = createBattle(
       "wild",
       [save.monsters[0], partner],
-      [
-        makeMonster(
-          (
-            {
-              pyroo: "croobit",
-              croobit: "pyroo",
-              voltavi: "mippo",
-              mippo: "voltavi",
-            } as Record<string, string>
-          )[species],
-          5,
-        ),
-      ],
+      [makeMonster(opponents[species], 5)],
     );
     save.battle.turn = 2;
   }
@@ -108,7 +114,14 @@ test("production bundle reaches its first GDevelop frame and resolves a move", a
     await new Promise<void>((resolve) => server.close(() => resolve()));
   }
 });
-for (const species of ["pyroo", "croobit", "voltavi", "mippo"])
+for (const species of [
+  "pyroo",
+  "croobit",
+  "voltavi",
+  "mippo",
+  "mallow",
+  "swifttail",
+])
   test(`${species} uses the concept sheet in Home and Collection`, async ({
     page,
   }) => {
@@ -122,6 +135,22 @@ for (const species of ["pyroo", "croobit", "voltavi", "mippo"])
     );
     await expect(page.locator(".pet-home canvas")).toHaveCount(0);
     await page.evaluate(() => document.fonts.ready);
+    for (const [width, height] of [
+      [320, 640],
+      [390, 844],
+      [1280, 900],
+    ]) {
+      await page.setViewportSize({ width, height });
+      const label = await page.locator(".pet-name").boundingBox();
+      const sprite = await page.locator(".pet-illustration").boundingBox();
+      expect(sprite!.y - label!.y - label!.height).toBeGreaterThanOrEqual(11.5);
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+      ).toBe(true);
+    }
+    await page.setViewportSize({ width: 390, height: 844 });
     await page.screenshot({ path: `/tmp/elemonts-2d-home-${species}.png` });
     await page.getByRole("button", { name: "Collection", exact: true }).click();
     const image = page.locator('.monster-card .portrait [role="img"]').first();
@@ -133,8 +162,8 @@ for (const species of ["pyroo", "croobit", "voltavi", "mippo"])
     await expect(page.locator(".pet-illustration")).toBeVisible();
     expect(errors).toEqual([]);
   });
-for (const species of ["voltavi", "mippo"])
-  test(`${species} batch 02 uses rear/front/hit sprites during battle`, async ({
+for (const species of ["voltavi", "mippo", "mallow", "swifttail"])
+  test(`${species} uses rear/front/hit sprites during battle`, async ({
     page,
   }) => {
     await fixture(page, species, true);
@@ -161,7 +190,7 @@ for (const species of ["voltavi", "mippo"])
     const frame = page
       .frames()
       .find((f) => f.url().includes("/gdevelop/index.html"))!;
-    const opponent = species === "voltavi" ? "mippo" : "voltavi";
+    const opponent = opponents[species];
     await expect
       .poll(() =>
         frame.evaluate(() =>
