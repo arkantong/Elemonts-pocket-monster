@@ -225,7 +225,7 @@ input,select,textarea,.search { border-color:#E0D3E5; color:#332A3F; }
 #root { padding:var(--app-safe-top) var(--app-safe-right) var(--app-safe-bottom) var(--app-safe-left); }
 .app-shell { min-height:var(--home-usable-height); }
 .illustrated-home-shell { width:min(100%, calc(var(--home-usable-height) * .56)); }
-.app-shell:not(.illustrated-home-shell) > .bottom-nav { bottom:var(--app-safe-bottom); padding-bottom:9px; }
+.app-shell:not(.illustrated-home-shell) > .bottom-nav { bottom:0; padding-bottom:calc(9px + var(--app-safe-bottom)); }
 .sidebar { top:var(--app-safe-top); bottom:var(--app-safe-bottom); }
 .language-screen { min-height:var(--home-usable-height); }
 .battle-page { min-height:var(--home-usable-height); padding-top:12px; padding-bottom:14px; }

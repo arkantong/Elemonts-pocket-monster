@@ -26,3 +26,28 @@ for(const species of ['flicklet','pyroo'])for(const [width,height,top,bottom]of 
   expect(errors).toEqual([]);
  });
 }
+
+for (const [width,height,bottom] of [[384,854,32],[320,640,24],[390,844,0]]) {
+ test(`scrolling tabs cover Android bottom inset ${width}/${bottom}`,async({page})=>{
+  const save=transition(emptySave(),{type:'starter',species:'pyroo'});save.tutorial=true;save.captureTutorial='done';
+  await page.addInitScript(({save,key})=>{localStorage.setItem(key,JSON.stringify(save));localStorage.setItem('elemonts.language.v1','en');localStorage.setItem('elemonts.music.v1','off');},{save,key:SAVE_KEY});
+  await page.setViewportSize({width,height});
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/');
+  await page.evaluate(bottom=>document.documentElement.style.setProperty('--safe-area-inset-bottom',`${bottom}px`),bottom);
+  for(const tab of ['Collection','Explore','Shop']){
+   await page.locator('.bottom-nav').getByRole('button',{name:tab,exact:true}).click();
+   await page.evaluate(()=>window.scrollTo(0,document.body.scrollHeight));
+   const nav=page.locator('.bottom-nav');
+   const bounds=await nav.boundingBox();
+   expect(Math.abs(bounds!.y+bounds!.height-height)).toBeLessThan(1);
+   for(const button of await nav.getByRole('button').all()){
+    const box=await button.boundingBox();expect(box!.y+box!.height).toBeLessThanOrEqual(height-bottom);
+   }
+   expect(await page.evaluate(()=>document.elementFromPoint(innerWidth/2,innerHeight-1)?.closest('.bottom-nav')!==null)).toBe(true);
+   expect(await nav.evaluate(el=>getComputedStyle(el).backgroundColor)).toBe('rgb(255, 247, 240)');
+   if(width===384)await page.screenshot({path:`/tmp/elemonts-nav-fixed-${tab}.png`});
+  }
+  expect(errors).toEqual([]);
+ });
+}
